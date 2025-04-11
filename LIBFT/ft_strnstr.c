@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 23:27:08 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/11 00:50:00 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:50:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 }
 
-
+/*
 #define BUF_SIZE 10
 #include <bsd/string.h>
 int	main(void)
@@ -48,3 +48,4 @@ int	main(void)
 	printf("Return value of ft_strnstr: %s\n\n", ft_strnstr(a1, b1, BUF_SIZE));
 	printf("Return value of strnstr: %s\n", strnstr(a2, b2, BUF_SIZE));
 }
+*/

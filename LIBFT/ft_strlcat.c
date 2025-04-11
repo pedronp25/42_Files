@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 21:18:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/10 23:25:09 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:52:07 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		x++;
 		y++;
 	}
-	dst[x] = '\0';	
+	dst[x] = '\0';
 	if (size <= dest_len)
 		return (src_len + size);
 	else
-	size_t	r_val2 = strlcat(d2, s2, BUF_SIZE);
 		return (src_len + dest_len);
 }
 
@@ -54,9 +53,11 @@ int	main(void)
 	size_t	r_val1 = ft_strlcat(d1, s1, BUF_SIZE);
 
 
-	printf("FT_STRLCAT:\nDestination String: %s\nReturn Value: %zu\n\n", d1, r_val1);
+	printf("FT_STRLCAT:\nDestination String: %s\nReturn Value: %zu\n\n",
+		d1, r_val1);
 		
-	//printf("STRLCAT:\nDestination String: %s\nReturn Value: %zu\n\n", d2, r_val2);
+	//printf("STRLCAT:\nDestination String: %s\nReturn Value: %zu\n\n",
+		d2, r_val2);
 
 	return(0);
 }
