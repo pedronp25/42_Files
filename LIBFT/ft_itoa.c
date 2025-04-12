@@ -1,46 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 17:05:21 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/12 22:44:27 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/12 22:57:02 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/13 00:03:25 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t	x;
-	unsigned char	*temp_d;
-	unsigned char	*temp_s;
+int	int_size(int n);
 
-	if (!dest && !src)
-		return (NULL);
+char	*ft_itoa(int n)
+{
+	int	x;
+	char	*str;
+
 	x = 0;
-	temp_d = (unsigned char *)dest;
-	temp_s = (unsigned char *)src;
-	while (x < n)
+	str = malloc(int_size(n));
+	if (!str)
+		return (NULL);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
 	{
-		temp_d[x] = temp_s[x];
+		str[x] = '-';
+		n = -n;
 		x++;
 	}
-	return(dest);
+	if ()
 }
 
-/*
-int	main(int argc, char *argv[])
+int	int_size(int n)
 {
-	if (argc != 2)
-		return (1);
+	int	x;
 
-	char	*src = argv[1];
-	char	*dst;
-	size_t	size = 5;
-
-	printf("Destination string: %s", ft_memcpy(dst, src, size));
+	x = 0;
+	while (n > 0)
+	{
+		n /= 10;
+		x++;
+	}
+	return (x);
 }
-*/
+
+

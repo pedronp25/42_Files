@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 16:51:33 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/12 18:19:19 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:51:23 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	temp1 = (unsigned char *)s1;
 	temp2 = (unsigned char *)s2;
 	x = 0;
-	if (n == 0)
-		return (0);
-	while (temp1[x] && temp2[x] && temp1[x] == temp2[x] && x < n)
+	while (x < n && temp1[x] == temp2[x])
 		x++;
 	if (x == n)
 		return (0);
-	return ((ptrdiff_t)(&temp1[x] - &temp2[x]));
+	return (temp1[x] - temp2[x]);
 }
 
 /*
