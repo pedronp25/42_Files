@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 17:39:35 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/12 18:37:55 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/12 17:05:21 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/12 18:28:58 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	x;
+	unsigned char	*temp_d;
+	unsigned char	*temp_s;
 
 	x = 0;
-	while (s1[x] && s2[x] && s1[x] == s2[x] && x < n)
+	temp_d = (unsigned char *)dest;
+	temp_s = (unsigned char *)src;
+	while (temp_s[x] && x < n)
+	{
+		temp_d[x] = temp_s[x];
 		x++;
-	if (x == n)
-		return (0);
-	return ((unsigned char)s1[x] - (unsigned char)s2[x]);
+	}
+	return(dest);
 }
 
 /*
-#include <string.h>
 int	main(int argc, char *argv[])
 {
-	if (argc == 3)
-	{
-		char	*str1 = argv[1];
-		char	*str2 = argv[2];
-		size_t	size = 5;
-		printf("Return value of ft_strncmp: %i\n", ft_strncmp(str1, str2, size));
-		printf("Return value of strncmp: %i\n", strncmp(str1, str2, size));
-	}
+	if (argc != 2)
+		return (1);
+
+	char	*src = argv[1];
+	char	*dst;
+	size_t	size = 5;
+
+	printf("Destination string: %s", ft_memcpy(dst, src, size));
 }
 */
