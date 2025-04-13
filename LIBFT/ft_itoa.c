@@ -17,9 +17,11 @@ int	int_size(int n);
 char	*ft_itoa(int n)
 {
 	int	x;
+	int	i;
 	char	*str;
 
 	x = 0;
+	i = 0;
 	str = malloc(int_size(n));
 	if (!str)
 		return (NULL);
@@ -27,11 +29,16 @@ char	*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	if (n < 0)
 	{
-		str[x] = '-';
+		str[i] = '-';
 		n = -n;
-		x++;
+		i++;
 	}
-	if ()
+	if (n > 9)
+		ft_itoa(n / 10);
+	x = (n % 10) + '0';
+	str[i++] = x;
+	str[int_size(n)];
+	return (str);
 }
 
 int	int_size(int n)
@@ -47,4 +54,4 @@ int	int_size(int n)
 	return (x);
 }
 
-
+int	main()
