@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 14:30:42 by pedromig          #+#    #+#             */
-/*   Updated: 2025/03/08 18:27:41 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/12 22:22:23 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_putnbr(int nb)
 		write(1, "-", 1);
 		nb = -nb;
 	}
-
 	if (nb > 9)
 		ft_putnbr(nb / 10);
 	x = (nb % 10) + '0';

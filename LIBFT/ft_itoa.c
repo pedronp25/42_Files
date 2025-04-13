@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 22:57:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/13 00:03:25 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/13 19:27:14 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,30 @@ int	int_size(int n);
 
 char	*ft_itoa(int n)
 {
-	int	x;
-	int	i;
 	char	*str;
+	int	size;
+	int	is_neg;
 
-	x = 0;
-	i = 0;
-	str = malloc(int_size(n));
-	if (!str)
-		return (NULL);
+	is_neg = 0;
+	size = int_size(n);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
+	str = malloc(size + 1);
+	if (!str)
+		return (NULL);
+	str[size] = '\0';
 	if (n < 0)
 	{
-		str[i] = '-';
+		str[0] = '-';
 		n = -n;
-		i++;
+		is_neg = 1;
 	}
-	if (n > 9)
-		ft_itoa(n / 10);
-	x = (n % 10) + '0';
-	str[i++] = x;
-	str[int_size(n)];
+	while (size > is_neg)
+	{
+		size--;
+		str[size] = (n % 10) + '0';
+		n /= 10;
+	}
 	return (str);
 }
 
@@ -46,6 +48,13 @@ int	int_size(int n)
 	int	x;
 
 	x = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n = -n;
+		x++;
+	}
 	while (n > 0)
 	{
 		n /= 10;
@@ -54,4 +63,12 @@ int	int_size(int n)
 	return (x);
 }
 
-int	main()
+/*
+int	main(void)
+{
+	int	x;
+
+	x = -56789;
+	printf("String returned: %s\n", ft_itoa(x));
+}
+*/

@@ -1,36 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 21:26:59 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/13 20:48:14 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/13 23:49:43 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/14 00:20:01 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*copy;
-	size_t	size;
+	int	x;
+	char	*str;
 
-	size = ft_strlen(s) + 1;
-	copy = malloc(size);
-	if (!copy)
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
 		return (NULL);
-	ft_strlcpy(copy, s, size);
-	return (copy);
+	x = 0;
+	while (s[x])
+	{
+		str[x] = f(x, s[x]);
+		x++;
+	}
+	str[x] = '\0';
+	return (str);
 }
 
 /*
+char	ft_rot_13(unsigned int x, char c)
+{
+	if ((c >= 'A' && c <= 'M') || (c >= 'a' && c <= 'm'))
+		c += 13;
+	else if ((c >= 'N' && c <= 'Z') || (c >= 'n' && c <= 'z'))
+		c -= 13;
+	return (c);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc != 2)
 		return (1);
 
-	printf("Duplicated string: %s", ft_strdup(argv[1]));
+	printf("Returned String: %s\n", ft_strmapi(argv[1], ft_rot_13));
 }
 */
