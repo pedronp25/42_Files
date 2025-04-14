@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:35:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/12 22:10:37 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:09:49 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc(size_t n, size_t size)
 	ptr = malloc(total_size);
 	if (!ptr)
 		return (NULL);
-	return(ft_bzero(ptr, total_size));
+	return (ft_bzero(ptr, total_size));
 }
 
 /*

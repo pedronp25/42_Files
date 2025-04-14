@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 22:57:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/13 19:27:14 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:08:47 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	int_size(int n);
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int	size;
-	int	is_neg;
+	int		size;
+	int		is_neg;
 
 	is_neg = 0;
 	size = int_size(n);

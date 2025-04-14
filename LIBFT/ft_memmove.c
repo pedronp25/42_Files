@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 17:39:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/12 22:43:17 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:09:03 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*temp_s;
 
 	if (dest < src)
-		return(ft_memcpy(dest, src, n));
+		return (ft_memcpy(dest, src, n));
 	if (!dest && !src)
 		return (NULL);
 	temp_d = (unsigned char *)dest;
