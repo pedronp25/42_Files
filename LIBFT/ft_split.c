@@ -22,7 +22,7 @@ char	**ft_split(char const *s, char c)
 	int		x;
 	int		y;
 
-	arr = malloc((count_words((char *)s, c) + 1) * sizeof(char *));
+	arr = calloc(count_words((char *)s, c) + 1,  sizeof(char *));
 	if (!arr)
 		return (NULL);
 	x = 0;
@@ -37,7 +37,7 @@ char	**ft_split(char const *s, char c)
 			arr[pos] = ft_substr(s, x, (y - x));
 			if (!arr[pos])
 			{
-				free_arr(*arr);
+				free_arr(arr);
 				return (NULL);
 			}
 			pos++;
@@ -78,7 +78,7 @@ void	free_arr(char **meow)
 	x = 0;
 	while (meow[x])
 	{
-		free((void *)&meow[x]);
+		free(meow[x]);
 		x++;
 	}
 	free(meow);
