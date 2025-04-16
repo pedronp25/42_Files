@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 19:18:06 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/16 20:41:25 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/16 21:08:51 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/17 00:24:17 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
+	t_list	*node_ptr;
+
 	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+		return ;
+	node_ptr = *lst;
+	while (node_ptr)
+	{
+		ft_lstdelone(node_ptr, del);
+		node_ptr = node_ptr->next;
+	}
+	*lst = NULL;
 }

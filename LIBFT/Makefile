@@ -26,6 +26,7 @@ SRCS = ft_atoi.c \
        ft_putendl_fd.c \
        ft_putnbr_fd.c \
        ft_putstr_fd.c \
+       ft_split.c \
        ft_strchr.c \
        ft_strdup.c \
        ft_striteri.c \
@@ -40,10 +41,15 @@ SRCS = ft_atoi.c \
        ft_strtrim.c \
        ft_substr.c \
        ft_tolower.c \
-       ft_toupper.c \
+       ft_toupper.c 
 
-BONUS_SRCS = ft_lstadd_back.c ft_lstadd_front.c ft_lstlast.c \
-             ft_lstnew.c ft_lstsize.c \
+BONUS_SRCS = ft_lstadd_back.c \
+             ft_lstadd_front.c \
+             ft_lstclear.c \
+             ft_lstdelone.c \
+             ft_lstlast.c \
+             ft_lstnew.c \
+             ft_lstsize.c 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -62,11 +68,10 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(B_OBJS)
-	$(AR) $(NAME) $(B_OBJS)
-
-.PHONY: all clean fclean re bonus
+bonus: $(B_OBJS) $(OBJS)
+	$(AR) $(NAME) $(OBJS) $(B_OBJS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+.PHONY: all clean fclean re bonus

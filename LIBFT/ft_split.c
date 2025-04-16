@@ -6,14 +6,14 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:26:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/14 21:10:10 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:13:39 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int		count_words(char *str, char c);
-void	free_arr(char *meow);
+void	free_arr(char **meow);
 
 char	**ft_split(char const *s, char c)
 {
@@ -22,7 +22,7 @@ char	**ft_split(char const *s, char c)
 	int		x;
 	int		y;
 
-	arr = calloc(count_words((char *)s, c) + 1,  sizeof(char *));
+	arr = ft_calloc(count_words((char *)s, c) + 1,  sizeof(char *));
 	if (!arr)
 		return (NULL);
 	x = 0;
@@ -30,9 +30,12 @@ char	**ft_split(char const *s, char c)
 	pos = 0;
 	while (s[x])
 	{
-		while (s[y] == c)
+		while (s[y] && s[y] == c)
 			y++;
-		if (s[y] == c || !s[y])
+		x = y;
+		while (s[y] != c && s[y])
+			y++;
+		if (y > x)
 		{
 			arr[pos] = ft_substr(s, x, (y - x));
 			if (!arr[pos])
@@ -41,11 +44,7 @@ char	**ft_split(char const *s, char c)
 				return (NULL);
 			}
 			pos++;
-			while (s[y] == c)
-				y++;
-			x = y;
 		}
-		y++;
 	}
 	return (arr);
 }
@@ -83,3 +82,18 @@ void	free_arr(char **meow)
 	}
 	free(meow);
 }
+/*
+int	main(void)
+{
+	int	i = 0;
+	char	**array;
+	array = ft_split("dawdawdmeow", 'd');
+
+	while (array[i])
+	{
+		ft_putstr_fd(array[i], 1);
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
+}
+*/
