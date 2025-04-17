@@ -6,13 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 22:57:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/14 01:08:47 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:44:42 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	int_size(int n);
+static int	int_size(int n);
 
 char	*ft_itoa(int n)
 {
@@ -43,7 +43,7 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int	int_size(int n)
+static int	int_size(int n)
 {
 	int	x;
 

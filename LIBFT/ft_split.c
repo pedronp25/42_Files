@@ -6,14 +6,15 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:26:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/17 00:13:39 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:45:46 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		count_words(char *str, char c);
-void	free_arr(char **meow);
+static int	count_words(char *str, char c);
+static void	ultimate_ft_initializer(int *i, int *j, int *pos);
+static void	free_arr(char **meow);
 
 char	**ft_split(char const *s, char c)
 {
@@ -22,12 +23,10 @@ char	**ft_split(char const *s, char c)
 	int		x;
 	int		y;
 
-	arr = ft_calloc(count_words((char *)s, c) + 1,  sizeof(char *));
+	arr = ft_calloc(count_words((char *)s, c) + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
-	x = 0;
-	y = 0;
-	pos = 0;
+	ultimate_ft_initializer(&x, &y, &pos);
 	while (s[x])
 	{
 		while (s[y] && s[y] == c)
@@ -39,17 +38,14 @@ char	**ft_split(char const *s, char c)
 		{
 			arr[pos] = ft_substr(s, x, (y - x));
 			if (!arr[pos])
-			{
-				free_arr(arr);
-				return (NULL);
-			}
+				return (free_arr(arr), NULL);
 			pos++;
 		}
 	}
 	return (arr);
 }
 
-int	count_words(char *str, char c)
+static int	count_words(char *str, char c)
 {
 	int	x;
 	int	word_count;
@@ -70,7 +66,14 @@ int	count_words(char *str, char c)
 	return (word_count);
 }
 
-void	free_arr(char **meow)
+static void	ultimate_ft_initializer(int *i, int *j, int *pos)
+{
+	*i = 0;
+	*j = 0;
+	*pos = 0;
+}
+
+static void	free_arr(char **meow)
 {
 	int	x;
 
