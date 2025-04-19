@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 19:29:47 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/14 01:10:13 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/17 22:42:52 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 /*
 int	main(void)
 {
-	printf("%s",ft_substr("hola", 3, 10));
+	printf("%s",ft_substr("hola", 0, (size_t)18446744073709551615));
 }
 */
