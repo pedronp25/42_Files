@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/19 17:53:46 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:08:00 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
  char	*get_next_line(int fd)
 {
 	int	i;
-	size_t	bytes;
+	int	bytes;
 	char	*buf;
 	char	*ret_str;
 
+	ret_str = NULL;
 	buf = malloc(BUFFER_SIZE);
 	if (!buf)
 		return (NULL);
@@ -86,6 +87,23 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (src_len + dest_len);
 }
 
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	x;
+
+	if (size <= 0)
+		return (ft_strlen(src));
+
+	x = 0;
+	while (src[x] && x < (size - 1))
+	{
+		dst[x] = src[x];
+		x++;
+	}
+	dst[x] = '\0';
+	return (ft_strlen(src));
+}
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	x;
@@ -96,6 +114,7 @@ size_t	ft_strlen(const char *s)
 	return (x);
 }
 
+/*
 void	*ft_realloc(void *ptr, size_t size) //Don't know if I'm going to use this
 {
 	void	*ptr2;
@@ -111,4 +130,42 @@ void	*ft_realloc(void *ptr, size_t size) //Don't know if I'm going to use this
 	memmove(ptr2, ptr, size - BUFFER_SIZE); //'size - BUFFER_SIZE' to (hopefully) get the size of 'ptr'
 	free (ptr);
 	return (ptr2);
+}
+*/
+
+// Main to test
+
+#include <fcntl.h>
+#include <stdio.h>
+
+int	main(int argc, char **argv)
+{
+	int		fd;
+	char	*line;
+
+	if (argc != 2) {
+		// Check if the user provided a file name as argument
+		printf("Usage: %s <filename>\n", argv[0]);
+		return (1);
+	}
+
+	// Open the file in read-only mode
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1) {
+		// If file cannot be opened, print an error message
+		perror("Error opening file");
+		return (1);
+	}
+
+	// Call get_next_line() in a loop to read the file line by line
+	while ((line = get_next_line(fd)) != NULL) {
+		// Print each line returned by get_next_line
+		printf("%s", line);
+		free(line);  // Don't forget to free the memory after using it
+	}
+
+	// Close the file descriptor after reading is complete
+	close(fd);
+
+	return (0);
 }
