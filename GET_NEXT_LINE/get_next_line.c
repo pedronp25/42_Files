@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/19 16:07:22 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/19 17:09:29 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 {
 	int	i;
 	size_t	bytes;
-	char	buf[BUFFER_SIZE];
+	char	*buf;
 
 	buf = malloc(BUFFER_SIZE);
 	if (!buf)
@@ -25,10 +25,12 @@
 	if (bytes == -1)
 		return (NULL);
 	i = 0;
-	while (buf[i] != '\n' && buf[i])
+	while (bytes)
 	{
 		buf[bytes] = '\0';
-		
+		while (buf[i] != '\n' && buf[i])
+			i++;
+		if (buf[i] == '\n' || (!buf[i] && buf[i] != buf[bytes])) //Check if string has '\n' or if it has reached the end of the file (if it has reached a null and it hasn't filled the buffer)
 	}
 }
 
@@ -48,5 +50,3 @@ void	*ft_realloc(void *ptr, size_t size)
 	free (ptr);
 	return (ptr2);
 }
-
-
