@@ -56,25 +56,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (src_len + dest_len);
 }
 
-/*
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	x;
-
-	if (size <= 0)
-		return (ft_strlen(src));
-
-	x = 0;
-	while (src[x] && x < (size - 1))
-	{
-		dst[x] = src[x];
-		x++;
-	}
-	dst[x] = '\0';
-	return (ft_strlen(src));
-}
-*/
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	x;
@@ -98,4 +79,18 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-
+int	initial_checks(int fd, char *ret_str, char *buf, int bytes)
+{
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+		return (0);
+	ret_str = NULL;
+//	if (!ret_str || *ret_str == '\0')
+//		saved_str = NULL;
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (0);
+	bytes = read(fd, buf, BUFFER_SIZE);
+	if (bytes == -1)
+		return (0);
+	return (1);
+}
