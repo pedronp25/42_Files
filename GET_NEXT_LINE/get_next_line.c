@@ -37,8 +37,8 @@ char	*get_next_line(int fd)
 	{
 		i = 0;
 		buf[bytes] = '\0';
-		ret_str = ft_strjoin(ret_str, buf);
-		while (ret_str[i] != '\n' && ret_str[i])
+		ret_str = ft_strjoin_free(ret_str, buf);
+		while (ret_str[i] && ret_str[i] != '\n')
 			i++;
 		if (ret_str[i] == '\n')
 		{
@@ -52,7 +52,7 @@ char	*get_next_line(int fd)
 	if (!ret_str || ret_str[0] == '\0')
 	{
 		free(ret_str);
-		return (NULLL);
+		return (NULL);
 	}
 	return (ret_str);
 }
