@@ -19,6 +19,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s2_len;
 	size_t	total_size;
 
+	if (!s1)
+	{
+		s1 = malloc(1);
+		if (!s1)
+				return (NULL);
+		s1[0] = '\0';
+	}
 	s1_len = ft_strlen(s1) + 1;
 	s2_len = ft_strlen(s2) + 1;
 	total_size = s1_len + s2_len;

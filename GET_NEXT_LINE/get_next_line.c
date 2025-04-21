@@ -18,38 +18,45 @@ char	*get_next_line(int fd)
 	int		bytes;
 	char	*buf;
 	char	*ret_str;
-	static char	*saved_str;
+	static char	*saved_str = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (NULL);
 	buf = malloc(BUFFER_SIZE + 1);
-	if (!(buf = malloc(BUFFER_SIZE + 1)))
-		return (NULL);
-	if ((bytes = read(fd, buf, BUFFER_SIZE) == -1))
+	if (!buf)
 		return (NULL);
 	ret_str = NULL;
-	i = 0;
-	while (bytes)
+	if (saved_str)
+	{
+		ret_str = ft_strdup(saved_str);
+		free(saved_str);
+		saved_str = NULL;
+	}
+	bytes = read(fd, buf, BUFFER_SIZE);
+	while (bytes > 0)
 	{
 		i = 0;
 		buf[bytes] = '\0';
-		while (buf[i] != '\n' && buf[i])
+		ret_str = ft_strjoin(ret_str, buf);
+		while (ret_str[i] != '\n' && ret_str[i])
 			i++;
-		if (buf[i] == '\n' || bytes < BUFFER_SIZE) // Check if string has '\n' or if it has reached the end of the file (if 'bytes' is less than 'BUFFER_SIZE')
+		if (ret_str[i] == '\n')
 		{
-			free(saved_str);
-			saved_str = ft_strdup(&buf[i]);
+			saved_str = ft_strdup(&ret_str[i + 1]);
+			ret_str[i + 1] = '\0';
 			break ;
 		}
-		else
-		{
-			ret_str = ft_strjoin(ret_str, buf);
-			bytes = read(fd, buf, BUFFER_SIZE);
-		}
+		bytes = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
+	if (!ret_str || ret_str[0] == '\0')
+	{
+		free(ret_str);
+		return (NULLL);
+	}
 	return (ret_str);
 }
+
 
 // Main to test
 /*
