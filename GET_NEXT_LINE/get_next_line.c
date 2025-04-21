@@ -6,38 +6,36 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/19 22:56:21 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:18:20 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
- char	*get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	int	i;
-	int	bytes;
+	int		i;
+	int		bytes;
 	char	*buf;
 	char	*ret_str;
 	static char	*saved_str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (NULL);
-	ret_str = NULL;
-//	if (!ret_str || *ret_str == '\0')
-//		saved_str = NULL;
 	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
+	if (!(buf = malloc(BUFFER_SIZE + 1)))
 		return (NULL);
-	bytes = read(fd, buf, BUFFER_SIZE);
-	if (bytes == -1)
+	if ((bytes = read(fd, buf, BUFFER_SIZE) == -1))
 		return (NULL);
+	ret_str = NULL;
 	i = 0;
 	while (bytes)
 	{
+		i = 0;
 		buf[bytes] = '\0';
 		while (buf[i] != '\n' && buf[i])
 			i++;
-		if (buf[i] == '\n' || bytes < BUFFER_SIZE) //Check if string has '\n' or if it has reached the end of the file (if 'bytes' is less than 'BUFFER_SIZE')
+		if (buf[i] == '\n' || bytes < BUFFER_SIZE) // Check if string has '\n' or if it has reached the end of the file (if 'bytes' is less than 'BUFFER_SIZE')
 		{
 			free(saved_str);
 			saved_str = ft_strdup(&buf[i]);

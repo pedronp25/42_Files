@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:39:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/20 00:30:58 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/21 20:40:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,3 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-int	initial_checks(int fd, char *ret_str, char *buf, int bytes)
-{
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
-		return (0);
-	ret_str = NULL;
-//	if (!ret_str || *ret_str == '\0')
-//		saved_str = NULL;
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (0);
-	bytes = read(fd, buf, BUFFER_SIZE);
-	if (bytes == -1)
-		return (0);
-	return (1);
-}
