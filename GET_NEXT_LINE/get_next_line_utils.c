@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:39:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/22 18:53:41 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:21:45 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 	{
 		s1 = malloc(1);
 		if (!s1)
-				return (NULL);
+			return (NULL);
 		s1[0] = '\0';
 	}
-	s1_len = ft_strlen(s1) + 1;
-	s2_len = ft_strlen(s2) + 1;
-	total_size = s1_len + s2_len;
-	final_str = malloc(total_size - 1);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	total_size = s1_len + s2_len + 1;
+	final_str = malloc(total_size);
 	if (!final_str)
 		return (NULL);
 	final_str[0] = '\0';
-	ft_strlcpy(final_str, s1, s1_len);
+	ft_strlcpy(final_str, s1, s1_len + 1);
 	ft_strlcat(final_str, s2, total_size);
 	free(s1);
 	return (final_str);

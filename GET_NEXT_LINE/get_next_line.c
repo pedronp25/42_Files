@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/22 18:57:35 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:24:18 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*get_next_line(int fd)
 	bytes = read(fd, buf, BUFFER_SIZE);
 	while (bytes > 0)
 	{
-		i = 0;
 		buf[bytes] = '\0';
 		ret_str = ft_strjoin_free(ret_str, buf);
+		i = 0;
 		while (ret_str[i] && ret_str[i] != '\n')
 			i++;
 		if (ret_str[i] == '\n')
