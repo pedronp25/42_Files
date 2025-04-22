@@ -6,13 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:39:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/21 20:40:48 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:53:41 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin_free(char const *s1, char const *s2)
+char	*ft_strjoin_free(char *s1, char const *s2)
 {
 	char	*final_str;
 	size_t	s1_len;
@@ -35,7 +35,7 @@ char	*ft_strjoin_free(char const *s1, char const *s2)
 	final_str[0] = '\0';
 	ft_strlcpy(final_str, s1, s1_len);
 	ft_strlcat(final_str, s2, total_size);
-	free((char *)s1);
+	free(s1);
 	return (final_str);
 }
 
