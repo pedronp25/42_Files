@@ -5,26 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 15:03:57 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/26 18:51:13 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/26 21:23:31 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/26 21:27:38 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
+
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin_free(char *s1, char const *s2);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
+int	ft_strlen_nl(char	*str);
+char	*ft_strjoin_nl(char *s1, char *s2);
+int	ft_cleanup_str(char *str);
 
 #endif

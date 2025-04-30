@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/22 19:24:18 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/26 18:57:53 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,35 @@ char	*get_next_line(int fd)
 	char	*ret_str;
 	static char	*saved_str = NULL;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1) // Check for empty parameters
 		return (NULL);
-	buf = malloc(BUFFER_SIZE + 1);
+
+	buf = malloc(BUFFER_SIZE + 1); // Allocating memory
 	if (!buf)
 		return (NULL);
-	ret_str = NULL;
+
+	ret_str = NULL; // Initializing return string
+
 	if (saved_str)
 	{
 		ret_str = ft_strdup(saved_str);
 		free(saved_str);
 		saved_str = NULL;
 	}
+
+	i = 0;
+	while (ret_str[i])
+	{
+		if (ret_str[i] == '\n')
+		{
+			saved_str = ft_strdup(&ret_str[i + 1]);
+			ret_str[i + 1] = '\0';
+			return (ret_str);	
+		}
+		i++;
+	}
+	i = 0;
+
 	bytes = read(fd, buf, BUFFER_SIZE);
 	while (bytes > 0)
 	{
@@ -59,7 +76,7 @@ char	*get_next_line(int fd)
 
 
 // Main to test
-/*
+
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -94,4 +111,4 @@ int	main(int argc, char **argv)
 
 	return (0);
 }
-*/
+

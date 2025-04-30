@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:39:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/22 19:21:45 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:39:11 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 	final_str = malloc(total_size);
 	if (!final_str)
 		return (NULL);
-	final_str[0] = '\0';
 	ft_strlcpy(final_str, s1, s1_len + 1);
 	ft_strlcat(final_str, s2, total_size);
 	free(s1);
