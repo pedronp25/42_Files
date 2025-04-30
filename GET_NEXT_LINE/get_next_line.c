@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/26 18:57:53 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/26 20:40:37 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/30 17:50:04 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,101 +14,29 @@
 
 char	*get_next_line(int fd)
 {
-	int		i;
-	int		bytes;
-	char	*buf;
-	char	*ret_str;
-	static char	*saved_str = NULL;
+	static char	buf[BUFFER_SIZE + 1];
+	int			bytes_read;
+	char		*return_str;
+	int			nl_check;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1) // Check for empty parameters
+	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-
-	buf = malloc(BUFFER_SIZE + 1); // Allocating memory
-	if (!buf)
-		return (NULL);
-
-	ret_str = NULL; // Initializing return string
-
-	if (saved_str)
+	ft_ultimate_initializer(&bytes_read, &nl_check, &return_str);
+	while (!nl_check)
 	{
-		ret_str = ft_strdup(saved_str);
-		free(saved_str);
-		saved_str = NULL;
-	}
-
-	i = 0;
-	while (ret_str[i])
-	{
-		if (ret_str[i] == '\n')
+		if (!buf[0])
 		{
-			saved_str = ft_strdup(&ret_str[i + 1]);
-			ret_str[i + 1] = '\0';
-			return (ret_str);	
+			bytes_read = read(fd, buf, BUFFER_SIZE);
+			if (bytes_read == -1)
+				return (free(return_str), NULL);
+			if (bytes_read == 0)
+				break ;
+			buf[bytes_read] = '\0';
 		}
-		i++;
+		return_str = ft_strjoin_nl(return_str, buf);
+		if (!return_str)
+			return (NULL);
+		nl_check = ft_cleanup_str(buf);
 	}
-	i = 0;
-
-	bytes = read(fd, buf, BUFFER_SIZE);
-	while (bytes > 0)
-	{
-		buf[bytes] = '\0';
-		ret_str = ft_strjoin_free(ret_str, buf);
-		i = 0;
-		while (ret_str[i] && ret_str[i] != '\n')
-			i++;
-		if (ret_str[i] == '\n')
-		{
-			saved_str = ft_strdup(&ret_str[i + 1]);
-			ret_str[i + 1] = '\0';
-			break ;
-		}
-		bytes = read(fd, buf, BUFFER_SIZE);
-	}
-	free(buf);
-	if (!ret_str || ret_str[0] == '\0')
-	{
-		free(ret_str);
-		return (NULL);
-	}
-	return (ret_str);
+	return (return_str);
 }
-
-
-// Main to test
-
-#include <fcntl.h>
-#include <stdio.h>
-
-int	main(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
-
-	if (argc != 2) {
-		// Check if the user provided a file name as argument
-		printf("Usage: %s <filename>\n", argv[0]);
-		return (1);
-	}
-
-	// Open the file in read-only mode
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1) {
-		// If file cannot be opened, print an error message
-		perror("Error opening file");
-		return (1);
-	}
-
-	// Call get_next_line() in a loop to read the file line by line
-	while ((line = get_next_line(fd)) != NULL) {
-		// Print each line returned by get_next_line
-		printf("%s", line);
-		free(line);  // Don't forget to free the memory after using it
-	}
-
-	// Close the file descriptor after reading is complete
-	close(fd);
-
-	return (0);
-}
-

@@ -3,103 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromig <pedromig@student.42porto.co      +#+  +:+       +#+        */
+/*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 19:39:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/26 20:39:11 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/26 21:22:41 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/30 17:57:58 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin_free(char *s1, char const *s2)
+void	ft_ultimate_initializer(int *bytes_read,
+		int *nl_check, char **return_str)
 {
-	char	*final_str;
-	size_t	s1_len;
-	size_t	s2_len;
-	size_t	total_size;
-
-	if (!s1)
-	{
-		s1 = malloc(1);
-		if (!s1)
-			return (NULL);
-		s1[0] = '\0';
-	}
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	total_size = s1_len + s2_len + 1;
-	final_str = malloc(total_size);
-	if (!final_str)
-		return (NULL);
-	ft_strlcpy(final_str, s1, s1_len + 1);
-	ft_strlcat(final_str, s2, total_size);
-	free(s1);
-	return (final_str);
+	*bytes_read = 0;
+	*nl_check = 0;
+	*return_str = NULL;
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_strlen_nl(char *str)
 {
-	size_t	x;
-
-	if (size <= 0)
-		return (ft_strlen(src));
-	x = 0;
-	while (src[x] && x < (size - 1))
-	{
-		dst[x] = src[x];
-		x++;
-	}
-	dst[x] = '\0';
-	return (ft_strlen(src));
-}
-
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	size_t	dest_len;
-	size_t	src_len;
-	size_t	x;
-	size_t	y;
-
-	dest_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	x = dest_len;
-	y = 0;
-	if (size == 0)
-		return (src_len);
-	while (src[y] && x < (size - 1))
-	{
-		dst[x] = src[y];
-		x++;
-		y++;
-	}
-	dst[x] = '\0';
-	if (size <= dest_len)
-		return (src_len + size);
-	else
-		return (src_len + dest_len);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	x;
+	int	x;
 
 	x = 0;
-	while (s[x])
+	if (!str)
+		return (0);
+	while (str[x] && str[x] != '\n')
+		x++;
+	if (str[x] == '\n')
 		x++;
 	return (x);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strjoin_nl(char *s1, char *s2)
 {
-	char	*copy;
-	size_t	size;
+	int		x;
+	int		y;
+	char	*final_str;
 
-	size = ft_strlen(s) + 1;
-	copy = malloc(size);
-	if (!copy)
-		return (NULL);
-	ft_strlcpy(copy, s, size);
-	return (copy);
+	x = 0;
+	y = 0;
+	final_str = malloc(ft_strlen_nl(s1) + ft_strlen_nl(s2) + 1);
+	if (!final_str)
+		return (free(s1), NULL);
+	while (s1 && s1[x])
+	{
+		final_str[x] = s1[x];
+		x++;
+	}
+	while (s2 && s2[y])
+	{
+		final_str[x] = s2[y];
+		x++;
+		if (s2[y] == '\n')
+			break ;
+		y++;
+	}
+	final_str[x] = '\0';
+	return (free(s1), final_str);
 }
 
+int	ft_cleanup_str(char *str)
+{
+	int	check;
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	check = 0;
+	while (str[x])
+	{
+		if (check)
+		{
+			str[y] = str[x];
+			y++;
+		}
+		if (str[x] == '\n')
+			check = 1;
+		str[x] = '\0';
+		x++;
+	}
+	while (y < x)
+	{
+		str[y] = '\0';
+		y++;
+	}
+	return (check);
+}
