@@ -6,45 +6,63 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:29:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 23:22:14 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/01 23:24:24 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../LIBFT/libft.h" // Check if correct
+#include "ft_printf.h"
 
 int	ft_printf(const char *str, ...)
 {
 	va_list args;
+	int	count;
 
 	va_start(args, str);
 
+	count = 0;
 	while (str[x])
 	{
 		if (str[x] == '%')
 		{
-			condition_check(str[x+1], args);
+			count += condition_check(str[x+1], args);
 			x++;
 		}
 		else
+		{
 			ft_putchar_fd(str[x], 1);
+			count++;
+		}
 		x++;
 	}
+	
 }
 
-void	condition_check(char c, va_list args)
+int	condition_check(char c, va_list args)
 {
+	int	size;
+
 	if (c == '%')
-		ft_putchar_fd('%', 1);
+		size = ft_putchar_size('%');
 	else if (c == 'c')
-		ft_putchar_fd(va_arg(args, char), 1);
+		size = ft_putchar_size(va_arg(args, int));
 	else if (c == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
+		size = ft_putstr_size(va_arg(args, char *));
 	else if (c == 'd' || c == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1);
+		size = ft_putnbr_size(va_arg(args, int));
+	else if (c == 'u')
+		size = ft_putunbr_size(va_arg(args, unsigned int);
+	else if (c == 'p')
+		
+	else if (c == 'x')
+		
+	else if (c == 'X')
+		
 	else
-		return ;
+		return (-1);
+	return (size);
 }
 
+/*
 int	main(void)
 {
 	char	c = 'a';
@@ -70,3 +88,4 @@ int	main(void)
 		%%\n"
 		, c, str, i, i, u);
 }
+*/
