@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 21:23:31 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 17:55:25 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/07 17:09:09 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/10 02:33:50 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
+int	ft_tolower(int c)
+{
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
+}
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+/*
+int	main(void)
+{
+	char	x;
+	char	y;
 
-# include <stdlib.h>
-# include <unistd.h>
+	x = 'B';
+	y = 'b';
 
-char	*get_next_line(int fd);
-void	ft_ultimate_initializer(int *bytes_read,
-			int *nl_check, char **return_str);
-int		ft_strlen_nl(char	*str);
-char	*ft_strjoin_nl(char *s1, char *s2);
-int		ft_cleanup_str(char *str);
+	printf("Uppercase letter: %c\n", x);
+	printf("Lowercase letter: %c\n", y);
 
-#endif
+	x = ft_tolower(x);
+	y = ft_tolower(y);
+
+	printf("Uppercase letter: %c\n", x);
+	printf("Lowercase letter: %c\n", y);
+}
+*/

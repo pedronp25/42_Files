@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 21:23:31 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 17:55:25 by pedromig         ###   ########.fr       */
+/*   Created: 2025/05/01 22:54:48 by pedromig          #+#    #+#             */
+/*   Updated: 2025/05/01 23:15:19 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# define GET_NEXT_LINE_H
+#include "libft/libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-
-char	*get_next_line(int fd);
-void	ft_ultimate_initializer(int *bytes_read,
-			int *nl_check, char **return_str);
-int		ft_strlen_nl(char	*str);
-char	*ft_strjoin_nl(char *s1, char *s2);
-int		ft_cleanup_str(char *str);
+int ft_printf(const char *str, ...);
+int condition_check(char c, va_list args);
+int ft_putchar_size(int c);
+int ft_putstr_size(char *str);
+int ft_putnbr_size(int n);
+int ft_putunbr_size(unsigned int u);
+char    *ft_uitoa(unsigned int n);
 
 #endif

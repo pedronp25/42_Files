@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 21:23:31 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 17:55:25 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/12 21:26:59 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/13 20:48:14 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
+char	*ft_strdup(const char *s)
+{
+	char	*copy;
+	size_t	size;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+	size = ft_strlen(s) + 1;
+	copy = malloc(size);
+	if (!copy)
+		return (NULL);
+	ft_strlcpy(copy, s, size);
+	return (copy);
+}
 
-# include <stdlib.h>
-# include <unistd.h>
+/*
+int	main(int argc, char *argv[])
+{
+	if (argc != 2)
+		return (1);
 
-char	*get_next_line(int fd);
-void	ft_ultimate_initializer(int *bytes_read,
-			int *nl_check, char **return_str);
-int		ft_strlen_nl(char	*str);
-char	*ft_strjoin_nl(char *s1, char *s2);
-int		ft_cleanup_str(char *str);
-
-#endif
+	printf("Duplicated string: %s", ft_strdup(argv[1]));
+}
+*/

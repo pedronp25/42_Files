@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 21:23:31 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 17:55:25 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/10 01:08:17 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/10 02:32:01 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	x;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+	x = 0;
+	while (s[x])
+	{
+		write(fd, &s[x], 1);
+		x++;
+	}
+	write(fd, "\n", 1);
+}
 
-# include <stdlib.h>
-# include <unistd.h>
+/*
+int	main(int argc, char *argv[])
+{
+	int	fd = 1;
 
-char	*get_next_line(int fd);
-void	ft_ultimate_initializer(int *bytes_read,
-			int *nl_check, char **return_str);
-int		ft_strlen_nl(char	*str);
-char	*ft_strjoin_nl(char *s1, char *s2);
-int		ft_cleanup_str(char *str);
-
-#endif
+	if (argc == 2)
+	{
+		ft_putendl_fd(argv[1], fd);
+	}
+}
+*/

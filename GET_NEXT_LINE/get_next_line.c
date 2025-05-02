@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 15:03:45 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/22 19:24:18 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/26 20:40:37 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/30 17:50:04 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	*get_next_line(int fd)
 {
+<<<<<<< HEAD
 	int		bytes;
 	char	*buf;
 	char	*ret_str;
@@ -155,3 +156,31 @@ int	main(int argc, char **argv)
 	return (0);
 }
 */
+=======
+	static char	buf[BUFFER_SIZE + 1];
+	int			bytes_read;
+	char		*return_str;
+	int			nl_check;
+
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (NULL);
+	ft_ultimate_initializer(&bytes_read, &nl_check, &return_str);
+	while (!nl_check)
+	{
+		if (!buf[0])
+		{
+			bytes_read = read(fd, buf, BUFFER_SIZE);
+			if (bytes_read == -1)
+				return (free(return_str), NULL);
+			if (bytes_read == 0)
+				break ;
+			buf[bytes_read] = '\0';
+		}
+		return_str = ft_strjoin_nl(return_str, buf);
+		if (!return_str)
+			return (NULL);
+		nl_check = ft_cleanup_str(buf);
+	}
+	return (return_str);
+}
+>>>>>>> 37589316ea04e310ed37395a1859ca9c3ab99e41

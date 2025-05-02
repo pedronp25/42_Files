@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 21:23:31 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 17:55:25 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/11 22:14:28 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/11 23:01:29 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "libft.h"
 
-# define GET_NEXT_LINE_H
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	x;
+	char	*temp;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+	x = 0;
+	temp = s;
+	while (x < n)
+	{
+		temp[x] = (unsigned char)c;
+		x++;
+	}
+	return (s);
+}
 
-# include <stdlib.h>
-# include <unistd.h>
+/*
+int	main(int argc, char *argv[])
+{
+	if (argc != 2)
+		return (1);
 
-char	*get_next_line(int fd);
-void	ft_ultimate_initializer(int *bytes_read,
-			int *nl_check, char **return_str);
-int		ft_strlen_nl(char	*str);
-char	*ft_strjoin_nl(char *s1, char *s2);
-int		ft_cleanup_str(char *str);
-
-#endif
+	char	*str = argv[1];
+	
+	printf("ft_memset return: %s", str);
+	printf("memset return: %s", str);
+}
+*/
