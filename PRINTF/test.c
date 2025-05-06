@@ -4,13 +4,15 @@ int	main(void)
 {
 	int	return_value;
 
+	unsigned long meow = 111111111111111111;
+
 	char	c = 'a';
 	char	*str = "This is a string";
 	int		i = -1234;
 	unsigned int	u = 1234;
 	unsigned int	x = 1234;
 	unsigned int	X = 1234;
-	void	*p = &c;
+	void	*p = &meow;
 
 	return_value = printf("Printf:\n"
 	"	Char: %c\n"
@@ -24,5 +26,5 @@ int	main(void)
 	"	Pointer: %p\n"
 		, c, str, i, i, u, x, X, p);
 
-	printf("Return Value: %i\n", return_value);
+	printf("\nReturn Value: %i\n", return_value);
 }

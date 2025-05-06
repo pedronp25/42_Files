@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_hextoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 22:52:57 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/06 01:05:08 by pedromig         ###   ########.fr       */
+/*   Created: 2025/05/06 00:14:39 by pedromig          #+#    #+#             */
+/*   Updated: 2025/05/06 00:46:19 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	uint_size(unsigned int n);
+static int	hex_size(unsigned long n);
 
-char	*ft_uitoa(unsigned int n)
+char	*ft_ultoa(unsigned long n, int uppercase)
 {
 	char	*str;
-	int		size;
+	int	size;
+	char *digits;
 
-	size = uint_size(n);
+	if (uppercase)
+		digits = "0123456789ABCDEF";
+	else
+		digits = "0123456789abcdef";
+	size = hez_size(n);
 	str = malloc(size + 1);
 	if (!str)
 		return (NULL);
 	str[size] = '\0';
-	while (size > 0)
+	if (n == 0)
+		str[0] = '0';
+	while (size > 0 && n != 0)
 	{
 		size--;
-		str[size] = (n % 10) + '0';
-		n /= 10;
+		str[size] = digits[n % 16];
+		n /= 16;
 	}
 	return (str);
 }
 
-static int	uint_size(unsigned int n)
+static int	hex_size(unsigned long n)
 {
 	int	x;
 
@@ -42,18 +49,8 @@ static int	uint_size(unsigned int n)
 		return (1);
 	while (n > 0)
 	{
-		n /= 10;
+		n /= 16;
 		x++;
 	}
 	return (x);
 }
-
-/*
-int	main(void)
-{
-	unsigned int	x;
-
-	x = 0;
-	printf("String returned: %s\n", ft_uitoa(x));
-}
-*/
