@@ -6,13 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 23:50:21 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/06 00:50:58 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:28:03 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_hex(n, uppercase)
+int	ft_putnbr_hex(unsigned long n, int uppercase)
 {
 	int		size;
 	char	*str;
@@ -22,4 +22,15 @@ int	ft_putnbr_hex(n, uppercase)
 		return (NULL);
 	size = ft_putstr_size(str);
 	return(free(str), size);
+}
+
+int	ft_putptr(void *p)
+{
+	unsigned long n;
+
+	if (!p)
+		return (write(1, "(nil)", 5));
+	n = (unsigned long)p;
+	write(1, "0x", 2);
+	return (ft_putnbr_hex(n, 0) + 2);
 }

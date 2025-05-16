@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 00:14:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/06 00:46:19 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/16 18:55:39 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_ultoa(unsigned long n, int uppercase)
 		digits = "0123456789ABCDEF";
 	else
 		digits = "0123456789abcdef";
-	size = hez_size(n);
+	size = hex_size(n);
 	str = malloc(size + 1);
 	if (!str)
 		return (NULL);
