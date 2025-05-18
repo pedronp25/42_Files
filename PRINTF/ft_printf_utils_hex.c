@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 23:50:21 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/16 19:28:03 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/18 19:47:44 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_putnbr_hex(unsigned long n, int uppercase)
 	int		size;
 	char	*str;
 
-	str = ft_hextoa(n, uppercase);
+	str = ft_ultoa(n, uppercase);
 	if (!str)
-		return (NULL);
+		return (-1);
 	size = ft_putstr_size(str);
 	return(free(str), size);
 }

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:54:48 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/01 23:15:19 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:35:29 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ int ft_putstr_size(char *str);
 int ft_putnbr_size(int n);
 int ft_putunbr_size(unsigned int u);
 char    *ft_uitoa(unsigned int n);
+int	ft_putnbr_hex(unsigned long n, int uppercase);
+int	ft_putptr(void *p);
+char	*ft_ultoa(unsigned long n, int uppercase);
 
 #endif
