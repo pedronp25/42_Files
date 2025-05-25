@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 19:08:48 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/18 20:03:38 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/18 21:18:54 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putchar_size(int c)
 {
-	return(write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr_size(char *str)
@@ -22,7 +22,9 @@ int	ft_putstr_size(char *str)
 	int	x;
 
 	x = 0;
-	while (str[x])
+	if (!str)
+		return (ft_putstr_size("(null)"));
+	while (str && str[x])
 	{
 		write(1, &str[x], 1);
 		x++;
@@ -36,7 +38,7 @@ int	ft_putnbr_size(int i)
 	int		size;
 
 	str = ft_itoa(i);
-	if(!str)
+	if (!str)
 		return (-1);
 	size = ft_putstr_size(str);
 	return (free(str), size);
@@ -51,5 +53,5 @@ int	ft_putunbr_size(unsigned int u)
 	if (!str)
 		return (-1);
 	size = ft_putstr_size(str);
-	return(free(str), size);
+	return (free(str), size);
 }

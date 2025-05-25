@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 00:14:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/16 18:55:39 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/18 20:56:53 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	hex_size(unsigned long n);
 char	*ft_ultoa(unsigned long n, int uppercase)
 {
 	char	*str;
-	int	size;
-	char *digits;
+	int		size;
+	char	*digits;
 
 	if (uppercase)
 		digits = "0123456789ABCDEF";

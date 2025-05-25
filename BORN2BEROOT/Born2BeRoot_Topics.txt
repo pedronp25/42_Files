@@ -1,0 +1,33 @@
+Topics to understand Born2beroot:
+
+Virtual Disk Signature
+Your virtual machine's disk signature is a unique identifier that distinguishes your virtual hard disk from others. In VirtualBox, this appears as a UUID (Universally Unique Identifier) that's automatically generated when you create a virtual disk. You can view it in VirtualBox by going to File > Virtual Media Manager and selecting your disk. This signature helps the hypervisor track and manage different virtual disks, preventing conflicts when you have multiple VMs.
+
+Snapshots
+Snapshots are point-in-time captures of your virtual machine's complete state, including the disk contents, memory, and VM settings. Think of them as save points in a video game. You can take a snapshot before making risky changes, then revert back if something goes wrong. They're invaluable for testing software, system updates, or configuration changes. The VM continues running from the snapshot point, creating a branching timeline of your system's state.
+
+Encrypted Partitions and LVM
+Encrypted partitions protect your data by scrambling it with cryptographic keys, making it unreadable without the proper password or key. Even if someone gains physical access to your storage, they can't read the encrypted data.
+LVM (Logical Volume Manager) is a storage management system that adds a flexible layer between your physical storage and file systems. Instead of working directly with fixed partitions, LVM lets you create logical volumes that can be easily resized, moved, or combined across multiple physical drives. It's like having dynamic, resizable containers for your data that aren't bound by traditional partition limitations.
+
+APT vs Aptitude
+Both are package managers for Debian-based systems, but they have different approaches. APT (Advanced Package Tool) is the newer, more streamlined command-line tool that most people use today with commands like 'apt install' and 'apt update'. Aptitude is older and offers both command-line and text-based interactive interfaces. Aptitude has more sophisticated dependency resolution and can sometimes handle complex package conflicts better, but APT is simpler and handles most situations perfectly well.
+
+SELinux and AppArmor
+These are different security frameworks that implement mandatory access controls. SELinux (Security-Enhanced Linux) uses security contexts and policies to control what processes can access, providing very granular security but with significant complexity. AppArmor takes a simpler approach, using path-based access controls and profiles that are easier to understand and configure. Debian typically uses AppArmor by default, while Red Hat-based systems use SELinux.
+
+SSH Service and Ports
+SSH (Secure Shell) is a service that allows secure remote access to your machine over a network. It encrypts all communication between your local machine and the remote server. SSH typically runs on port 22.
+Ports are like numbered doorways on your computer. Each network service listens on specific port numbers - web servers use port 80 (HTTP) and 443 (HTTPS), email uses port 25 (SMTP), and so on. When you connect to a service, you're essentially knocking on a specific numbered door. The system uses these port numbers to direct incoming network traffic to the correct service.
+
+UFW Firewall
+UFW (Uncomplicated Firewall) is a user-friendly interface for managing iptables, Linux's built-in firewall system. It simplifies firewall configuration with straightforward commands like ufw allow 22 to open SSH access or ufw deny 80 to block web traffic. UFW makes it much easier to control which network connections are allowed in and out of your system without needing to understand complex iptables syntax.
+
+Sudo
+Sudo (substitute user do) allows regular users to execute commands with elevated privileges, typically as the root user. Instead of logging in as root (which is risky), you prefix commands with sudo and enter your password. This provides better security through accountability (commands are logged) and the principle of least privilege - you only get admin rights when specifically needed.
+
+User Groups
+Groups are collections of users that share the same permissions for files, directories, or system resources. For example, users in the audio group can access sound devices, while those in the sudo group can use sudo commands. Groups simplify permission management - instead of setting permissions for individual users, you assign users to appropriate groups. A user can belong to multiple groups simultaneously.
+
+TTY Mode
+TTY (TeleTYpe) refers to text-based terminal interfaces, harking back to physical typewriter-like terminals. In modern Linux, TTY mode means you're working in a pure text environment without a graphical desktop. You can switch between multiple TTY sessions using Ctrl+Alt+F1 through F7. This is useful for troubleshooting when the graphical interface isn't working, or when you need a lightweight environment for system administration tasks.

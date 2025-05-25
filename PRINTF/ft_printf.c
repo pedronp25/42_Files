@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:29:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/05/18 18:56:38 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/05/18 21:28:10 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,30 @@
 
 int	ft_printf(const char *str, ...)
 {
-	va_list args;
-	int	count;
-	int	x;
+	va_list	args;
+	int		count;
+	int		x;
 
+	if (!str)
+		return (-1);
 	va_start(args, str);
-
 	count = 0;
 	x = 0;
-	while (str[x]) //Iterate through string
+	while (str[x])
 	{
-		if (str[x] == '%') //If it finds a '%'
+		if (str[x] == '%' && str[x + 1])
 		{
-			count += condition_check(str[x+1], args); //Adds to the counter
-														//Checks if the next char is valid
-														//Prints the given argument
+			count += condition_check(str[x + 1], args);
 			x++;
 		}
-		else //If not a '%'
+		else
 		{
-			ft_putchar_fd(str[x], 1); //Simply prints the character in the string
-			count++; //Adds to the counter
+			ft_putchar_fd(str[x], 1);
+			count++;
 		}
 		x++;
 	}
-	return (count); //Return the final character count
+	return (count);
 }
 
 int	condition_check(char c, va_list args)
@@ -66,20 +65,29 @@ int	condition_check(char c, va_list args)
 	return (size);
 }
 
-
+/*
 int	main(void)
 {
+	int	return_value = 0;
+
 	char	c = 'a';
-	char	*str = "This is a string";
+	char	*str = NULL;
 	int		i = -1234;
 	unsigned int	u = 1234;
 	void	*p = &u;
 	unsigned int	x = 1234;
 
-	printf("Printf: %c\n%s\n%d\n%i\n%u\n%p\n%x\n%X\n%%\n", c, str, i, i, u, p, x, x);
-	
+	return_value = printf("Printf: %c\n%s\n%d\n%i\n%u\n%p\n%x\n%X\n%%\n"
+		, c, str, i, i, u, p, x, x);
+
+	printf("Return value of printf: %i\n", return_value);	
+
 	ft_putchar_fd('\n', 1);
 
-	ft_printf("Ft_Printf: %c\n%s\n%d\n%i\n%u\n%p\n%x\n%X\n%%\n", c, str, i, i, u, p, x, x);
-}
+	return_value = ft_printf("Ft_Printf: %c\n%s\n%d\n%i\n%u\n%p\n%x\n%X\n%%\n"
+		, c, str, i, i, u, p, x, x);
 
+	printf("Return value of ft_printf: %i (3 more because of 'Ft_')\n"
+		, return_value);	
+}
+*/

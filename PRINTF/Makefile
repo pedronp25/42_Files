@@ -4,7 +4,7 @@ AR = ar rcs
 
 RM = rm -f
 
-NAME = libft.a
+NAME = libftprintf.a
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -60,7 +60,7 @@ BONUS_SRCS = libft/ft_lstadd_back_bonus.c \
 
 OBJS = $(SRCS:.c=.o)
 
-B_OBJS = $(BONUS_SRCS:.c=.o)
+#B_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -68,16 +68,16 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS) $(B_OBJS) meow
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-bonus: meow
+#bonus: meow
 
-meow: $(B_OBJS) $(OBJS)
+#meow: $(B_OBJS) $(OBJS)
 	$(AR) $(NAME) $(OBJS) $(B_OBJS)
 	touch meow
 
