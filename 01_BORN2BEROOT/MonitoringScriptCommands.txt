@@ -1,0 +1,38 @@
+1. uname -> print system information
+	1.1 -a -> print all information (processor and hardware platform)
+
+2. grep -> print lines that match given patterns
+	2.1 'core id' -> expression to search for
+	2.2 /proc/cpuinfo -> file where cpu info is present
+
+3. wc -> print newline, word and byte counts
+	3.1 -l -> print only newline counts
+
+4. top -> display Linux processes
+	4.1 -n1 -> specify number of iterations (in this case, 1)
+	4.2 -b -> run with no keyboard input accepted / produces plain text for redirection
+
+5. tail -> output the last part of files
+	5.1 +8 -> shows from line 8 onwards to the end of the file
+
+6. awk -> scan patterns and process language
+	6.1 '{cpul += $9} END {printf("%.1f"), cpul}' -> add te value in the 9th column to a variable called 'cpul' / print the variable with one decimal place
+
+7. free -> display amount of free and used memory in the system
+	7.1 --mega -> display in megabytes
+
+8. grep (2)
+	8.1 Mem -> look for the expression 'Mem'
+
+9. awk (6)
+	9.1 '{print $2}' -> print the second column
+
+10. df -> report file system disk space usage
+	10.1 -B -> scales size to given size (-m and -g in this case)
+	10.2 -m -> specifies megabytes
+	10.3 -g -> specifies gigabytes
+
+11. grep (2)
+	11.1 -v -> shows the results that do not contain the specifiec pattern
+
+12. who ->
