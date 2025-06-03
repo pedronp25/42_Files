@@ -35,4 +35,28 @@
 11. grep (2)
 	11.1 -v -> shows the results that do not contain the specifiec pattern
 
-12. who ->
+12. who -> show who is logged on
+	12.1 -b -> time of last system boot
+
+13. lsblk -> list information about block devices (hardware devices that allow the system to read and write data in blocks [SSDs, Hard Drives, Partitions, etc.])
+
+14. [ "$(lsblk | grep 'lvm' | wc -l)" -gt 0 ] -> compare the number of LVM devices found to zero
+	14.1 -gt -> means "greater than"
+
+15. ss -> show socket (a way for software applications to communicate over a network)statistic
+	15.1 -t -> show TCP (a protocol to ensure reliable communication between two devices in a network) sockets only
+	15.2 -a -> show all sockets (listening and non-listening)
+
+16. users -> print users currently logged in
+
+17. wc (3)
+	17.1 -w -> print word count
+
+18. hostname -> show or set system's host name
+	18.1 -I -> display all netwrok addresses of the host
+
+19. ip link -> display a list of all available network interfaces and their status
+
+20. journalcl -> print log entries from the systemd journal
+
+21. wall -> write a message to all users
