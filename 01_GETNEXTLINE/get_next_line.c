@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 20:40:37 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/30 17:50:04 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/08 17:33:55 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,36 @@ char	*get_next_line(int fd)
 	}
 	return (return_str);
 }
+
+/*
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+int main(int argc, char **argv)
+{
+	int		fd;
+	char	*line;
+
+	if (argc != 2)
+	{
+		printf("Usage: %s <filename>\n", argv[0]);
+		return (1);
+	}
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error opening file");
+		return (1);
+	}
+
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line); // line includes newline if present
+		free(line);
+	}
+
+	close(fd);
+	return (0);
+}
+*/
