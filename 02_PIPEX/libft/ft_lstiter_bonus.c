@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 18:07:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/09 18:43:29 by pedromig         ###   ########.fr       */
+/*   Created: 2025/04/17 18:25:56 by pedromig          #+#    #+#             */
+/*   Updated: 2025/04/17 19:17:38 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst && f)
+	{
+		(*f)(lst->content);
+		lst = lst->next;
+	}
+}
