@@ -1,0 +1,40 @@
+1. Basic Questions
+	1.1. What is a virtual machine (VA) and how does it work?
+	1.2. What are the basic differences between 'Rocky' and 'Debian'?
+	1.3. What's the purpose of a VA?
+	1.4. What's the difference between "aptitude" and "apt"? And what is each of them?
+	1.5. What's "APPArmor"?
+	1.6. What's "LVM"?
+2. Evaluation Commands
+	2.01 Check for no graphical interface -> "ls /usr/bin/*session"
+											(it should appear "/usr/bin/dbus-run-session")
+	2.02 Check that UFW is active -> "sudo ufw status" or "sudo service ufw status"
+	2.03 Check that SSH is active -> "sudo service ssh status"
+	2.04 Check that the OS is Debian -> "uname --kernel-version"
+	2.05 Check that my user is within 'sudo' and 'user42' groups -> "getent group sudo user42"
+	2.06 Create new user and check that it follows the password policy -> "sudo adduser name_user"
+	2.07 Create new group named "evaluating" -> "sudo addgroup evaluating"
+	2.08 Add new user to new group -> "sudo adduser name_user evaluating"
+	2.09 Check hostname -> "hostname"
+	2.10 Change hostname:
+		2.10.1 Enter these files and change "pedromig42" with the new hostname using:
+			   "sudo vim /etc/hostname" and "sudo vim /etc/hosts"
+		2.10.2 Reboot the VA -> "sudo reboot"
+		2.10.3 Check hostname -> "hostname"
+	2.11 Check partitions -> "lsblk"
+	2.12 Check that 'sudo' is installed -> "which sudo"
+	2.13 Add new user to the 'sudo' group -> "sudo adduser name_user sudo"
+	2.14 Check the 'sudo' group -> "getent group sudo"
+	2.15 Check the rules imposed for 'sudo' by the subject -> "vim /etc/sudoers.d/sudo_config"
+	2.16 Check 'sudo' logs -> "vim /var/log/sudo/sudo_config"
+	2.17 Check that 'UFW' is installed -> "dpkg -s ufw"
+	2.18 List active rules in 'UFW' -> "sudo ufw status numbered"
+	2.19 Create new rule for port 8080 -> "sudo ufw allow 8080" (and repeat 2.18)
+	2.20 Delete new rule -> "sudo ufw delete num_rule"
+	2.21 Check that 'SSH' service is installed -> "which ssh"
+	2.22 Check 'SSH' usage:
+		 2.22.1 "ssh root@pedromig42 -p 4242" shouldn't work because there's no permission
+		 2.22.2 "ssh new_user@pedromig42 -p 4242" should work
+	2.23 Check and modify script runtime -> "sudo crontab -e"
+3. Extra Important Topics:
+	3.1 
