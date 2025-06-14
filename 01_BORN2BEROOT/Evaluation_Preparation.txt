@@ -1,10 +1,46 @@
 1. Basic Questions
-	1.1. What is a virtual machine (VA) and how does it work?
-	1.2. What are the basic differences between 'Rocky' and 'Debian'?
-	1.3. What's the purpose of a VA?
+    1.1. What is a virtual machine (VM) and how does it work?
+         - A Virtual Machine (VM) is software that emulates a physical computer.
+		 - It runs an operating system inside another (host) OS using a hypervisor.
+		 - The VM has its own CPU, RAM, and storage allocation.
+		 - Common for testing, isolation, and running multiple OSes.
+
+    1.2. What are the basic differences between 'Rocky' and 'Debian'?
+        - Rocky Linux:
+		    • Clone of Red Hat Enterprise Linux (RHEL)
+		    • Uses 'dnf' and RPM packages
+		    • Enterprise-focused, long support cycles
+		- Debian:
+		    • Independently developed
+		    • Uses 'apt' and DEB packages
+		    • General-purpose and flexible
+
+	1.3. What's the purpose of a VM?
+	    - Isolate environments (e.g., development, testing)
+	    - Run multiple OSes on one machine
+	    - Improve security via sandboxing
+	    - Save costs through virtualization
+	
 	1.4. What's the difference between "aptitude" and "apt"? And what is each of them?
-	1.5. What's "APPArmor"?
+	    - apt:
+	        • Simplified CLI tool for managing DEB packages
+	        • Common for installing/updating packages
+	    - aptitude:
+	        • Advanced package manager with better dependency resolution
+	        • Includes a text-based user interface (TUI)
+	    - Main difference: aptitude is more robust but less commonly preinstalled
+
+	1.5. What's "AppArmor"?
+	    - A Linux security module that applies restrictions to programs using profiles.
+	    - Limits file access, system capabilities, and network access.
+	    - Helps contain software vulnerabilities and reduce risk.
+
 	1.6. What's "LVM"?
+	    - LVM = Logical Volume Manager
+	    - Manages disk space using flexible "logical volumes" instead of fixed partitions.
+	    - Allows resizing, extending, and combining volumes easily.
+	    - Useful for dynamic or growing storage needs.
+
 2. Evaluation Commands
 	2.01 Check for no graphical interface -> "ls /usr/bin/*session"
 											(it should appear "/usr/bin/dbus-run-session")
@@ -37,4 +73,30 @@
 		 2.22.2 "ssh new_user@pedromig42 -p 4242" should work
 	2.23 Check and modify script runtime -> "sudo crontab -e"
 3. Extra Important Topics:
-	3.1 
+    3.1. What's the value and operation of 'sudo'? What are some examples?
+	    - 'sudo' = "Superuser do"
+	    - Lets regular users run commands as root (admin)
+	    - Logs commands and improves system security
+	    - Examples:
+	        sudo apt update
+	        sudo systemctl restart ssh
+	        sudo useradd pedro
+
+	3.2. What's 'UFW' and what's its value?
+	    - UFW = Uncomplicated Firewall
+	    - A user-friendly way to configure the system firewall (iptables)
+	    - Value:
+	         • Controls incoming/outgoing network traffic
+	         • Easy syntax
+
+	3.3. What's 'SSH' and what's its value?
+	    - SSH = Secure Shell
+	    - A protocol for securely accessing remote systems
+	    - Encrypts data (unlike Telnet)
+	    - Value:
+	         • Used for remote administration and file transfer
+
+	3.4. What's 'cron'?
+	    - 'cron' is a time-based job scheduler in Unix-like systems
+	    - Automates tasks like backups, updates, and monitoring
+	    - Uses crontab to define jobs
