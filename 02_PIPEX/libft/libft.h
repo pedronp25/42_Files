@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 03:39:37 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/09 18:21:05 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/15 19:14:55 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 
-int	ft_printf(const char *str, ...);
-int	condition_check(char c, va_list args);
-int	ft_putchar_size(int c);
-int	ft_putstr_size(char *str);
-int	ft_putnbr_size(int n);
-int	ft_putunbr_size(unsigned int u);
+int		ft_printf(const char *str, ...);
+int		condition_check(char c, va_list args);
+int		ft_putchar_size(int c);
+int		ft_putstr_size(char *str);
+int		ft_putnbr_size(int n);
+int		ft_putunbr_size(unsigned int u);
 char	*ft_uitoa(unsigned int n);
-int	ft_putnbr_hex(unsigned long n, int uppercase);
-int	ft_putptr(void *p);
+int		ft_putnbr_hex(unsigned long n, int uppercase);
+int		ft_putptr(void *p);
 char	*ft_ultoa(unsigned long n, int uppercase);
 
 #endif
