@@ -6,38 +6,30 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:00:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/15 22:15:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/17 00:49:17 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <unistd.h>
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex *pp;
 
-	// Check argc
-
-	pipex_initializer(argv); // NOT DONE
-		//pp = ft_calloc(1, sizeof(t_pipex)); --> TO ADD INSIDE THE FUNCTION
+	// Checks 'argc', initializes pp's variables and opens both fd's
+	pp = pipex_initializer(argc, argv);
 	
-	pp->fd1 = open(argv[1], O_RDONLY);
-	// Check open
-	pp->fd2 = open(argv[4], O_WRONLY);
-	// Check open
-
 	pipe(pp->pipe_fd);
-	//Check pipe
+		//Check Error (Pipe Failed)
 
 	pp->id1 = fork();
-	//Check fork
+		//Check Error (Fork Failed)
 	
 	if (pp->id1 == 0)
 		child1(pp, argv[2], envp);
 
 	pp->id2 = fork();
-	//Check fork
+		//Check Error (Fork Failed)
 	
 	if (pp->id2 == 0)
 		child2(pp, argv[3], envp);	

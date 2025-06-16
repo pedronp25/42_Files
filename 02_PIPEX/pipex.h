@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:07:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/15 22:05:43 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/17 00:15:16 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef struct	s_pipex
 
 void	child1(t_pipex *pp, char *cmd1, char **envp);
 void	child2(t_pipex *pp, char *cmd2, char **envp);
+t_pipex	*pipex_initializer(int argc, char **argv);
 
 #endif
