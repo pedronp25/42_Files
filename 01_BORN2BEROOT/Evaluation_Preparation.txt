@@ -2,7 +2,9 @@
 
     1.1. What is a virtual machine (VM) and how does it work?
          - A Virtual Machine (VM) is a software that emulates a physical computer.
-		
+		 - There are two types of VM's:
+			• System VM --> run a full OS on top of another
+			• Process VM --> run just one program in a special environment
 
     1.2. What are the basic differences between 'Rocky' and 'Debian'?
 		- Rocky Linux:
