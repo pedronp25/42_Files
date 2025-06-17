@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:21:55 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/17 18:25:03 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:19:53 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 static int	count_words(char *str, char c);
 static void	initializer(int *i, int *j, int *pos);
-static void	free_arr(char **str);
 
 char	**pipex_split(char const *s, char c)
 {
@@ -28,7 +27,7 @@ char	**pipex_split(char const *s, char c)
 	arr = ft_calloc(count_words((char *)s, c) + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
-	ultimate_ft_initializer(&x, &y, &pos);
+	initializer(&x, &y, &pos);
 	while (s[x])
 	{
 		while (s[y] && s[y] == c)
@@ -75,7 +74,7 @@ static void	initializer(int *i, int *j, int *pos)
 	*pos = 0;
 }
 
-static void	free_arr(char **str)
+void	pipex_free_arr(char **str)
 {
 	int	x;
 

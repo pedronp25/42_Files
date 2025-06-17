@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:07:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/17 18:04:06 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:17:06 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	child2(t_pipex *pp, char *cmd2, char **envp);
 t_pipex	*pipex_initializer(int argc, char **argv);
 void	pipex_error(char *err_msg, t_pipex *pp);
 void	pipex_cleanup(t_pipex *pp);
+void	pipex_free_arr(char **str);
 
 #endif
