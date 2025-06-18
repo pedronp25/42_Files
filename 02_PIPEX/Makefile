@@ -4,7 +4,7 @@ AR = ar rcs
 
 RM = rm -f
 
-NAME = execfile.a
+NAME = pipex.a
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -43,7 +43,7 @@ SRCS = libft/ft_atoi.c \
        libft/ft_tolower.c \
        libft/ft_toupper.c \
        libft/ft_lstadd_back_bonus.c \
-       libft/ft_lstadd_front_bonus.c 
+       libft/ft_lstadd_front_bonus.c \
        libft/ft_lstclear_bonus.c \
        libft/ft_lstdelone_bonus.c \
        libft/ft_lstiter_bonus.c \
@@ -55,7 +55,12 @@ SRCS = libft/ft_atoi.c \
        libft/printf_utils/ft_printf_utils.c \
        libft/printf_utils/ft_uitoa.c \
        libft/printf_utils/ft_printf_utils_hex.c \
-       libft/printf_utils/ft_hextoa.c
+       libft/printf_utils/ft_hextoa.c \
+	   pipex.c \
+	   pipex.h \
+	   pipex_utils.c \
+	   pipex_error_utils.c
+
 
 OBJS = $(SRCS:.c=.o)
 

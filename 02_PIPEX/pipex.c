@@ -6,18 +6,17 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:00:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/17 18:20:22 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:05:19 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <stdlib.h>
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex *pp;
 
-	// Checks 'argc', initializes pp's variables 
-		// and opens both fd's
 	pp = pipex_initializer(argc, argv);
 	
 	if (pipe(pp->pipe_fd) == -1)
@@ -37,7 +36,9 @@ int	main(int argc, char *argv[], char *envp[])
 	if (pp->id2 == 0)
 		child2(pp, argv[3], envp);	
 	
-	waitpid
-	waitpid
+	waitpid(pp->id1, NULL, 0);
+	waitpid(pp->id2, NULL, 0);
 
+	pipex_cleanup(pp);
+	return (EXIT_SUCCESS);
 }
