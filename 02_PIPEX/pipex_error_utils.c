@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:36:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/18 22:55:55 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:35:24 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	pipex_cleanup(t_pipex *pp)
 		close(pp->fd1);
 	if(pp->fd2 != -1)
 		close(pp->fd2);
-	if(pp->pipe_fd[0] != -1)
-		close(pp->pipe_fd[0]);
-	if(pp->pipe_fd[1] != -1)
-		close(pp->pipe_fd[1]);
+	//if(pp->pipe_fd[0] != -1)
+	close(pp->pipe_fd[0]);
+	//if(pp->pipe_fd[1] != -1)
+	close(pp->pipe_fd[1]);
 	// Free any allocated memory
 		// (using a while loop, like the one used in ft_split)
 	//pipex_free_arr(pp->cmd1_args);

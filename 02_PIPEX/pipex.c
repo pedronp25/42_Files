@@ -6,12 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:00:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/18 22:42:29 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:52:00 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -35,7 +36,7 @@ int	main(int argc, char *argv[], char *envp[])
 	
 	if (pp->id2 == 0)
 		child2(pp, argv[3], envp);	
-	
+
 	waitpid(pp->id1, NULL, 0);
 	waitpid(pp->id2, NULL, 0);
 
