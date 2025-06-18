@@ -6,15 +6,16 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:36:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/18 18:36:59 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:55:55 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "pipex.h"
 
 void	pipex_error(char *err_msg, t_pipex *pp)
 {
-	perror(err_msg);
+	ft_printf("%s", err_msg);
 	pipex_cleanup(pp);
 	exit(EXIT_FAILURE);
 }
@@ -33,7 +34,7 @@ void	pipex_cleanup(t_pipex *pp)
 		close(pp->pipe_fd[1]);
 	// Free any allocated memory
 		// (using a while loop, like the one used in ft_split)
-	pipex_free_arr(pp->cmd1_args);
+	//pipex_free_arr(pp->cmd1_args);
 	free(pp);
 }
 
