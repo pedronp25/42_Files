@@ -4,11 +4,13 @@ AR = ar rcs
 
 RM = rm -f
 
-NAME = pipex.a
+NAME = pipex
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = libft/ft_atoi.c \
+DEPS = pipex.h libft/libft.h
+
+LIBFT_SRCS = libft/ft_atoi.c \
        libft/ft_bzero.c \
        libft/ft_calloc.c \
        libft/ft_isalnum.c \
@@ -56,17 +58,17 @@ SRCS = libft/ft_atoi.c \
        libft/printf_utils/ft_uitoa.c \
        libft/printf_utils/ft_printf_utils_hex.c \
        libft/printf_utils/ft_hextoa.c \
-	   pipex.c \
-	   pipex_utils.c \
-	   pipex_error_utils.c
 
+PIPEX_SRCS =   pipex.c pipex_utils.c pipex_error_utils.c
+
+SRCS = $(LIBFT_SRCS) $(PIPEX_SRCS)
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)	
 
 clean:
 	$(RM) $(OBJS)
@@ -76,5 +78,5 @@ fclean: clean
 
 re: fclean all
 
-%.o: %.c
+%.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
