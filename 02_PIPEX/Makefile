@@ -57,7 +57,6 @@ SRCS = libft/ft_atoi.c \
        libft/printf_utils/ft_printf_utils_hex.c \
        libft/printf_utils/ft_hextoa.c \
 	   pipex.c \
-	   pipex.h \
 	   pipex_utils.c \
 	   pipex_error_utils.c
 
