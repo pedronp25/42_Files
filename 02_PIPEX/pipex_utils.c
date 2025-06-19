@@ -6,41 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 02:27:36 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/19 21:28:16 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/20 00:36:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "pipex.h"
-#include <stdlib.h>
-#include <unistd.h>
-
-t_pipex	*pipex_initializer(int argc, char **argv)
-{
-	t_pipex *pp;	
-
-	if (argc != 5)
-	{
-		ft_printf("Usage: ./pipex infile 'cmd1' 'cmd2' outfile\n");
-		exit(EXIT_FAILURE);
-	}
-	pp = ft_calloc(1, sizeof(t_pipex));
-	if (!pp)
-		pipex_error("Error allocating memory\n", pp);
-	pp->pipe_fd[0] = -1;
-	pp->pipe_fd[1] = -1;
-	pp->id1 = -1;
-	pp->id2 = -1;
-	pp->fd1 = -1;
-	pp->fd2 = -1;
-	pp->fd1 = open(argv[1], O_RDONLY);
-	if (pp->fd1 == -1)
-		pipex_error("Error opening infile\n", pp);
-	pp->fd2 = open(argv[4], O_WRONLY);
-	if (pp->fd2 == -1)
-		pipex_error("Error opening outfile\n", pp);
-	return(pp);
-}
 
 void	child1(t_pipex *pp, char *cmd, char **envp)
 {
@@ -86,7 +56,7 @@ char	*pipex_find_path(t_pipex *pp, char **envp, char *cmd)
 	x = 0;
 	while (envp[x])
 	{
-		if(ft_strncmp(envp[x], "PATH=", len) == 0)
+		if (ft_strncmp(envp[x], "PATH=", len) == 0)
 		{
 			path = envp[x] + len;
 			return (pipex_access_path(pp, path, cmd));
@@ -102,7 +72,6 @@ char	*pipex_access_path(t_pipex *pp, char *path, char *cmd)
 	int		x;
 	char	**path_args;
 	char	*exe_path;
-	char	*tmp_str;
 
 	path_args = ft_split(path, ':');
 	if (!path_args)
@@ -110,13 +79,9 @@ char	*pipex_access_path(t_pipex *pp, char *path, char *cmd)
 	x = 0;
 	while (path_args[x])
 	{
-		tmp_str = ft_strjoin(path_args[x], "/");
-		if (!tmp_str)
-			pipex_error("Error using ft_strjoin\n", pp);
-		exe_path = ft_strjoin(tmp_str, cmd);
+		exe_path = ft_double_strjoin(path_args[x], "/", cmd);
 		if (!exe_path)
 			pipex_error("Error using ft_strjoin\n", pp);
-		free(tmp_str);
 		if (access(exe_path, X_OK) == 0)
 			return (pipex_free_arr(path_args), exe_path);
 		free(exe_path);
@@ -125,4 +90,27 @@ char	*pipex_access_path(t_pipex *pp, char *path, char *cmd)
 	pipex_free_arr(path_args);
 	pipex_error("Error finding command path\n", pp);
 	return (NULL);
+}
+
+char	*ft_double_strjoin(char const *s1, char const *s2, char const *s3)
+{
+	char	*final_str;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	s3_len;
+	size_t	s1_s2_len;
+	size_t	total_size;
+
+	s1_len = ft_strlen(s1) + 1;
+	s2_len = ft_strlen(s2) + 1;
+	s3_len = ft_strlen(s3) + 1;
+	s1_s2_len = s1_len + s2_len;
+	total_size = s1_s2_len + s3_len;
+	final_str = malloc(total_size - 1);
+	if (!final_str)
+		return (NULL);
+	ft_strlcpy(final_str, s1, s1_len);
+	ft_strlcat(final_str, s2, s1_s2_len);
+	ft_strlcat(final_str, s3, total_size);
+	return (final_str);
 }
