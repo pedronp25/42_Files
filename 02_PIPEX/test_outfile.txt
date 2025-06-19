@@ -1,1 +1,1 @@
-Running: /usr/bin/wc
+5

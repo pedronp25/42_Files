@@ -6,13 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:00:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/19 00:52:00 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/19 21:50:12 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -35,7 +33,10 @@ int	main(int argc, char *argv[], char *envp[])
 		pipex_error("Error using fork\n", pp);
 	
 	if (pp->id2 == 0)
-		child2(pp, argv[3], envp);	
+		child2(pp, argv[3], envp);
+
+	close(pp->pipe_fd[0]);
+	close(pp->pipe_fd[1]);
 
 	waitpid(pp->id1, NULL, 0);
 	waitpid(pp->id2, NULL, 0);
