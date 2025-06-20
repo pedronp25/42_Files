@@ -49,7 +49,7 @@
 
 	2.03 Check that SSH is active -> "sudo service ssh status"
 
-	2.04 Check that the OS is Debian -> "uname --kernel-version"
+	2.04 Check that the OS is Debian -> "uname -a "
 
 	2.05 Check that my user is within 'sudo' and 'user42' groups -> "getent group sudo user42"
 
@@ -92,8 +92,10 @@
 	2.22 Check 'SSH' usage:
 		 2.22.1 "ssh root@pedromig42 -p 4242" shouldn't work because there's no permission
 		 2.22.2 "ssh new_user@pedromig42 -p 4242" should work
+		 2.22.3 "sudo ss -tulnp "
 
 	2.23 Check and modify script runtime -> "sudo crontab -e"
+		2.23.1 Stop crontab script --> "sudo /etc/init.d/cron stop"
 
 3. Extra Important Topics
 
