@@ -6,13 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 19:17:31 by pedromig          #+#    #+#             */
-/*   Updated: 2025/04/17 18:37:32 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/23 03:10:29 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *t_new)
 {
 	t_list	*last_node;
 
@@ -20,9 +20,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	if (!*lst)
 	{
-		*lst = new;
+		*lst = t_new;
 		return ;
 	}
 	last_node = ft_lstlast(*lst);
-	last_node->next = new;
+	last_node->next = t_new;
 }
