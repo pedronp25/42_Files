@@ -6,16 +6,15 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:36:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/20 00:28:41 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/24 23:44:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "pipex.h"
 
 void	pipex_error(char *err_msg, t_pipex *pp)
 {
-	ft_printf("%s", err_msg);
+	perror(err_msg);
 	pipex_cleanup(pp);
 	exit(EXIT_FAILURE);
 }
@@ -28,10 +27,14 @@ void	pipex_cleanup(t_pipex *pp)
 		close(pp->fd1);
 	if (pp->fd2 != -1)
 		close(pp->fd2);
-	close(pp->pipe_fd[0]);
-	close(pp->pipe_fd[1]);
+	if (pp->pipe_fd[0] != -1)
+		close(pp->pipe_fd[0]);
+	if (pp->pipe_fd[1] != -1)
+		close(pp->pipe_fd[1]);
 	if (pp->cmd1_args)
 		pipex_free_arr(pp->cmd1_args);
+	if (pp->cmd2_args)
+		pipex_free_arr(pp->cmd2_args);
 	free(pp);
 }
 
@@ -47,3 +50,4 @@ void	pipex_free_arr(char **arr)
 	}
 	free(arr);
 }
+

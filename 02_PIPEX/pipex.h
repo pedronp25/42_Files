@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:12:20 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/22 23:54:25 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/24 23:44:43 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ typedef struct s_pipex
 
 void	child1(t_pipex *pp, char *cmd1, char **envp);
 void	child2(t_pipex *pp, char *cmd2, char **envp);
-t_pipex	*pipex_initializer(int argc, char **argv);
+t_pipex	*pipex_init(int argc, char **argv);
 char	*pipex_find_path(t_pipex *pp, char **envp, char *cmd);
+int		pipex_waitpid(t_pipex *pp);
 char	*pipex_access_path(t_pipex *pp, char *path, char *cmd);
 char	*ft_double_strjoin(char const *s1, char const *s2, char const *s3);
 void	pipex_error(char *err_msg, t_pipex *pp);

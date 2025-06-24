@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 02:27:36 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/20 19:13:31 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/24 23:44:23 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,15 @@ char	*ft_double_strjoin(char const *s1, char const *s2, char const *s3)
 	size_t	s3_len;
 	size_t	total_size;
 
-	s1_len = ft_strlen(s1) + 1;
-	s2_len = ft_strlen(s2) + 1;
-	s3_len = ft_strlen(s3) + 1;
-	total_size = s1_len + s2_len;
-	final_str = malloc(total_size - 1);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	s3_len = ft_strlen(s3);
+	total_size = s1_len + s2_len + s3_len + 1;
+	final_str = malloc(total_size);
 	if (!final_str)
 		return (NULL);
-	ft_strlcpy(final_str, s1, s1_len);
+	ft_strlcpy(final_str, s1, total_size);
 	ft_strlcat(final_str, s2, total_size);
-	total_size += s3_len;
 	ft_strlcat(final_str, s3, total_size);
 	return (final_str);
 }
