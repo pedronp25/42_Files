@@ -1,82 +1,39 @@
 CC = cc
-
 AR = ar rcs
-
 RM = rm -f
 
 NAME = pipex
-
 CFLAGS = -Wall -Wextra -Werror
 
-DEPS = pipex.h libft/libft.h
+LIBFT_DIR = libft
+LIBFT_NAME = libft_printf.a
+LIBFT = $(LIBFT_DIR)/$(LIBFT_NAME)
 
-LIBFT_SRCS = libft/ft_atoi.c \
-       libft/ft_bzero.c \
-       libft/ft_calloc.c \
-       libft/ft_isalnum.c \
-       libft/ft_isalpha.c \
-       libft/ft_isascii.c \
-       libft/ft_isdigit.c \
-       libft/ft_isprint.c \
-       libft/ft_itoa.c \
-       libft/ft_memchr.c \
-       libft/ft_memcmp.c \
-       libft/ft_memcpy.c \
-       libft/ft_memmove.c \
-       libft/ft_memset.c \
-       libft/ft_putchar_fd.c \
-       libft/ft_putendl_fd.c \
-       libft/ft_putnbr_fd.c \
-       libft/ft_putstr_fd.c \
-       libft/ft_split.c \
-       libft/ft_strchr.c \
-       libft/ft_strdup.c \
-       libft/ft_striteri.c \
-       libft/ft_strjoin.c \
-       libft/ft_strlcat.c \
-       libft/ft_strlcpy.c \
-       libft/ft_strlen.c \
-       libft/ft_strmapi.c \
-       libft/ft_strncmp.c \
-       libft/ft_strnstr.c \
-       libft/ft_strrchr.c \
-       libft/ft_strtrim.c \
-       libft/ft_substr.c \
-       libft/ft_tolower.c \
-       libft/ft_toupper.c \
-       libft/ft_lstadd_back_bonus.c \
-       libft/ft_lstadd_front_bonus.c \
-       libft/ft_lstclear_bonus.c \
-       libft/ft_lstdelone_bonus.c \
-       libft/ft_lstiter_bonus.c \
-       libft/ft_lstlast_bonus.c \
-       libft/ft_lstmap_bonus.c \
-       libft/ft_lstnew_bonus.c \
-       libft/ft_lstsize_bonus.c \
-       libft/ft_printf.c \
-       libft/printf_utils/ft_printf_utils.c \
-       libft/printf_utils/ft_uitoa.c \
-       libft/printf_utils/ft_printf_utils_hex.c \
-       libft/printf_utils/ft_hextoa.c \
+PIPEX_SRCS = pipex.c pipex_utils.c pipex_error_utils.c
 
-PIPEX_SRCS =   pipex.c pipex_utils.c pipex_error_utils.c
+PIPEX_OBJDIR = pipex_objs
+PIPEX_OBJS = $(PIPEX_SRCS:%.c=$(PIPEX_OBJDIR)/%.o)
 
-SRCS = $(LIBFT_SRCS) $(PIPEX_SRCS)
+DEPS = pipex.h $(LIBFT_DIR)/libft.h
 
-OBJS = $(SRCS:.c=.o)
+all: $(LIBFT) $(NAME)
 
-all: $(NAME)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS)
-	$(CC) -g $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(PIPEX_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(PIPEX_OBJS) $(LIBFT) -o $(NAME)
+
+$(PIPEX_OBJDIR)/%.o: %.c $(DEPS)
+	@mkdir -p $(PIPEX_OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(RM) $(PIPEX_OBJS)
 
 fclean: clean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
 
 re: fclean all
-
-%.o: %.c $(DEPS)
-	$(CC) -g $(CFLAGS) -c $< -o $@
