@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 03:39:37 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/09 18:21:05 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/23 03:08:40 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -34,8 +35,8 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *t_new);
+void	ft_lstadd_front(t_list **lst, t_list *t_new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
@@ -69,15 +70,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 
-int	ft_printf(const char *str, ...);
-int	condition_check(char c, va_list args);
-int	ft_putchar_size(int c);
-int	ft_putstr_size(char *str);
-int	ft_putnbr_size(int n);
-int	ft_putunbr_size(unsigned int u);
+int		ft_printf(const char *str, ...);
+int		condition_check(char c, va_list args);
+int		ft_putchar_size(int c);
+int		ft_putstr_size(char *str);
+int		ft_putnbr_size(int n);
+int		ft_putunbr_size(unsigned int u);
 char	*ft_uitoa(unsigned int n);
-int	ft_putnbr_hex(unsigned long n, int uppercase);
-int	ft_putptr(void *p);
+int		ft_putnbr_hex(unsigned long n, int uppercase);
+int		ft_putptr(void *p);
 char	*ft_ultoa(unsigned long n, int uppercase);
 
 #endif
