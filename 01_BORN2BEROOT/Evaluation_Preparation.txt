@@ -64,7 +64,7 @@
 	2.10 Change hostname:
 		2.10.1 Enter these files and change "pedromig42" with the new hostname using:
 			   "sudo vim /etc/hostname" and "sudo vim /etc/hosts"
-		2.10.2 Reboot the VA -> "sudo reboot"
+		2.10.2 Reboot the VA -> "sudo reboot
 		2.10.3 Check hostname -> "hostname"
 
 	2.11 Check partitions -> "lsblk"
@@ -93,9 +93,14 @@
 		 2.22.1 "ssh root@pedromig42 -p 4242" shouldn't work because there's no permission
 		 2.22.2 "ssh new_user@pedromig42 -p 4242" should work
 		 2.22.3 "sudo ss -tulnp "
+	
+	2.23 Check sudo policies -> "vim /etc/sudoers.d/sudo_config"
 
-	2.23 Check and modify script runtime -> "sudo crontab -e"
-		2.23.1 Stop crontab script --> "sudo /etc/init.d/cron stop"
+	2.24 Check and modify script runtime -> "sudo crontab -e"
+		2.24.1 Check monitoring script -> "vim /usr/local/bin/monitoring.sh"
+		2.24.2 Stop crontab script -> "sudo /etc/init.d/cron stop"
+
+	2.25 Check password policy rules -> "vim /etc/pam.d/common-password"
 
 3. Extra Important Topics
 

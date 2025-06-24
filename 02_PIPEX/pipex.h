@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:12:20 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/20 00:35:59 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:54:25 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <wait.h>
+# include <string.h>
+# include <errno.h>
 
 typedef struct s_pipex
 {
@@ -25,6 +27,7 @@ typedef struct s_pipex
 	int		pipe_fd[2];
 	int		id1;
 	int		id2;
+	int		status;
 	char	**cmd1_args;
 	char	**cmd2_args;
 	char	**envp;

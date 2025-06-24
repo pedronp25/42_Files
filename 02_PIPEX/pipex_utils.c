@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 02:27:36 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/20 00:36:30 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/20 19:13:31 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,35 @@
 void	child1(t_pipex *pp, char *cmd, char **envp)
 {
 	if (dup2(pp->fd1, STDIN_FILENO) == -1)
-		pipex_error("Error using dup2\n", pp);
+		pipex_error(strerror(errno), pp);
 	close(pp->fd1);
 	if (dup2(pp->pipe_fd[1], STDOUT_FILENO) == -1)
-		pipex_error("Error using dup2\n", pp);
+		pipex_error(strerror(errno), pp);
 	close(pp->pipe_fd[1]);
 	close(pp->pipe_fd[0]);
 	pp->cmd1_args = ft_split(cmd, ' ');
 	if (!pp->cmd1_args || !pp->cmd1_args[0])
-		pipex_error("Error using split\n", pp);
+		pipex_error(strerror(errno), pp);
 	pp->cmd1_path = pipex_find_path(pp, envp, pp->cmd1_args[0]);
 	execve(pp->cmd1_path, pp->cmd1_args, envp);
-	pipex_error("Error executing first command\n", pp);
+	pipex_error(strerror(errno), pp);
 }
 
 void	child2(t_pipex *pp, char *cmd, char **envp)
 {
 	if (dup2(pp->pipe_fd[0], STDIN_FILENO) == -1)
-		pipex_error("Error using dup2\n", pp);
+		pipex_error(strerror(errno), pp);
 	close(pp->pipe_fd[0]);
 	if (dup2(pp->fd2, STDOUT_FILENO) == -1)
-		pipex_error("Error using dup2\n", pp);
+		pipex_error(strerror(errno), pp);
 	close(pp->fd2);
 	close(pp->pipe_fd[1]);
 	pp->cmd2_args = ft_split(cmd, ' ');
 	if (!pp->cmd2_args || !pp->cmd2_args[0])
-		pipex_error("Error using split\n", pp);
+		pipex_error(strerror(errno), pp);
 	pp->cmd2_path = pipex_find_path(pp, envp, pp->cmd2_args[0]);
 	execve(pp->cmd2_path, pp->cmd2_args, envp);
-	pipex_error("Error executing second command\n", pp);
+	pipex_error(strerror(errno), pp);
 }
 
 char	*pipex_find_path(t_pipex *pp, char **envp, char *cmd)
@@ -63,7 +63,7 @@ char	*pipex_find_path(t_pipex *pp, char **envp, char *cmd)
 		}
 		x++;
 	}
-	pipex_error("Error finding command path\n", pp);
+	pipex_error(strerror(errno), pp);
 	return (NULL);
 }
 
@@ -75,20 +75,20 @@ char	*pipex_access_path(t_pipex *pp, char *path, char *cmd)
 
 	path_args = ft_split(path, ':');
 	if (!path_args)
-		pipex_error("Error using ft_split\n", pp);
+		pipex_error(strerror(errno), pp);
 	x = 0;
 	while (path_args[x])
 	{
 		exe_path = ft_double_strjoin(path_args[x], "/", cmd);
 		if (!exe_path)
-			pipex_error("Error using ft_strjoin\n", pp);
+			pipex_error(strerror(errno), pp);
 		if (access(exe_path, X_OK) == 0)
 			return (pipex_free_arr(path_args), exe_path);
 		free(exe_path);
 		x++;
 	}
 	pipex_free_arr(path_args);
-	pipex_error("Error finding command path\n", pp);
+	pipex_error(strerror(errno), pp);
 	return (NULL);
 }
 
@@ -98,19 +98,18 @@ char	*ft_double_strjoin(char const *s1, char const *s2, char const *s3)
 	size_t	s1_len;
 	size_t	s2_len;
 	size_t	s3_len;
-	size_t	s1_s2_len;
 	size_t	total_size;
 
 	s1_len = ft_strlen(s1) + 1;
 	s2_len = ft_strlen(s2) + 1;
 	s3_len = ft_strlen(s3) + 1;
-	s1_s2_len = s1_len + s2_len;
-	total_size = s1_s2_len + s3_len;
+	total_size = s1_len + s2_len;
 	final_str = malloc(total_size - 1);
 	if (!final_str)
 		return (NULL);
 	ft_strlcpy(final_str, s1, s1_len);
-	ft_strlcat(final_str, s2, s1_s2_len);
+	ft_strlcat(final_str, s2, total_size);
+	total_size += s3_len;
 	ft_strlcat(final_str, s3, total_size);
 	return (final_str);
 }
