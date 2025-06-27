@@ -6,11 +6,12 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 02:27:36 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/24 23:44:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/28 00:19:40 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <string.h>
 
 void	child1(t_pipex *pp, char *cmd, char **envp)
 {
@@ -25,8 +26,19 @@ void	child1(t_pipex *pp, char *cmd, char **envp)
 	if (!pp->cmd1_args || !pp->cmd1_args[0])
 		pipex_error(strerror(errno), pp);
 	pp->cmd1_path = pipex_find_path(pp, envp, pp->cmd1_args[0]);
+	if (!pp->cmd1_path)
+	{
+		pipex_print_error(cmd, "command not found");
+		pipex_cleanup(pp);
+		exit (127);
+	}
 	execve(pp->cmd1_path, pp->cmd1_args, envp);
-	pipex_error(strerror(errno), pp);
+	if (errno == ENOENT)
+		pipex_print_error(pp->cmd1_args[0], "command not found");
+	else if (errno == EACCES)
+		pipex_print_error(pp->cmd1_args[0], "Permission denied");
+	else
+		pipex_error(strerror(errno), pp);
 }
 
 void	child2(t_pipex *pp, char *cmd, char **envp)
@@ -42,8 +54,19 @@ void	child2(t_pipex *pp, char *cmd, char **envp)
 	if (!pp->cmd2_args || !pp->cmd2_args[0])
 		pipex_error(strerror(errno), pp);
 	pp->cmd2_path = pipex_find_path(pp, envp, pp->cmd2_args[0]);
+	if (!pp->cmd2_path)
+	{
+		pipex_print_error(cmd, "command not found");
+		pipex_cleanup(pp);
+		exit (127);
+	}
 	execve(pp->cmd2_path, pp->cmd2_args, envp);
-	pipex_error(strerror(errno), pp);
+	if (errno == ENOENT)
+		pipex_print_error(pp->cmd2_args[0], "command not found");
+	else if (errno == EACCES)
+		pipex_print_error(pp->cmd2_args[0], "Permission denied");
+	else
+		pipex_error(strerror(errno), pp);
 }
 
 char	*pipex_find_path(t_pipex *pp, char **envp, char *cmd)
@@ -88,7 +111,6 @@ char	*pipex_access_path(t_pipex *pp, char *path, char *cmd)
 		x++;
 	}
 	pipex_free_arr(path_args);
-	pipex_error(strerror(errno), pp);
 	return (NULL);
 }
 

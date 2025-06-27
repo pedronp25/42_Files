@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:12:20 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/24 23:44:43 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/28 00:12:15 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char	*ft_double_strjoin(char const *s1, char const *s2, char const *s3);
 void	pipex_error(char *err_msg, t_pipex *pp);
 void	pipex_cleanup(t_pipex *pp);
 void	pipex_free_arr(char **str);
+void	pipex_print_error(char *cmd, char *err_msg);
 
 #endif
