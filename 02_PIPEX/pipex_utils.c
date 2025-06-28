@@ -6,12 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 02:27:36 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/28 00:19:40 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/28 02:40:44 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <string.h>
 
 void	child1(t_pipex *pp, char *cmd, char **envp)
 {
@@ -75,6 +74,8 @@ char	*pipex_find_path(t_pipex *pp, char **envp, char *cmd)
 	char	*path;
 	int		len;
 
+	if (access(cmd, X_OK) == 0)
+		return (cmd);
 	len = ft_strlen("PATH=");
 	x = 0;
 	while (envp[x])

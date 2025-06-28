@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:36:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/28 00:12:05 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/28 02:41:24 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	pipex_print_error(char *cmd, char *err_msg)
 	write(2, err_msg, ft_strlen(err_msg));
 	write(2, "\n", 1);
 }
+
 void	pipex_cleanup(t_pipex *pp)
 {
 	if (!pp)
@@ -59,4 +60,3 @@ void	pipex_free_arr(char **arr)
 	}
 	free(arr);
 }
-

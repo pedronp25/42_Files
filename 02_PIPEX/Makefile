@@ -1,4 +1,4 @@
-CC = cc -g
+CC = cc
 AR = ar rcs
 RM = rm -f
 
