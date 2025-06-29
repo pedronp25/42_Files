@@ -3,7 +3,7 @@ AR = ar rcs
 RM = rm -f
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 
 LIBFT_DIR = libft
 LIBFT_NAME = libft_printf.a
@@ -12,10 +12,10 @@ LIBFT = $(LIBFT_DIR)/$(LIBFT_NAME)
 MLX_DIR = mlx
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
-SRC_DIR = src
+SRC_DIR = .
 OBJ_DIR = objs
 
-SRCS =  # add your source files here, e.g. main.c game.c map.c
+SRCS = so_long.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 DEPS = so_long.h $(LIBFT_DIR)/libft.h $(MLX_DIR)/mlx.h
