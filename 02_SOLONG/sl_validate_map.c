@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 02:36:11 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/30 03:08:45 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/30 21:46:02 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,61 @@
 
 void	sl_validate_map(t_game *sl)
 {
+	t_found	found;
 	int	y;
 	int	x;
 
+	found.player = 0;
+	found.exit = 0;
+	found.collectible = 0;
 	y = 0;
 	x = 0;
-	while (sl->map_file[y])
+	if (sl->width < 3 || sl->height < 3)
+		exit (1); // Error (map must be at least 3x3)
+	while (sl->map[y])
 	{
-		if (ft_strlen(sl->map_file[y]) != sl->width)
-			exit (1); // Error (line in map doesn't have equal width)
-		if (sl_check_chars(sl, y, x) == 1)
-			exit (1); // Error (did not find one of the characters)
+		sl_check_chars(sl, &found, y, x);
+		sl_check_walls(sl, y, x);
+		x = 0;
+		y++;
 	}
 }
 
-int	sl_check_chars(t_game *sl, int y, int x)
+void	sl_check_chars(t_game *sl, t_found *found, int y, int x)
 {
-	int	found_p;
-	int	found_c;
-	int	found_e;
-	char tile;
+	char	tile;
 
-	found_p = 0;
-	found_c = 0;
-	found_e = 0;
-	while (sl->map_file[y][x])
+	while (sl->map[y][x])
 	{
-		tile = sl->map_file[y][x];
+		tile = sl->map[y][x];
 		if (tile == 'P')
 		{
-			found_p++;
+			found->player++;
 			sl->player_y = y;
 			sl->player_x = x;
 		}
-		else if (tile == 'C')
-			found_c++;
 		else if (tile == 'E')
-			found_e++;
-		else if (tile != '0' || tile != '1')
-			return (1);
-		if (y == 0 || y == sl->height - 1 || x == 0 || x == sl->width - 1)
-			if (tile != '1')
-				return (1);
+			found->exit++;
+		else if (tile == 'C')
+			found->collectible++;
+		else if (tile != '0' && tile != '1')
+			exit (1);
+		x++;
 	}
-	if (!found_p || !found_c || !found_e)
-		return (1);
-	return (0);
+	if (found->player != 1 || found->exit != 1 || found->collectible == 0)
+		exit (1); // Error (number of 'P', 'E' or 'C' isn't valid)
+	sl->collectible_count = found->collectible;
+}
+
+void	sl_check_walls(t_game *sl, int y, int x)
+{
+	if (ft_strlen(sl->map[y]) != sl->width)
+		exit (1); // Error (line in map doesn't have equal width)
+	while (sl->map[y][x])
+	{
+		if (y == 0 || y == sl->height - 1 || x == 0 || x == sl->width - 1)
+			if (sl->map[y][x] != '1')
+				exit (1); // Error (Hole in the wall)
+		x++;
+	}
 }
