@@ -49,11 +49,13 @@ SRCS = ft_atoi.c \
        ft_lstmap_bonus.c \
        ft_lstnew_bonus.c \
        ft_lstsize_bonus.c \
-       ft_printf.c \
+       printf_utils/ft_printf.c \
        printf_utils/ft_printf_utils.c \
        printf_utils/ft_uitoa.c \
        printf_utils/ft_printf_utils_hex.c \
-       printf_utils/ft_hextoa.c
+       printf_utils/ft_hextoa.c \
+	   gnl_utils/get_next_line.c \
+	   gnl_utils/get_next_line_utils.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
