@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 03:26:05 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/30 21:49:37 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/06/30 23:47:56 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,24 @@
 # include "libft/libft.h"
 # include <fcntl.h>
 
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define ESC 65307
+
 typedef struct	s_game
 {
 	char	**map;
+	void	*mlx;
+	void	*win;
 	int	width;
 	int	height;
 	int	player_x;
 	int	player_y;
 	int	collectible_count;
+	int	collected;
+	int	moves;
 }	t_game;
 
 typedef struct	s_found
@@ -45,5 +55,6 @@ void	sl_check_path(t_game *sl);
 char	**sl_dup_map(t_game *sl);
 void	sl_flood_fill(char **map, int x, int y, t_found *found, t_game *sl);
 void	sl_free_map_copy(char **map);
+void	sl_move(int y, int x, t_game *sl);
 
 #endif
