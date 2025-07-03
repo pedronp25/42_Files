@@ -6,11 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:29:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/09 18:21:44 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 03:01:20 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	ft_printf(const char *str, ...)
 {

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:31:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/02 20:17:43 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 00:29:32 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define TILE_SIZE 32
+#define TILE_SIZE 96
 
 typedef struct s_game {
 	void	*mlx;
@@ -42,8 +42,8 @@ void	load_images(t_game *game)
 	int	w;
 	int	h;
 
-	game->img_floor = mlx_xpm_file_to_image(game->mlx, "imgs/tile_img.xpm", &w, &h);
-	game->img_wall = mlx_xpm_file_to_image(game->mlx, "imgs/cat_img.xpm", &w, &h);
+	game->img_floor = mlx_xpm_file_to_image(game->mlx, "tile_img.xpm", &w, &h);
+	game->img_wall = mlx_xpm_file_to_image(game->mlx, "cat_img.xpm", &w, &h);
 	if (!game->img_floor || !game->img_wall)
 	{
 		write(2, "Error loading images\n", 22);

@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   sl_events.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 20:16:38 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 03:02:34 by pedromig         ###   ########.fr       */
+/*   Created: 2025/07/03 02:50:24 by pedromig          #+#    #+#             */
+/*   Updated: 2025/07/03 03:03:10 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx/mlx.h"
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+void	sl_event_handling(t_game *sl)
 {
-	t_game	*sl;
-	int	height;
-
-	sl_check_arg(argc, argv[1]);
-	height = sl_count_lines(argv[1]);
-	sl = sl_init(argv[1], height);
-	sl_store_map(argv[1], sl);
-	sl_validate_map(sl);
-	sl_check_path(sl);
-	sl_window(sl);
+	mlx_key_hook(sl->win, &sl_key_press, sl);
 }
-

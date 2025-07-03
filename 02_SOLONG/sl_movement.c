@@ -6,13 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/30 23:49:55 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 03:07:08 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	sl_key_press(int keycode, t_game *sl)
+int	sl_key_press(int keycode, t_game *sl)
 {
 	int	new_y;
 	int	new_x;
@@ -54,5 +54,5 @@ void	sl_move(int y, int x, t_game *sl)
 	sl->player_x = x;
 	sl->moves++;
 	ft_printf("Number of moves: %i\n", sl->moves);
-	//sl_redraw_map(); // Function to redraw the map after moving
+	sl_draw_map(sl);
 }

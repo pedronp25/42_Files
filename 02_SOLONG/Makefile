@@ -1,4 +1,4 @@
-CC = cc
+CC = cc -g
 AR = ar rcs
 RM = rm -f
 
@@ -15,7 +15,12 @@ MLX_LIB = $(MLX_DIR)/libmlx.a
 SRC_DIR = .
 OBJ_DIR = objs
 
-SRCS = so_long.c
+SRCS = so_long.c \
+	   sl_initialization.c \
+	   sl_validate_map.c \
+	   sl_flood_fill.c \
+	   sl_movement.c \
+	   sl_window.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 DEPS = so_long.h $(LIBFT_DIR)/libft.h $(MLX_DIR)/mlx.h
