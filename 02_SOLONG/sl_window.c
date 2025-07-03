@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 02:11:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 03:16:36 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 19:54:57 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	sl_window(t_game *sl)
 	if (!sl->mlx)
 		exit (1);
 	sl->win = mlx_new_window(sl->mlx, sl->width * TILE_SIZE, sl->height * TILE_SIZE, "SO_LONG");
-	sl->img.floor = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/floor_img.xpm", &size, &size);
-	sl->img.wall = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/wall_img.xpm", &size, &size);
-	sl->img.player = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_img.xpm", &size, &size);
-	sl->img.collectible = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_img.xpm", &size, &size);
-	sl->img.exit = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_img.xpm", &size, &size);
+	sl->img.floor = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/floor_96_img.xpm", &size, &size);
+	sl->img.wall = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/wall_96_img.xpm", &size, &size);
+	sl->img.player = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_96_img.xpm", &size, &size);
+	sl->img.collectible = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_96_img.xpm", &size, &size);
+	sl->img.exit = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_96_img.xpm", &size, &size);
 	mlx_key_hook(sl->win, sl_key_press, sl);
 	mlx_loop(sl->mlx);
 }

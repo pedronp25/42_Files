@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 02:36:11 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 03:46:01 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 20:08:39 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sl_check_chars(t_game *sl, t_found *found, int y, int x)
 
 void	sl_check_walls(t_game *sl, int y, int x)
 {
-	if (ft_strlen(sl->map[y]) != sl->width)
+	if (ft_strlen(sl->map[y]) - 1 != sl->width)
 		exit (1); // Error (line in map doesn't have equal width)
 	while (sl->map[y][x] && sl->map[y][x] != '\n')
 	{

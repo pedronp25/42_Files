@@ -6,10 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:57:48 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/30 22:21:32 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 20:07:34 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "so_long.h"
 
 void	sl_check_arg(int argc, char *file)
@@ -68,6 +69,7 @@ void	sl_store_map(char *map_file, t_game *sl)
 {
 	int	fd;
 	int	y;
+	int	x;
 	
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
@@ -78,9 +80,10 @@ void	sl_store_map(char *map_file, t_game *sl)
 		sl->map[y] = get_next_line(fd);
 		if (!sl->map[y])
 			exit (1); // Error (unexpected end of file)
+		sl->map[y][ft_strlen(sl->map[y])] = '\0';
 		y++;
 	}
-	sl->width = ft_strlen(sl->map[0]);
+	sl->width = ft_strlen(sl->map[0]) - 1;
 	y = 0;
 	while (y < sl->height) // Print map to verify it's correct
 		ft_printf("%s", sl->map[y++]);
