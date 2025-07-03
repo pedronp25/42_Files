@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 03:07:08 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:58:51 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	sl_key_press(int keycode, t_game *sl)
 	sl_move(new_y, new_x, sl);
 	if (keycode == ESC)
 		exit (0); // Unsure if should use mlx_destroy_window in here
+	return (0);
 }
 
 void	sl_move(int y, int x, t_game *sl)
