@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 03:29:57 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 04:23:24 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	sl_key_press(int keycode, t_game *sl)
 	else if (keycode == KEY_D)
 		new_x++;
 	else if (keycode == ESC)
-		sl_exit_success(sl);
+		sl_exit_success(sl, 1);
 	else
 		return (0);
 	sl_move(new_y, new_x, sl);
@@ -48,7 +48,7 @@ void	sl_move(int y, int x, t_game *sl)
 	{
 		if (sl->collected < sl->collectible_count)
 			return ;
-		sl_exit_success(sl);
+		sl_exit_success(sl, 0);
 	}
 	sl->map[sl->player_y][sl->player_x] = '0';
 	sl->map[y][x] = 'P';

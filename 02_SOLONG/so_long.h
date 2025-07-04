@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 03:26:05 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 03:50:53 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 04:22:37 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ void	sl_move(int y, int x, t_game *sl);
 void	sl_window(t_game *sl);
 void	sl_draw_map(t_game *sl);
 void	sl_draw_tile(t_game *sl, int y, int x);
+int		sl_press_cross(t_game *sl);
 void	sl_exit_error(t_game *sl, char *err_msg);
-void	sl_exit_success(t_game *sl);
+void	sl_exit_success(t_game *sl, int closed);
 void	sl_cleanup(t_game *sl);
 void	sl_xpm_to_image(t_game *sl);
 

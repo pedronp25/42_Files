@@ -6,10 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 02:11:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 03:57:15 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 04:23:01 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx/mlx.h"
 #include "so_long.h"
 
 void	sl_window(t_game *sl)
@@ -23,7 +24,7 @@ void	sl_window(t_game *sl)
 	sl_xpm_to_image(sl);
 	sl_draw_map(sl);
 	mlx_key_hook(sl->win, sl_key_press, sl);
-	mlx_string_put(sl->mlx, sl->win, 10, 10, 0xFFFFFF, "Moves: X");
+	mlx_hook(sl->win, 17, 0, sl_press_cross, sl);
 	mlx_loop(sl->mlx);
 }
 
@@ -84,4 +85,10 @@ void	sl_draw_tile(t_game *sl, int y, int x)
 		img = sl->img.exit;
 	if (img)
 		mlx_put_image_to_window(sl->mlx, sl->win, img, x * TILE_SIZE, y * TILE_SIZE);
+}
+
+int	sl_press_cross(t_game *sl)
+{
+	sl_exit_success(sl, 1);
+	return (0);
 }
