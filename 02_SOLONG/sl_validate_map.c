@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 02:36:11 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 03:28:31 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:27:08 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sl_validate_map(t_game *sl)
 	x = 0;
 	if (sl->width < 3 || sl->height < 3)
 		sl_exit_error(sl, "Error: map must be at least 3x3\n");
-	while (sl->map[y])
+	while (sl->map && sl->map[y])
 	{
 		x = 0;
 		sl_check_chars(sl, &found, y, x);
