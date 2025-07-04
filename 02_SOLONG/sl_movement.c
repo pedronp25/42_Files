@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 14:54:25 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:08:03 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	sl_move(int y, int x, t_game *sl)
 		return ;
 	if (pos == 'C')
 		sl->collected++;
-	if (pos == 'E' && sl->collected == sl->collectible_count)
-		sl_exit_success(sl, 0);
-	else if (pos == 'E')
+	if (pos == 'E')
 	{
-		// Check if it is possible to go over the exit if not all collectibles have been collected
+		if (sl->collected < sl->collectible_count)
+			return ;
+		sl_exit_success(sl, 0);
 	}
 	sl->map[sl->player_y][sl->player_x] = '0';
 	sl->map[y][x] = 'P';

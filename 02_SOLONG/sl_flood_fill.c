@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 19:30:14 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 03:29:20 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:13:19 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ void	sl_flood_fill(char **map, int x, int y, t_found *found, t_game *sl)
 		return ;
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
-	else if (map[y][x] == 'E')
-		found->exit++;
 	else if (map[y][x] == 'C')
 		found->collectible++;
+	else if (map[y][x] == 'E')
+	{
+		if (found->collectible == sl->collectible_count)
+			found->exit++;
+		return ;
+	}
 	map[y][x] = 'X';
 	sl_flood_fill(map, x + 1, y, found, sl);
 	sl_flood_fill(map, x - 1, y, found, sl);
