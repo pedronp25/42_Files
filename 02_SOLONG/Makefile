@@ -20,7 +20,8 @@ SRCS = so_long.c \
 	   sl_validate_map.c \
 	   sl_flood_fill.c \
 	   sl_movement.c \
-	   sl_window.c
+	   sl_window.c \
+	   sl_exit.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 DEPS = so_long.h $(LIBFT_DIR)/libft.h $(MLX_DIR)/mlx.h

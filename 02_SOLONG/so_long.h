@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 03:26:05 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 23:34:46 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 03:50:53 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct	s_game
 }	t_game;
 
 void	sl_check_arg(int argc, char *file);
-t_game	*sl_init(char *file, int height);
-int		sl_count_lines(char *file);
+t_game	*sl_init(t_game *sl, char *file, int height);
+int		sl_count_lines(t_game *sl, char *file);
 void	sl_store_map(char *map_file, t_game *sl);
 void	sl_validate_map(t_game *sl);
 void	sl_check_chars(t_game *sl,t_found *found, int y, int x);
@@ -66,11 +66,15 @@ void	sl_check_walls(t_game *sl, int y, int x);
 void	sl_check_path(t_game *sl);
 char	**sl_dup_map(t_game *sl);
 void	sl_flood_fill(char **map, int x, int y, t_found *found, t_game *sl);
-void	sl_free_map_copy(char **map);
+void	sl_free_map(char **map);
 int		sl_key_press(int keycode, t_game *sl);
 void	sl_move(int y, int x, t_game *sl);
 void	sl_window(t_game *sl);
 void	sl_draw_map(t_game *sl);
 void	sl_draw_tile(t_game *sl, int y, int x);
+void	sl_exit_error(t_game *sl, char *err_msg);
+void	sl_exit_success(t_game *sl);
+void	sl_cleanup(t_game *sl);
+void	sl_xpm_to_image(t_game *sl);
 
 #endif

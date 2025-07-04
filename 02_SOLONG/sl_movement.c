@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 20:11:11 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 03:29:57 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	sl_key_press(int keycode, t_game *sl)
 	int	new_y;
 	int	new_x;
 
-	sl_draw_map(sl);
 	new_y = sl->player_y;
 	new_x = sl->player_x;
 	if (keycode == KEY_W)
@@ -29,9 +28,9 @@ int	sl_key_press(int keycode, t_game *sl)
 	else if (keycode == KEY_D)
 		new_x++;
 	else if (keycode == ESC)
-		exit (0); // Unsure if should use mlx_destroy_window in here
+		sl_exit_success(sl);
 	else
-	 return (0);
+		return (0);
 	sl_move(new_y, new_x, sl);
 	return (0);
 }
@@ -49,10 +48,10 @@ void	sl_move(int y, int x, t_game *sl)
 	{
 		if (sl->collected < sl->collectible_count)
 			return ;
-		exit(0); // All collectibles collected, player exits
+		sl_exit_success(sl);
 	}
-	sl->map[sl->player_y][sl->player_x] = '0'; // Old position
-	sl->map[y][x] = 'P'; // New position
+	sl->map[sl->player_y][sl->player_x] = '0';
+	sl->map[y][x] = 'P';
 	sl->player_y = y;
 	sl->player_x = x;
 	sl->moves++;

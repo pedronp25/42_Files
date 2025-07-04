@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 02:36:11 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/03 20:08:39 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 03:28:31 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sl_validate_map(t_game *sl)
 	y = 0;
 	x = 0;
 	if (sl->width < 3 || sl->height < 3)
-		exit (1); // Error (map must be at least 3x3)
+		sl_exit_error(sl, "Error: map must be at least 3x3\n");
 	while (sl->map[y])
 	{
 		x = 0;
@@ -34,7 +34,7 @@ void	sl_validate_map(t_game *sl)
 		y++;
 	}
 	if (found.player != 1 || found.exit != 1 || found.collectible == 0)
-		exit (1); // Error (number of 'P', 'E' or 'C' isn't valid)
+		sl_exit_error(sl, "Error: number of 'P', 'E' or 'C' isn't valid\n");
 	sl->collectible_count = found.collectible;
 }
 
@@ -56,7 +56,7 @@ void	sl_check_chars(t_game *sl, t_found *found, int y, int x)
 		else if (tile == 'C')
 			found->collectible++;
 		else if (tile != '0' && tile != '1')
-			exit (1);
+			sl_exit_error(sl, "Error: invalid tile found\n");
 		x++;
 	}
 }
@@ -64,12 +64,12 @@ void	sl_check_chars(t_game *sl, t_found *found, int y, int x)
 void	sl_check_walls(t_game *sl, int y, int x)
 {
 	if (ft_strlen(sl->map[y]) - 1 != sl->width)
-		exit (1); // Error (line in map doesn't have equal width)
+		sl_exit_error(sl, "Error: map isn't a rectangular\n");
 	while (sl->map[y][x] && sl->map[y][x] != '\n')
 	{
 		if (y == 0 || y == sl->height - 1 || x == 0 || x == sl->width - 1)
 			if (sl->map[y][x] != '1')
-				exit (1); // Error (Hole in the wall)
+				sl_exit_error(sl, "Error: there's a hole in the wall\n");
 		x++;
 	}
 }
