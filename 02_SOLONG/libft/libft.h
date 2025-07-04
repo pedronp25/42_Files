@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 03:39:37 by pedromig          #+#    #+#             */
-/*   Updated: 2025/06/30 01:19:38 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:24:13 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ int		ft_putnbr_hex(unsigned long n, int uppercase);
 int		ft_putptr(void *p);
 char	*ft_ultoa(unsigned long n, int uppercase);
 
-char    *get_next_line(int fd);
-void    ft_ultimate_initializer(int *bytes_read,
-                int *nl_check, char **return_str);
-int     ft_strlen_nl(char *str);
-char    *ft_strjoin_nl(char *s1, char *s2);
-int     ft_cleanup_str(char *str);
+char	*get_next_line(int fd);
+void	ft_ultimate_initializer(int *bytes_read,
+			int *nl_check, char **return_str);
+int		ft_strlen_nl(char *str);
+char	*ft_strjoin_nl(char *s1, char *s2);
+int		ft_cleanup_str(char *str);
 
 #endif

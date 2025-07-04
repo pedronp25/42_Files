@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 20:16:38 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 14:45:41 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:04:35 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int argc, char *argv[])
 {
 	t_game	*sl;
-	int	height;
+	int		height;
 
 	sl_check_arg(argc, argv[1]);
 	height = sl_count_lines(sl, argv[1]);
@@ -31,4 +31,3 @@ int	main(int argc, char *argv[])
 	sl_check_path(sl);
 	sl_window(sl);
 }
-

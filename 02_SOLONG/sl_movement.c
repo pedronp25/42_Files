@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 17:31:03 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:18:55 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,15 @@ void	sl_move(int y, int x, t_game *sl)
 	}
 	else
 		sl->map[sl->player_y][sl->player_x] = '0';
+	sl_move_update(y, x, sl);
+	sl_draw_map(sl);
+}
+
+void	sl_move_update(int y, int x, t_game *sl)
+{
 	sl->map[y][x] = 'P';
 	sl->player_y = y;
 	sl->player_x = x;
 	sl->moves++;
 	ft_printf("Number of moves: %i\n", sl->moves);
-	sl_draw_map(sl);
 }

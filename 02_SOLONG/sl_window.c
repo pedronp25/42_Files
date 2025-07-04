@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 02:11:07 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 04:23:01 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:22:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	sl_window(t_game *sl)
 	sl->mlx = mlx_init();
 	if (!sl->mlx)
 		sl_exit_error(sl, "Error: couldn't initiate mlx\n");
-	sl->win = mlx_new_window(sl->mlx, sl->width * TILE_SIZE, sl->height * TILE_SIZE, "SO_LONG");
+	sl->win = mlx_new_window(sl->mlx, sl->width * TILE_SIZE,
+			sl->height * TILE_SIZE, "SO_LONG");
 	if (!sl->win)
 		sl_exit_error(sl, "Error: coudln't create window\n");
 	sl_xpm_to_image(sl);
@@ -32,21 +33,26 @@ void	sl_xpm_to_image(t_game *sl)
 {
 	int	size;
 
-	sl->img.floor = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/floor_96_img.xpm", &size, &size);
+	sl->img.floor = mlx_xpm_file_to_image(sl->mlx,
+			"96x96_imgs/floor_96_img.xpm", &size, &size);
 	if (!sl->img.floor)
-		sl_exit_error(sl, "Error: couldn't create floor image from xpm file\n");
-	sl->img.wall = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/wall_96_img.xpm", &size, &size);
+		sl_exit_error(sl, "Error: couldn't create '0' image from xpm file\n");
+	sl->img.wall = mlx_xpm_file_to_image(sl->mlx,
+			"96x96_imgs/wall_96_img.xpm", &size, &size);
 	if (!sl->img.wall)
-		sl_exit_error(sl, "Error: couldn't create wall image from xpm file\n");
-	sl->img.player = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/cat_96_img.xpm", &size, &size);
+		sl_exit_error(sl, "Error: couldn't create '1' image from xpm file\n");
+	sl->img.player = mlx_xpm_file_to_image(sl->mlx,
+			"96x96_imgs/cat_96_img.xpm", &size, &size);
 	if (!sl->img.player)
-		sl_exit_error(sl, "Error: couldn't create player image from xpm file\n");
-	sl->img.collectible = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/duck_96_img.xpm", &size, &size);
+		sl_exit_error(sl, "Error: couldn't create 'P' image from xpm file\n");
+	sl->img.collectible = mlx_xpm_file_to_image(sl->mlx,
+			"96x96_imgs/duck_96_img.xpm", &size, &size);
 	if (!sl->img.collectible)
-		sl_exit_error(sl, "Error: couldn't create collectible image from xpm file\n");
-	sl->img.exit = mlx_xpm_file_to_image(sl->mlx, "96x96_imgs/bed_96_img.xpm", &size, &size);
+		sl_exit_error(sl, "Error: couldn't create 'C' image from xpm file\n");
+	sl->img.exit = mlx_xpm_file_to_image(sl->mlx,
+			"96x96_imgs/bed_96_img.xpm", &size, &size);
 	if (!sl->img.exit)
-		sl_exit_error(sl, "Error: couldn't create exit image from xpm file\n");
+		sl_exit_error(sl, "Error: couldn't create 'E' image from xpm file\n");
 }
 
 void	sl_draw_map(t_game *sl)
@@ -74,7 +80,8 @@ void	sl_draw_tile(t_game *sl, int y, int x)
 
 	img = NULL;
 	tile = sl->map[y][x];
-	mlx_put_image_to_window(sl->mlx, sl->win, sl->img.floor, x * TILE_SIZE, y * TILE_SIZE);
+	mlx_put_image_to_window(sl->mlx, sl->win, sl->img.floor,
+		x * TILE_SIZE, y * TILE_SIZE);
 	if (tile == '1')
 		img = sl->img.wall;
 	else if (tile == 'P')
@@ -84,7 +91,8 @@ void	sl_draw_tile(t_game *sl, int y, int x)
 	else if (tile == 'E')
 		img = sl->img.exit;
 	if (img)
-		mlx_put_image_to_window(sl->mlx, sl->win, img, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_put_image_to_window(sl->mlx, sl->win, img,
+			x * TILE_SIZE, y * TILE_SIZE);
 }
 
 int	sl_press_cross(t_game *sl)

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 02:36:11 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 14:27:08 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:15:51 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	sl_validate_map(t_game *sl)
 {
 	t_found	found;
-	int	y;
-	int	x;
+	int		y;
+	int		x;
 
 	found.player = 0;
 	found.exit = 0;

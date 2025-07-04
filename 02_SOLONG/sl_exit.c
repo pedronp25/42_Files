@@ -6,12 +6,10 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 02:39:54 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 14:47:08 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:14:18 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "mlx/mlx.h"
 #include "so_long.h"
 
 void	sl_exit_error(t_game *sl, char *err_msg)
@@ -28,17 +26,21 @@ void	sl_exit_success(t_game *sl, int closed)
 	if (closed)
 		exit (0);
 	ft_printf("\n");
-	ft_printf("\t\t       ██    ██  ██   ██████  ████████  ██████  ██████  ██    ██ ██\n");
-	ft_printf("\t\t       ██    ██  ██  ██          ██    ██    ██ ██   ██  ██  ██  ██\n");
-	ft_printf("\t\t       ██    ██  ██  ██          ██    ██    ██ ██████    ████   ██\n");
-	ft_printf("\t\t        ██  ██   ██  ██          ██    ██    ██ ██   ██    ██    \n");
-	ft_printf("\t\t         ████    ██   ██████     ██     ██████  ██   ██    ██    ██\n");
-	ft_printf("\n");
-	ft_printf("\t\t╔═════════════════════════════════════════════════════════════════════╗\n");
-	ft_printf("\t\t║                         🎉 CONGRATULATIONS! 🎉                      ║\n");
-	ft_printf("\t\t║       You collected all the items and escaped the dungeon! 🗝️🏃     ║\n");
-	ft_printf("\t\t║                      Thanks for playing! 🌟                         ║\n");
-	ft_printf("\t\t╚═════════════════════════════════════════════════════════════════════╝\n");
+	ft_printf("\t\t╔═════════════════════╗\n");
+	ft_printf("\t\t║                     ║\n");
+	ft_printf("\t\t║   🎉 CONGRATS! 🎉   ║\n");
+	ft_printf("\t\t║                     ║\n");
+	ft_printf("\t\t║ You collected all   ║\n");
+	ft_printf("\t\t║ the items and       ║\n");
+	ft_printf("\t\t║ escaped the dungeon!║\n");
+	ft_printf("\t\t║                     ║\n");
+	ft_printf("\t\t║      🗝️     🏃       ║\n");
+	ft_printf("\t\t║                     ║\n");
+	ft_printf("\t\t║ Thanks for playing! ║\n");
+	ft_printf("\t\t║                     ║\n");
+	ft_printf("\t\t║         🌟          ║\n");
+	ft_printf("\t\t║                     ║\n");
+	ft_printf("\t\t╚═════════════════════╝\n");
 	ft_printf("\n");
 	exit (0);
 }

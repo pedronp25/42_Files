@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:57:48 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 16:41:47 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:16:16 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	sl_store_map(char *map_file, t_game *sl)
 	int	fd;
 	int	y;
 	int	x;
-	
+
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
 		sl_exit_error(sl, "Error: couldn't open map file\n");
