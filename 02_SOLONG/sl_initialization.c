@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:57:48 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 14:39:54 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:41:47 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sl_check_arg(int argc, char *file)
 	extension = ft_strrchr(file, '.');
 	if (!extension || ft_strncmp(extension, ".ber", 4) != 0)
 	{
-		ft_printf("%s isn't a valid file!\n\tValid map file: '*.ber'\n", file);
+		ft_printf("'%s' isn't a valid file!\nValid map file: '*.ber'\n", file);
 		exit (1);
 	}
 }
@@ -38,7 +38,10 @@ int	sl_count_lines(t_game *sl, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		sl_exit_error(sl, "Error: couldn't open map file\n");
+	{
+		ft_printf("Error: couldn't open map file\n");
+		exit (1);
+	}
 	line = get_next_line(fd);
 	height = 0;
 	while (line != NULL)
@@ -82,7 +85,4 @@ void	sl_store_map(char *map_file, t_game *sl)
 		y++;
 	}
 	sl->width = ft_strlen(sl->map[0]) - 1;
-	y = 0;
-	while (y < sl->height)
-		ft_printf("%s", sl->map[y++]);
 }
