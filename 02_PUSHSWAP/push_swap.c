@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:35:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/07 02:24:13 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/08 02:11:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,19 @@ char	**ps_args_check(int argc, char **argv)
 		x++;
 	}
 	return (matrix);
+}
+
+void	ps_validate_num_matrix(char **matrix)
+{
+	int	x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (matrix && matrix[x])
+	{
+		if (matrix[x][y] == '-' || matrix[x][y] == '+')
+			y++;
+		// Continue checking if numbers are valid
+	}
 }
