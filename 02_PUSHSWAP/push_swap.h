@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/13 15:56:28 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/15 02:06:20 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ typedef struct s_stack
 }	t_stack;
 
 char	**ps_args_check(int argc, char **argv);
-int		*ps_validate_str_arr(char **str_arr);
+int		*ps_validate_str_arr(char **str_arr, int *int_arr_len);
 int		ps_strarr_len(char **str_arr);
 void	ps_check_duplicates(int	*arr, int len);
+void	ps_init_stacks(t_stack *stack, int *int_arr, int len);
 
 #endif

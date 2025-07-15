@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:28:16 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/13 15:57:49 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/15 01:58:45 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**ps_args_check(int argc, char **argv)
 	return (matrix);
 }
 
-int	*ps_validate_str_arr(char **str_arr)
+int	*ps_validate_str_arr(char **str_arr, int *int_arr_len)
 {
 	int	x;
 	int y;
@@ -60,6 +60,7 @@ int	*ps_validate_str_arr(char **str_arr)
 		x++;
 	}
 	ps_check_duplicates(int_arr, x);
+	*int_arr_len = x;
 	return (int_arr);
 }
 
