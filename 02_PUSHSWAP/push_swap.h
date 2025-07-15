@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/07 02:22:57 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:56:28 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,23 @@
 
 # include "libft/libft.h"
 
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*next;
+}	t_node;
+
+typedef struct s_stack
+{
+	t_node	*a; // Top of stack A
+	t_node	*b; // Top of stack B
+	int		len_a;
+	int		len_b;
+}	t_stack;
+
 char	**ps_args_check(int argc, char **argv);
+int		*ps_validate_str_arr(char **str_arr);
+int		ps_strarr_len(char **str_arr);
+void	ps_check_duplicates(int	*arr, int len);
 
 #endif
