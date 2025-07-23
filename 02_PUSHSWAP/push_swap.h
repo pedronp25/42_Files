@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/15 02:06:20 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/07/21 19:34:00 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
@@ -34,5 +35,7 @@ int		*ps_validate_str_arr(char **str_arr, int *int_arr_len);
 int		ps_strarr_len(char **str_arr);
 void	ps_check_duplicates(int	*arr, int len);
 void	ps_init_stacks(t_stack *stack, int *int_arr, int len);
+t_node	*ps_new_node(int value, int index);
+void	ps_node_add_back(t_node **lst, t_node *new_node);
 
 #endif
