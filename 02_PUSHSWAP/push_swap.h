@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/21 19:34:00 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/11 18:35:40 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 typedef struct s_node
 {
 	int				value;
-	int				index;
+	int				cost_a;
+	int				cost_b;
 	struct s_node	*next;
 }	t_node;
 
@@ -37,5 +38,28 @@ void	ps_check_duplicates(int	*arr, int len);
 void	ps_init_stacks(t_stack *stack, int *int_arr, int len);
 t_node	*ps_new_node(int value, int index);
 void	ps_node_add_back(t_node **lst, t_node *new_node);
+void	pa(t_stack *stack);
+void	pb(t_stack *stack);
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *stack);
+void	ra(t_stack *stack);
+void	rb(t_stack *stack);
+void	rr(t_stack	*stack);
+void	rra(t_stack *stack);
+void	rrb(t_stack *stack);
+void	rrr(t_stack	*stack);
+void	ps_smallstack_sort(t_stack *stack);
+int		ps_find_min_pos(t_node	*node);
+void	ps_rotate_to_top(t_stack *stack, int pos);
+void	ps_sort_2(t_stack *stack);
+void	ps_sort_3(t_stack *stack);
+void	ps_sort_4(t_stack *stack);
+void	ps_sort_5(t_stack *stack);
+void	ps_calculate_cost(t_stack *stack);
+int		ps_get_cost_b(t_stack *stack, int pos);
+int		ps_get_target_pos_a(t_stack *stack, int b_val);
+int		ps_find_smallest_value(t_node *current);
+int		ps_get_cost_a(t_stack *stack, int target_pos);
 
 #endif
