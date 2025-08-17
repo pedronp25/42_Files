@@ -6,11 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:06:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 00:07:02 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:08:52 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ps_calculate_cost(t_stack *stack)
 {

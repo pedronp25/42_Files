@@ -6,11 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 04:32:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 04:32:57 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:09:09 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ps_turk(t_stack *stack)
 {

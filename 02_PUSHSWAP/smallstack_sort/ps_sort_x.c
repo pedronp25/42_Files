@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:45:47 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/29 19:48:44 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:06:01 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ps_sort_4(t_stack *stack)
 {
 	int	pos;
 
-	pos = ps_find_min_pos(stack->a);
+	pos = ps_find_min_pos(stack);
 	ps_rotate_to_top(stack, pos);
 	pb(stack);
 	ps_sort_3(stack);
@@ -60,7 +60,7 @@ void	ps_sort_5(t_stack *stack)
 {
 	int	pos;
 
-	pos = ps_find_min_pos(stack->a);
+	pos = ps_find_min_pos(stack);
 	ps_rotate_to_top(stack, pos);
 	pb(stack);
 	ps_sort_4(stack);

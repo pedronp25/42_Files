@@ -6,11 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:30:28 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 03:30:57 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:08:58 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_node	*ps_find_cheapest_node(t_node *current)
 {

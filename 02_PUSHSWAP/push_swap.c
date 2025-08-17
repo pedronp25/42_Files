@@ -6,11 +6,12 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:35:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 04:35:47 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:04:33 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 int	main(int argc, char *argv[])
 {
@@ -20,10 +21,44 @@ int	main(int argc, char *argv[])
 	t_stack	*stack;
 
 	str_arr = ps_args_check(argc, argv);
-	int_arr = ps_validate_str_arr(str_arr, &arr_len);
-	ps_init_stacks(stack, int_arr, arr_len);
+	int_arr = ps_validate_str_arr(stack, str_arr, &arr_len);
+	stack = ps_init_stacks(int_arr, arr_len);
 	if (stack->len_a <= 5)
 		ps_smallstack_sort(stack);
 	else
 		ps_turk(stack);	
+}
+
+void	ps_error(t_stack *stack)
+{
+	ft_printf("Error\n");
+	ps_cleanup(stack);
+	exit (1);
+}
+
+void	ps_success(t_stack *stack)
+{
+	ps_cleanup(stack);
+	exit(0);
+}
+
+void	ps_cleanup(t_stack *stack)
+{
+	if (!stack)
+		return ;
+	ps_cleanup_stack(stack->a);
+	ps_cleanup_stack(stack->b);
+	free(stack);
+}
+
+void	ps_cleanup_stack(t_node *head)
+{
+	t_node	*tmp;
+
+	while (head)
+	{
+		tmp = head->next;
+		free(head);
+		head = tmp;
+	}
 }

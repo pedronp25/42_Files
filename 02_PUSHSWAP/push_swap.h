@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 04:34:00 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:08:19 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ typedef struct s_stack
 	int		len_b;
 }	t_stack;
 
-char	**ps_args_check(int argc, char **argv);
-int		*ps_validate_str_arr(char **str_arr, int *int_arr_len);
+char	**ps_args_check(t_stack *stack, int argc, char **argv);
+int		*ps_validate_str_arr(t_stack *stack, char **str_arr, int *int_arr_len);
+int		ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x);
 int		ps_strarr_len(char **str_arr);
-void	ps_check_duplicates(int	*arr, int len);
-void	ps_init_stacks(t_stack *stack, int *int_arr, int len);
+long	ps_atol(const char *str);
+void	ps_check_duplicates(t_stack *stack, int	*arr, int len);
+t_stack	*ps_init_stacks(int *int_arr, int len);
 t_node	*ps_new_node(int value, int index);
 void	ps_node_add_back(t_node **lst, t_node *new_node);
 void	pa(t_stack *stack);
@@ -50,7 +52,7 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack	*stack);
 void	ps_smallstack_sort(t_stack *stack);
-int		ps_find_min_pos(t_node	*node);
+int		ps_find_min_pos(t_stack *stack);
 void	ps_rotate_to_top(t_stack *stack, int pos);
 void	ps_sort_2(t_stack *stack);
 void	ps_sort_3(t_stack *stack);
@@ -69,5 +71,9 @@ void	ps_move_cheapest_node(t_stack *stack, t_node *node);
 void	ps_rotate_single_stack(t_stack *stack, int cost, char which_stack);
 void	ps_final_rotation(t_stack *stack);
 void	ps_ra_or_rra(t_stack *stack, int lowest_value, int pos);
+void	ps_error(t_stack *stack);
+void	ps_success(t_stack *stack);
+void	ps_cleanup(t_stack *stack);
+void	ps_cleanup_stack(t_node *head);
 
 #endif

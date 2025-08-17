@@ -6,17 +6,19 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 19:29:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/29 19:48:06 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 07:12:45 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ps_init_stacks(t_stack *stack, int *int_arr, int len)
+t_stack	*ps_init_stacks(int *int_arr, int len)
 {
 	int	x;
 	t_node	*new_node;
+	t_stack	*stack;
 	
+	stack = ft_calloc(1, sizeof(t_stack));
 	stack->a = NULL;
 	x = 0;
 	while (x < len)
@@ -28,6 +30,7 @@ void	ps_init_stacks(t_stack *stack, int *int_arr, int len)
 	stack->b = NULL;
 	stack->len_a = len;
 	stack->len_b = 0;
+	return (stack);
 }
 
 t_node	*ps_new_node(int value, int index)
