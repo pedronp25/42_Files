@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/11 18:35:40 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/17 04:34:00 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,18 @@ void	ps_sort_2(t_stack *stack);
 void	ps_sort_3(t_stack *stack);
 void	ps_sort_4(t_stack *stack);
 void	ps_sort_5(t_stack *stack);
+void	ps_turk(t_stack *stack);
 void	ps_calculate_cost(t_stack *stack);
 int		ps_get_cost_b(t_stack *stack, int pos);
 int		ps_get_target_pos_a(t_stack *stack, int b_val);
 int		ps_find_smallest_value(t_node *current);
+t_node	*ps_find_node_pos(t_node *node, int pos);
 int		ps_get_cost_a(t_stack *stack, int target_pos);
+t_node	*ps_find_cheapest_node(t_node *current);
+int		ps_abs(int value);
+void	ps_move_cheapest_node(t_stack *stack, t_node *node);
+void	ps_rotate_single_stack(t_stack *stack, int cost, char which_stack);
+void	ps_final_rotation(t_stack *stack);
+void	ps_ra_or_rra(t_stack *stack, int lowest_value, int pos);
 
 #endif
