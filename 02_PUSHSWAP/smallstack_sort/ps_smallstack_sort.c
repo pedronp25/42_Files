@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:44:32 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:06:51 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:28:44 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ void	ps_smallstack_sort(t_stack *stack)
 
 int	ps_find_min_pos(t_stack *stack)
 {
-	int	min_value;
-	int	min_pos;
-	int	current_pos;
+	int		min_value;
+	int		min_pos;
+	int		current_pos;
 	t_node	*node;
 
 	node = stack->a;
-	if (!node)
-		ps_error(stack);
 	min_value = node->value;
 	min_pos = 0;
 	current_pos = 0;

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:08:19 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/18 01:44:44 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ int		ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x);
 int		ps_strarr_len(char **str_arr);
 long	ps_atol(const char *str);
 void	ps_check_duplicates(t_stack *stack, int	*arr, int len);
+void	ps_quicksort_int_arr(int *arr, int low, int high);
+int		ps_partition(int *arr, int low, int high);
+void	ps_swap(int *a, int *b);
 t_stack	*ps_init_stacks(int *int_arr, int len);
-t_node	*ps_new_node(int value, int index);
+t_node	*ps_new_node(int value);
 void	ps_node_add_back(t_node **lst, t_node *new_node);
 void	pa(t_stack *stack);
 void	pb(t_stack *stack);

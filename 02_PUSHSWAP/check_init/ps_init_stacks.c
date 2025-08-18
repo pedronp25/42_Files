@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 19:29:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 07:12:45 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/18 00:35:25 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*ps_init_stacks(int *int_arr, int len)
 	x = 0;
 	while (x < len)
 	{
-		new_node = ps_new_node(int_arr[x], x);
+		new_node = ps_new_node(int_arr[x]);
 		ps_node_add_back(&stack->a, new_node);
 		x++;
 	}
@@ -33,7 +33,7 @@ t_stack	*ps_init_stacks(int *int_arr, int len)
 	return (stack);
 }
 
-t_node	*ps_new_node(int value, int index)
+t_node	*ps_new_node(int value)
 {
 	t_node	*node;
 

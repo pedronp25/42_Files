@@ -6,12 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:28:16 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:00:34 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:24:26 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <bits/types/stack_t.h>
 
 char	**ps_args_check(t_stack *stack, int argc, char **argv)
 {
@@ -20,13 +19,14 @@ char	**ps_args_check(t_stack *stack, int argc, char **argv)
 
 	if (argc == 1)
 		ps_error(stack);
-	if (argc == 2)
+	else if (argc == 2)
 	{
 		matrix = ft_split(argv[1], ' ');
-		if (!matrix)
+		if (!matrix || !matrix[0])
 			ps_error(stack);
+		return (matrix);
 	}
-	matrix = ft_calloc(argc - 1, sizeof(char));
+	matrix = ft_calloc(argc - 1, sizeof(char *));
 	if (!matrix)
 		ps_error(stack);
 	x = 1;
@@ -50,15 +50,15 @@ int	*ps_validate_str_arr(t_stack *stack, char **str_arr, int *int_arr_len)
     if (!int_arr)
         ps_error(stack);
 	x = ps_store_int_arr(stack, str_arr, int_arr, x);
-    ps_check_duplicates(int_arr, x);
+    ps_check_duplicates(stack, int_arr, x);
     *int_arr_len = x;
     return (int_arr);
 }
 
 int	ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x)
 {
-	int	y;
-	int	num;
+	int		y;
+	long	num;
 
     while (str_arr && str_arr[x])
     {
