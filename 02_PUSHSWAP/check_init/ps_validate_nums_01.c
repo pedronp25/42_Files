@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:28:16 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/21 19:49:28 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:49:09 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ char	**ps_args_check(t_stack *stack, int argc, char **argv)
 			ps_error(stack);
 		return (matrix);
 	}
-	matrix = ft_calloc(argc - 1, sizeof(char *));
+	matrix = ft_calloc(argc, sizeof(char *));
 	if (!matrix)
 		ps_error(stack);
-	x = 1;
-	while (x < argc)
+	x = 0;
+	while (x < argc - 1)
 	{
-		matrix[x - 1] = argv[x];
+		matrix[x] = argv[x + 1];
 		x++;
 	}
+	matrix[x] = NULL;
 	return (matrix);
 }
 
@@ -58,7 +59,7 @@ int	ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x)
 	int		y;
 	long	num;
 
-	while (str_arr && str_arr[x])
+	while (str_arr[x])
 	{
 		y = 0;
 		if (str_arr[x][y] == '-' || str_arr[x][y] == '+')
