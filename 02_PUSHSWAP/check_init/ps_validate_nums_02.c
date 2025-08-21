@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 07:21:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/21 18:36:36 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 19:55:35 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,41 +59,4 @@ void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
 			ps_error(stack);
 		x++;
 	}
-}
-
-void	ps_quicksort_int_arr(int *arr, int low, int high)
-{
-	int	pi;
-
-	if (low < high)
-	{
-		pi = ps_partition(arr, low, high);
-		ps_quicksort_int_arr(arr, low, pi - 1);
-		ps_quicksort_int_arr(arr, pi + 1, high);
-	}
-}
-
-int	ps_partition(int *arr, int low, int high)
-{
-	int	tmp;
-	int	pivot;
-	int	x;
-	int	y;
-
-	pivot = arr[high];
-	x = low - 1;
-	y = low;
-	while (y < high)
-	{
-		if (arr[y] <= pivot)
-		{
-			x++;
-			tmp = arr[x];
-			arr[x] = arr[y];
-			arr[y] = tmp;
-		}
-		y++;
-	}
-	ps_swap(&arr[x + 1], &arr[high]);
-	return (x + 1);
 }
