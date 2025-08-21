@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/18 01:44:44 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:52:47 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ void	ps_swap(int *a, int *b);
 t_stack	*ps_init_stacks(int *int_arr, int len);
 t_node	*ps_new_node(int value);
 void	ps_node_add_back(t_node **lst, t_node *new_node);
-void	pa(t_stack *stack);
-void	pb(t_stack *stack);
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
+void	pa(t_stack *stack, int print);
+void	pb(t_stack *stack, int print);
+void	sa(t_stack *stack, int print);
+void	sb(t_stack *stack, int print);
 void	ss(t_stack *stack);
-void	ra(t_stack *stack);
-void	rb(t_stack *stack);
+void	ra(t_stack *stack, int print);
+void	rb(t_stack *stack, int print);
 void	rr(t_stack	*stack);
-void	rra(t_stack *stack);
-void	rrb(t_stack *stack);
+void	rra(t_stack *stack, int print);
+void	rrb(t_stack *stack, int print);
 void	rrr(t_stack	*stack);
 void	ps_smallstack_sort(t_stack *stack);
 int		ps_find_min_pos(t_stack *stack);

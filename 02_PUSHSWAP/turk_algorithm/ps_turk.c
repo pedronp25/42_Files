@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 04:32:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:09:09 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:42:18 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	ps_turk(t_stack *stack)
 	t_node	*cheapest_node;
 
 	while (stack->len_a != 3)
-		pb(stack);
+		pb(stack, 1);
 	ps_sort_3(stack);
 	while (stack->len_b)
 	{
 		ps_calculate_cost(stack);
 		cheapest_node = ps_find_cheapest_node(stack->b);
 		ps_move_cheapest_node(stack, cheapest_node);
-		pa(stack);
+		pa(stack, 1);
 	}
 	ps_final_rotation(stack);
 }
@@ -54,12 +54,14 @@ void	ps_final_rotation(t_stack *stack)
 }
 
 void	ps_ra_or_rra(t_stack *stack, int lowest_value, int pos)
-{	
-	while (stack->a->value != lowest_value)
-	{
-		if (pos <= stack->len_a / 2)
-			ra(stack);
-		else
-			rra(stack);
-	}
+{
+	int	halfway;
+
+	halfway = stack->len_a / 2;
+	if (pos <= halfway)
+		while (stack->a->value != lowest_value)
+			ra(stack, 1);
+	else
+		while (stack->a->value != lowest_value)
+			rra(stack, 1);
 }

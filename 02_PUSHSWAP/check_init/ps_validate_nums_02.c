@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 07:21:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/18 01:43:29 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:36:36 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,27 @@ int	ps_strarr_len(char **str_arr)
 
 long	ps_atol(const char *str)
 {
-    long result;
-    int sign;
+	long	result;
+	int		sign;
 
 	sign = 1;
 	result = 0;
-    if (!str)
-        return (0);
-    while (*str == ' ' || (*str >= 9 && *str <= 13))
-        str++;
-    if (*str == '-' || *str == '+')
-    {
-        if (*str == '-')
-            sign = -1;
-        str++;
-    }
-    while (*str >= '0' && *str <= '9')
-    {
-        result = result * 10 + (*str - '0');
-        str++;
-    }
-    return (sign * result);
+	if (!str)
+		return (0);
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (sign * result);
 }
 
 void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
@@ -52,7 +52,6 @@ void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
 	int	x;
 
 	ps_quicksort_int_arr(arr, 0, len - 1);
-
 	x = 0;
 	while (x < len -1)
 	{
@@ -76,6 +75,7 @@ void	ps_quicksort_int_arr(int *arr, int low, int high)
 
 int	ps_partition(int *arr, int low, int high)
 {
+	int	tmp;
 	int	pivot;
 	int	x;
 	int	y;
@@ -88,19 +88,12 @@ int	ps_partition(int *arr, int low, int high)
 		if (arr[y] <= pivot)
 		{
 			x++;
-			ps_swap(&arr[i], &arr[y]);
+			tmp = arr[x];
+			arr[x] = arr[y];
+			arr[y] = tmp;
 		}
 		y++;
 	}
 	ps_swap(&arr[x + 1], &arr[high]);
 	return (x + 1);
-}
-
-void	ps_swap(int *a, int *b)
-{
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
 }

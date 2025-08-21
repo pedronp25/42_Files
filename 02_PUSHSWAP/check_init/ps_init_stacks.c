@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 19:29:41 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/18 00:35:25 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:25:18 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_stack	*ps_init_stacks(int *int_arr, int len)
 {
-	int	x;
+	int		x;
 	t_node	*new_node;
 	t_stack	*stack;
-	
+
 	stack = ft_calloc(1, sizeof(t_stack));
 	stack->a = NULL;
 	x = 0;

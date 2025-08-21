@@ -6,14 +6,14 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:44:32 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/18 02:28:44 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:40:32 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 void	ps_smallstack_sort(t_stack *stack)
-{	
+{
 	if (stack->len_a == 1)
 		ps_success(stack);
 	else if (stack->len_a == 2)
@@ -56,7 +56,7 @@ void	ps_rotate_to_top(t_stack *stack, int pos)
 	{
 		while (pos > 0)
 		{
-			ra(stack);
+			ra(stack, 1);
 			pos--;
 		}
 	}
@@ -65,7 +65,7 @@ void	ps_rotate_to_top(t_stack *stack, int pos)
 		pos = stack->len_a - pos;
 		while (pos > 0)
 		{
-			rra(stack);
+			rra(stack, 1);
 			pos--;
 		}
 	}

@@ -6,12 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:35:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:04:33 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 19:38:40 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 int	main(int argc, char *argv[])
 {
@@ -20,13 +19,14 @@ int	main(int argc, char *argv[])
 	int		arr_len;
 	t_stack	*stack;
 
-	str_arr = ps_args_check(argc, argv);
+	stack = NULL;
+	str_arr = ps_args_check(stack, argc, argv);
 	int_arr = ps_validate_str_arr(stack, str_arr, &arr_len);
 	stack = ps_init_stacks(int_arr, arr_len);
 	if (stack->len_a <= 5)
 		ps_smallstack_sort(stack);
 	else
-		ps_turk(stack);	
+		ps_turk(stack);
 }
 
 void	ps_error(t_stack *stack)

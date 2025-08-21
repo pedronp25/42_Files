@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:06:02 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:08:52 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:43:47 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ps_get_cost_b(t_stack *stack, int pos)
 	if (pos <= stack->len_b / 2)
 		return (pos);
 	else
-	 	return (pos - stack->len_b);
+		return (pos - stack->len_b);
 }
 
 int	ps_get_target_pos_a(t_stack *stack, int b_val)
@@ -52,7 +52,8 @@ int	ps_get_target_pos_a(t_stack *stack, int b_val)
 	pos = 0;
 	while (current)
 	{
-		if (current->value > b_val && (target_pos == -1 || current->value < best_val))
+		if (current->value > b_val && (target_pos == -1
+				|| current->value < best_val))
 		{
 			best_val = current->value;
 			target_pos = pos;
@@ -92,5 +93,5 @@ int	ps_get_cost_a(t_stack *stack, int target_pos)
 	if (target_pos <= stack->len_a / 2)
 		return (target_pos);
 	else
-	 	return (target_pos - stack->len_a);
+		return (target_pos - stack->len_a);
 }

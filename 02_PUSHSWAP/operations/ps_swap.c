@@ -6,13 +6,13 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 20:05:13 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/21 20:10:32 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:57:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sa(t_stack *stack)
+void	sa(t_stack *stack, int print)
 {
 	t_node	*first;
 	t_node	*second;
@@ -23,10 +23,12 @@ void	sa(t_stack *stack)
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
-	stack->a = second; // New top is the second node
+	stack->a = second;
+	if (print)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack *stack)
+void	sb(t_stack *stack, int print)
 {
 	t_node	*first;
 	t_node	*second;
@@ -37,11 +39,14 @@ void	sb(t_stack *stack)
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
-	stack->b = second; // New top is the second node
+	stack->b = second;
+	if (print)
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *stack)
 {
-	sa(stack);
-	sb(stack);
+	sa(stack, 0);
+	sb(stack, 0);
+	write(1, "ss\n", 3);
 }

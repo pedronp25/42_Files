@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 04:06:47 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/17 08:09:04 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:22:41 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void	ps_move_cheapest_node(t_stack *stack, t_node *node)
 		cost_a++;
 		cost_b++;
 	}
-	if (cost_a != 0)
-		ps_rotate_single_stack(stack, cost_a, 'a');
-	if (cost_b != 0)
-		ps_rotate_single_stack(stack, cost_b, 'b');
+	ps_rotate_single_stack(stack, cost_a, 'a');
+	ps_rotate_single_stack(stack, cost_b, 'b');
 }
 
 void	ps_rotate_single_stack(t_stack *stack, int cost, char which_stack)
@@ -42,17 +40,17 @@ void	ps_rotate_single_stack(t_stack *stack, int cost, char which_stack)
 	while (cost > 0)
 	{
 		if (which_stack == 'a')
-			ra(stack);
+			ra(stack, 1);
 		else if (which_stack == 'b')
-			rb(stack);
+			rb(stack, 1);
 		cost--;
 	}
 	while (cost < 0)
 	{
 		if (which_stack == 'a')
-			rra(stack);
+			rra(stack, 1);
 		else if (which_stack == 'b')
-			rrb(stack);
+			rrb(stack, 1);
 		cost++;
 	}
 }

@@ -1,7 +1,7 @@
 CC = cc
 AR = ar rcs
 RM = rm -f
-NAME = libft_printf.a
+NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 OBJDIR = libft_objs
