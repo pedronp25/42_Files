@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:35:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/23 03:46:01 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/23 23:57:40 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,43 +24,25 @@ int	main(int argc, char *argv[])
 	str_arr = ps_args_check(stack, argc, argv);
 	int_arr = ps_validate_str_arr(stack, str_arr, &arr_len);
 	stack = ps_init_stacks(int_arr, arr_len);
-	if (stack->len_a <= 5)
+	if (ps_sorted(stack))
+		ps_success(stack);
+	else if (stack->len_a <= 5)
 		ps_smallstack_sort(stack);
 	else
 		ps_turk(stack);
 	ps_success(stack);
 }
 
-void	ps_error(t_stack *stack)
+int	ps_sorted(t_stack *stack)
 {
-	ft_printf("Error\n");
-	ps_cleanup(stack);
-	exit (1);
-}
+	t_node	*current;
 
-void	ps_success(t_stack *stack)
-{
-	ps_cleanup(stack);
-	exit(0);
-}
-
-void	ps_cleanup(t_stack *stack)
-{
-	if (!stack)
-		return ;
-	ps_cleanup_stack(stack->a);
-	ps_cleanup_stack(stack->b);
-	free(stack);
-}
-
-void	ps_cleanup_stack(t_node *head)
-{
-	t_node	*tmp;
-
-	while (head)
+	current = stack->a;
+	while (current->next)
 	{
-		tmp = head->next;
-		free(head);
-		head = tmp;
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
 	}
+	return (1);
 }

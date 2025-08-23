@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/23 22:19:48 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/23 23:47:35 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ps_swap(int *a, int *b);
 t_stack	*ps_init_stacks(int *int_arr, int len);
 t_node	*ps_new_node(int value);
 void	ps_node_add_back(t_node **lst, t_node *new_node);
+int		ps_sorted(t_stack *stack);
 void	pa(t_stack *stack, int print);
 void	pb(t_stack *stack, int print);
 void	sa(t_stack *stack, int print);

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:28:16 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/21 21:49:09 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/23 23:55:14 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x)
 		y = 0;
 		if (str_arr[x][y] == '-' || str_arr[x][y] == '+')
 			y++;
+		if (!str_arr[x][y])
+			ps_error(stack);
 		while (str_arr[x][y])
 		{
 			if (str_arr[x][y] < '0' || str_arr[x][y] > '9')

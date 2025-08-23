@@ -10,6 +10,7 @@ LIBFT_NAME = libft.a
 LIBFT = $(LIBFT_DIR)/$(LIBFT_NAME)
 
 PUSH_SWAP_SRCS = push_swap.c \
+				 ps_exit.c \
 				 check_init/ps_init_stacks.c \
 				 check_init/ps_quicksort_intarr.c \
 				 check_init/ps_validate_nums_01.c \
