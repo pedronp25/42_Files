@@ -6,11 +6,12 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:35:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/21 19:38:40 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/23 03:46:01 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
 
 int	main(int argc, char *argv[])
 {
@@ -27,6 +28,7 @@ int	main(int argc, char *argv[])
 		ps_smallstack_sort(stack);
 	else
 		ps_turk(stack);
+	ps_success(stack);
 }
 
 void	ps_error(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 07:21:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/21 19:55:35 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/23 03:01:20 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,22 @@ long	ps_atol(const char *str)
 void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
 {
 	int	x;
+	int *copy_arr;
 
-	ps_quicksort_int_arr(arr, 0, len - 1);
+	copy_arr = ft_calloc(len, sizeof(int));
+	if (!copy_arr)
+		ps_error(stack);
+	x = 0;
+	while (x < len)
+	{
+		copy_arr[x] = arr[x];
+		x++;
+	}
+	ps_quicksort_int_arr(copy_arr, 0, len - 1);
 	x = 0;
 	while (x < len -1)
 	{
-		if (arr[x] == arr[x + 1])
+		if (copy_arr[x] == copy_arr[x + 1])
 			ps_error(stack);
 		x++;
 	}
