@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/21 17:52:47 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/23 22:19:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int		ps_find_smallest_value(t_node *current);
 t_node	*ps_find_node_pos(t_node *node, int pos);
 int		ps_get_cost_a(t_stack *stack, int target_pos);
 t_node	*ps_find_cheapest_node(t_node *current);
+int		ps_calc_node_cost(t_node *node);
+int		ps_max(int a, int b);
 int		ps_abs(int value);
 void	ps_move_cheapest_node(t_stack *stack, t_node *node);
 void	ps_rotate_single_stack(t_stack *stack, int cost, char which_stack);
