@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:28:16 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/23 23:55:14 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:56:09 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,16 @@ int	ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x)
 		x++;
 	}
 	return (x);
+}
+
+void	ps_free_strarr(char **arr)
+{
+	int	x;
+
+	x = 0;
+	if (!arr)
+		return ;
+	while (arr[x])
+		free(arr[i++]);
+	free(arr);
 }
