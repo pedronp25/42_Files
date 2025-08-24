@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:28:16 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/24 19:56:09 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/25 00:54:15 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	**ps_args_check(t_stack *stack, int argc, char **argv)
 {
 	char	**matrix;
-	int		x;
 
 	if (argc == 1)
 		ps_error(stack);
@@ -29,14 +28,30 @@ char	**ps_args_check(t_stack *stack, int argc, char **argv)
 	matrix = ft_calloc(argc, sizeof(char *));
 	if (!matrix)
 		ps_error(stack);
+	ps_dup_argv_strings(stack, matrix, argv, argc);
+	return (matrix);
+}
+
+void	ps_dup_argv_strings(t_stack *stack, char **matrix, char **argv, int argc)
+{
+	int	x;
+	int	i;
+
 	x = 0;
 	while (x < argc - 1)
 	{
-		matrix[x] = argv[x + 1];
+		matrix[x] = ft_strdup(argv[x + 1]);
+		if (!matrix[x])
+		{
+			i = 0;
+			while (i < x)
+				free(matrix[i++]);
+			free(matrix);
+			ps_error(stack);
+		}
 		x++;
 	}
 	matrix[x] = NULL;
-	return (matrix);
 }
 
 int	*ps_validate_str_arr(t_stack *stack, char **str_arr, int *int_arr_len)
@@ -73,22 +88,18 @@ int	ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x)
 			y++;
 		}
 		num = ps_atol(str_arr[x]);
-		if (num > 2147483647 || num < -2147483648)
-			ps_error(stack);
+		ps_check_num(stack, int_arr, num);
 		int_arr[x] = (int)num;
 		x++;
 	}
 	return (x);
 }
 
-void	ps_free_strarr(char **arr)
-{
-	int	x;
-
-	x = 0;
-	if (!arr)
-		return ;
-	while (arr[x])
-		free(arr[i++]);
-	free(arr);
+void ps_check_num(t_stack *stack, int *int_arr, long num)
+{	
+	if (num > 2147483647 || num < -2147483648)
+		{
+			free(int_arr);
+			ps_error(stack);
+		}
 }

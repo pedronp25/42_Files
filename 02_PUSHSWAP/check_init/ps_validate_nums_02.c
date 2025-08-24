@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 07:21:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/24 20:00:30 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/25 00:41:09 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,7 @@ void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
 	int	x;
 	int	*copy_arr;
 
-	copy_arr = ft_calloc(len, sizeof(int));
-	if (!copy_arr)
-		ps_error(stack);
-	x = 0;
-	while (x < len)
-		copy_arr[x] = arr[x++];
+	copy_arr = ps_copy_array(stack, arr, len);
 	ps_quicksort_int_arr(copy_arr, 0, len - 1);
 	x = 0;
 	while (x < len -1)
@@ -65,9 +60,27 @@ void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
 		if (copy_arr[x] == copy_arr[x + 1])
 		{
 			free(copy_arr);
+			free(arr);
 			ps_error(stack);
 		}
 		x++;
 	}
 	free(copy_arr);
+}
+
+int	*ps_copy_array(t_stack *stack, int *arr, int len)
+{
+	int	x;
+	int	*copy_arr;
+
+	copy_arr = ft_calloc(len, sizeof(int));
+	if (!copy_arr)
+		ps_error(stack);
+	x = 0;
+	while (x < len)
+	{
+		copy_arr[x] = arr[x];
+		x++;
+	}
+	return (copy_arr);
 }

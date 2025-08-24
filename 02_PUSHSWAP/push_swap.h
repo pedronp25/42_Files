@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:36:29 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/24 00:10:32 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/25 00:49:37 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,34 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+typedef struct s_array
+{
+	char	**str_arr;
+	int		*int_arr;
+}	t_array;
+
 typedef struct s_stack
 {
 	t_node	*a; // Top of stack A
 	t_node	*b; // Top of stack B
 	int		len_a;
 	int		len_b;
+	t_array array;
 }	t_stack;
 
 char	**ps_args_check(t_stack *stack, int argc, char **argv);
+void	ps_dup_argv_strings(t_stack *stack, char **matrix, char **argv, int argc);
 int		*ps_validate_str_arr(t_stack *stack, char **str_arr, int *int_arr_len);
 int		ps_store_int_arr(t_stack *stack, char **str_arr, int *int_arr, int x);
+void 	ps_check_num(t_stack *stack, int *int_arr, long num);
 int		ps_strarr_len(char **str_arr);
 long	ps_atol(const char *str);
 void	ps_check_duplicates(t_stack *stack, int	*arr, int len);
+int		*ps_copy_array(t_stack *stack, int *arr, int len);
 void	ps_quicksort_int_arr(int *arr, int low, int high);
 int		ps_partition(int *arr, int low, int high);
 void	ps_swap(int *a, int *b);
-t_stack	*ps_init_stacks(int *int_arr, int len);
+void	ps_init_stacks(t_stack *stack, int *int_arr, int len);
 t_node	*ps_new_node(t_stack *stack, int value);
 void	ps_node_add_back(t_node **head, t_node *new_node);
 int		ps_sorted(t_stack *stack);
@@ -80,6 +90,7 @@ void	ps_ra_or_rra(t_stack *stack, int lowest_value, int pos);
 void	ps_error(t_stack *stack);
 void	ps_success(t_stack *stack);
 void	ps_cleanup(t_stack *stack);
+void	ps_free_strarr(char **arr);
 void	ps_cleanup_stack(t_node *head);
 
 #endif

@@ -6,24 +6,23 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:35:43 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/23 23:57:40 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/24 23:59:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
-	char	**str_arr;
-	int		*int_arr;
-	int		arr_len;
 	t_stack	*stack;
+	int		arr_len;
 
-	stack = NULL;
-	str_arr = ps_args_check(stack, argc, argv);
-	int_arr = ps_validate_str_arr(stack, str_arr, &arr_len);
-	stack = ps_init_stacks(int_arr, arr_len);
+	stack = ft_calloc(1, sizeof(t_stack));
+	if (!stack)
+		ps_error(stack);
+	stack->array.str_arr = ps_args_check(stack, argc, argv);
+	stack->array.int_arr = ps_validate_str_arr(stack, stack->array.str_arr, &arr_len);
+	ps_init_stacks(stack, stack->array.int_arr, arr_len);
 	if (ps_sorted(stack))
 		ps_success(stack);
 	else if (stack->len_a <= 5)
