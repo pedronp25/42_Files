@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 23:42:11 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/25 00:13:27 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/26 00:45:44 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ void	ps_cleanup(t_stack *stack)
 {
 	if (stack)
 	{
-		ps_cleanup_stack(stack->a);
-		ps_cleanup_stack(stack->b);
-		free(stack->array.int_arr);
-		ps_free_strarr(stack->array.str_arr);
+		if (stack->a)
+			ps_cleanup_stack(stack->a);
+		if (stack->b)
+			ps_cleanup_stack(stack->b);
+		if (stack->array.int_arr)
+			free(stack->array.int_arr);
+		if (stack->array.str_arr)
+			ps_free_strarr(stack->array.str_arr);
 		free(stack);
 	}
 }
@@ -42,8 +46,6 @@ void	ps_free_strarr(char **arr)
 	int	x;
 
 	x = 0;
-	if (!arr)
-		return ;
 	while (arr[x])
 		free(arr[x++]);
 	free(arr);

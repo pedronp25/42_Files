@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 07:21:24 by pedromig          #+#    #+#             */
-/*   Updated: 2025/08/25 00:41:09 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/08/26 00:37:28 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	ps_check_duplicates(t_stack *stack, int	*arr, int len)
 		if (copy_arr[x] == copy_arr[x + 1])
 		{
 			free(copy_arr);
-			free(arr);
 			ps_error(stack);
 		}
 		x++;
