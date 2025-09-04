@@ -1,0 +1,56 @@
+
+Variables:
+
+	1. Main Arguments:
+		1.1. number_of_philosophers
+		1.2. time_to_die
+		1.3. time_to_eat
+		1.4. time_to_sleep
+		1.5. number_of_times_each_philosopher_must_eat [OPTIONAL]
+
+
+Concepts:
+
+	1. Thread:
+		Unit of execution inside a program; 
+		Shares memory space with other threads;
+		In the project -> Each philosopher is a thread (usually)
+	
+	2. Mutex:
+		A tool to protect shared resources, so only one thread can access at a time;
+		In the project -> protect forks or printing to avoid two philosophers using them at the same time
+
+
+Actions a Philosopher can take:
+
+	1. Thinking -> a philosopher is doing nothing
+					(not eating, nor trying to take the forks)
+	2. Taking a Fork -> a philosopher is taking two forks (right and left of him)
+					(need of synchronization -> no philosophers should try to take the same fork)
+	3. Eating -> a philosopher holds both forks and uses them for 'time_to_eat'	milliseconds
+					(these two forks are not able to be picked up during eating)
+	4. Sleeping -> a philosopher "sleeps" for 'time_to_sleep' milliseconds
+				   he then goes back to 'thinking'
+	5. Dying -> if a philosopher goes more than 'time_to_die' milliseconds, it "dies"
+					(it ends the program)
+
+
+Functions:
+
+	1. usleep(microseconds) -> suspends the current thread for
+									a given number of microseconds
+	2. gettimeofday(&tv, NULL) -> fills a struct called 'timeval' with
+											the current "wall-clock time"
+	3. pthread_create(&thread, NULL, function, arg) -> creates a new thread,
+															executing 'function'
+	4. pthread_detach(thread) -> detaches a thread so that it's resources
+													are freed when it finishes
+	5. pthread_join(thread, &retval) -> waits for a specific thread to finish and
+															collects its return value
+	6. pthread_mutex_init(&mutex, NULL) -> initializes a mutex so it can
+											be used for locking/unlocking
+	7. pthread_mutex_destroy(&mutex) -> frees resources associated with a mutex
+	8. pthread_mutex_lock(&mutex) -> locks the mutex
+			(waits if another thread already locked it)
+	9. pthread_mutex_unlock(&mutex) -> unlocks the mutex,
+							allowing other threads to lock it
