@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/13 18:17:00 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/14 18:54:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@
 
 typedef struct s_data
 {
-	int	n_philos; // Number of philosophers
-	int	mls_die; // Time to die (milisseconds)
-	int	mls_eat; // Time to eat (milisseconds)
-	int	mls_sleep; // Time to sleep (milisseconds)
-	int	n_meals; // Number of meals a philosopher must have (Optional)
+	int		n_philos; // Number of philosophers
+	int		time_die; // Time to die (milisseconds)
+	int		time_eat; // Time to eat (milisseconds)
+	int		time_sleep; // Time to sleep (milisseconds)
+	int		n_meals; // Number of meals a philosopher must have (Optional)
+	
+	int		is_dead; // Value to stop simulation when someone dies
+	long	start_time; // Start time in milisseconds
 }	t_data;
 
 typedef struct s_philo
