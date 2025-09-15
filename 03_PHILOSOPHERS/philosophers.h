@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/15 01:22:45 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/15 17:47:48 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 
+	t_data			*data;
+
 }	t_philo;
 
 
@@ -54,5 +56,7 @@ t_data	*ph_init_data(int argc, char **argv);
 int		ph_validate_arguments(int argc, char **argv, t_data *data);
 int		ph_is_digit(char *num);
 long	ph_atol(char *str);
+long	ph_gettime_ms(void);
+t_philo	*ph_init_philos(t_data *data);
 
 #endif
