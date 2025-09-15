@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/15 17:17:49 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/15 18:39:51 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_data	*ph_init_data(int argc, char **argv)
 		pthread_mutex_init(&data->forks[x], NULL);
 		x++;
 	}
-	data->is_dead = ph_gettime_ms();
+	data->is_dead = 0;
 	pthread_mutex_init(&data->print_mutex, NULL);
 	pthread_mutex_init(&data->death_mutex, NULL);
 	return (data);
@@ -88,20 +88,10 @@ long	ph_atol(char *str)
 	while (str[x])
 	{
 		digit = str[x] - '0';
-		if (result > (9223372036854775807 - digit) / 10)
+		if (result > (LONG_MAX - digit) / 10)
 			return (-1); // Error! Number bigger than LONG_MAX
 		result = result * 10 + (str[x] - '0');
 		x++;
 	}
 	return (result);
-}
-
-long	ph_gettime_ms(void)
-{
-	struct timeval	time;
-	long	time_in_ms;
-
-	gettimeofday(&time, NULL);
-	time_in_ms = time.tv_sec * 1000 + time.tv_usec / 1000;
-	return (time_in_ms);
 }

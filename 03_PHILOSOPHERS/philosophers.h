@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/15 17:47:48 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/15 21:40:04 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <limits.h>
 
 typedef struct s_data
 {
@@ -57,6 +58,12 @@ int		ph_validate_arguments(int argc, char **argv, t_data *data);
 int		ph_is_digit(char *num);
 long	ph_atol(char *str);
 long	ph_gettime_ms(void);
+long	ph_elapsedtime(t_philo *philos);
 t_philo	*ph_init_philos(t_data *data);
+void	ph_create_thread(t_philo *philos);
+void	*ph_routine(void *arg);
+void	ph_eat(t_philo *philos);
+void	ph_take_fork(t_philo *philos);
+void	ph_putdown_fork(t_philo *philos);
 
 #endif

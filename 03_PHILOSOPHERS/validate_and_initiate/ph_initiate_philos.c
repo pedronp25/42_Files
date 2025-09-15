@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:46:38 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/15 17:47:10 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/15 21:41:31 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,5 @@ t_philo	*ph_init_philos(t_data *data)
 	}
 	return (philos);
 }
+
+
