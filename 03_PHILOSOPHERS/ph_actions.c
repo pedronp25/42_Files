@@ -6,20 +6,22 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/16 21:07:34 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/17 00:22:37 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ph_eat(t_philo *philos)
+int	ph_eat(t_philo *philos)
 {
 	ph_take_fork(philos);
 	ph_print(philos, philos->id, "is eating");
 	philos->time_last_meal = ph_elapsedtime(philos);
-	usleep(philos->data->time_eat * 1000);
+	if (!ph_split_usleep(&philos->data->death_mutex, philos->data->time_eat))
+		return (-1);
 	philos->meals_eaten++;
 	ph_putdown_fork(philos);
+	return (1);
 }
 
 void	ph_take_fork(t_philo *philos)
@@ -58,20 +60,35 @@ void	ph_putdown_fork(t_philo *philos)
 	}
 }
 
-void	ph_sleep_and_think(t_philo *philos)
+int	ph_sleep_and_think(t_philo *philos)
 {
 	ph_print(philos, philos->id, "is sleeping");
-	usleep(philos->data->time_sleep * 1000);
-	ph_print(philos, philos->id, "is thinking");
-	usleep(50); // Optional delay to prevent a philosopher to get stuck waiting for a fork
-}
-
-int	ph_split_and_run(long time)
-{
-	time /= 2;
-	usleep(time * 1000);
+	if (!ph_split_usleep(&philos->data->death_mutex, philos->data->time_sleep))
+			return (-1);
 	if (simulation_over)
 		return (-1);
-	usleep(time * 1000);
+	ph_print(philos, philos->id, "is thinking");
+	usleep(50); // Optional delay to prevent a philosopher to get stuck waiting for a fork
+	return (1);
+}
+
+int	ph_split_usleep(pthread_mutex_t *death_mutex, long time_left)
+{
+	int	time_chunk;
+
+	time_left *= 1000; // Convert to microseconds
+	time_chunk = 1000; // Could make it larger if needed
+	while (time_left > 0)
+	{
+		usleep(time_chunk);
+		pthread_mutex_lock(death_mutex);
+		if (simulation_over)
+		{
+			pthread_mutex_unlock(death_mutex);
+			return (-1);
+		}
+		pthread_mutex_unlock(death_mutex);
+		time_left -= time_chunk;
+	}
 	return (1);
 }

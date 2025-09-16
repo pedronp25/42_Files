@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/16 15:31:30 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/17 00:50:23 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ long	ph_elapsedtime(t_philo *philos);
 void	ph_create_thread(t_philo *philos);
 void	*ph_routine(void *arg);
 void	ph_print(t_philo *philos, int id, char *msg);
-void	ph_eat(t_philo *philos);
+int		ph_eat(t_philo *philos);
 void	ph_take_fork(t_philo *philos);
 void	ph_putdown_fork(t_philo *philos);
+int		ph_sleep_and_think(t_philo *philos);
+int		ph_split_usleep(pthread_mutex_t *death_mutex, long time_left);
 
 #endif

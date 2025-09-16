@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 22:39:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/16 21:31:26 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/17 00:46:52 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ph_create_thread(t_philo *philos)
 {
 	int	x;
 
+
 	x = 0;
 	while (x < philos->data->n_philos)
 	{
@@ -40,11 +41,14 @@ void	*ph_routine(void *arg)
 	t_philo	*philos;
 
 	philos = (t_philo *)arg;
-	while (!simulation_over(philos->data))
+	while (!simulation_over)
 	{
-		ph_eat(philos);
-		usleep(philos->data->time_sleep * 1000);
+		if (!ph_eat(philos))
+			break ;
+		if (!ph_sleep_and_think(philos))
+			break ;
 	}
+	return (NULL);
 }
 
 void	ph_sleep_and_think(t_philo *philos)
