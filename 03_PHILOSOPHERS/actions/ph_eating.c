@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/16 16:00:08 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/16 21:07:34 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,22 @@ void	ph_putdown_fork(t_philo *philos)
 		pthread_mutex_unlock(philos->right_fork);
 		ph_print(philos, philos->id, "has put down the right fork");
 	}
+}
+
+void	ph_sleep_and_think(t_philo *philos)
+{
+	ph_print(philos, philos->id, "is sleeping");
+	usleep(philos->data->time_sleep * 1000);
+	ph_print(philos, philos->id, "is thinking");
+	usleep(50); // Optional delay to prevent a philosopher to get stuck waiting for a fork
+}
+
+int	ph_split_and_run(long time)
+{
+	time /= 2;
+	usleep(time * 1000);
+	if (simulation_over)
+		return (-1);
+	usleep(time * 1000);
+	return (1);
 }

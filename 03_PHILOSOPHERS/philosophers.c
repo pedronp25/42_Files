@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 22:39:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/16 12:30:35 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/16 21:31:26 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,20 @@ void	*ph_routine(void *arg)
 	}
 }
 
+void	ph_sleep_and_think(t_philo *philos)
+{
+	ph_print(philos, philos->id, "is sleeping");
+	usleep(philos->data->time_sleep * 1000);
+	ph_print(philos, philos->id, "is thinking");
+	usleep(50); // Optional delay to prevent a philosopher to get stuck waiting for a fork
+}
 
+int	ph_split_action(long time)
+{
+	time /= 2;
+	usleep(time * 1000);
+	if (simulation_over)
+		return (-1);
+	usleep(time * 1000);
+	return (1);
+}
