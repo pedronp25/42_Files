@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ph_initiate_data.c                                 :+:      :+:    :+:   */
+/*   ph_init_validate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/15 18:39:51 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/16 12:12:10 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-t_data	*ph_init_data(int argc, char **argv)
+int	ph_init_data(int argc, char **argv, t_data *data)
 {
-	t_data	*data;
 	int		x;
 
-	x = 0;
-	data = malloc(sizeof(*data));
-	if (!data)
-		return (NULL);
 	if (ph_validate_arguments(argc, argv, data))
-		return (NULL);
+		return (-1);
 	data->start_time = 0;
-	data->forks = malloc(sizeof(pthread_mutex_t) * data->n_philos);
-	if (!data->forks)
-		return (NULL);
+	data->is_dead = 0;
+	pthread_mutex_init(&data->print_mutex, NULL);
+	pthread_mutex_init(&data->death_mutex, NULL);
+	x = 0;
 	while (x < data->n_philos)
 	{
 		pthread_mutex_init(&data->forks[x], NULL);
 		x++;
 	}
-	data->is_dead = 0;
-	pthread_mutex_init(&data->print_mutex, NULL);
-	pthread_mutex_init(&data->death_mutex, NULL);
-	return (data);
+	return (1);
 }
 
 int	ph_validate_arguments(int argc, char **argv, t_data *data)
@@ -94,4 +87,21 @@ long	ph_atol(char *str)
 		x++;
 	}
 	return (result);
+}
+
+void	ph_init_philos(t_data *data, t_philo *philos)
+{
+	int		x;
+
+	x = 0;
+	while (x < data->n_philos)
+	{
+		philos[x].id = x + 1;
+		philos[x].meals_eaten = 0;
+		philos[x].time_last_meal = data->start_time;
+		philos[x].left_fork = &data->forks[x];
+		philos[x].right_fork = &data->forks[(x + 1) % data->n_philos];
+		philos[x].data = data;
+		x++;
+	}
 }
