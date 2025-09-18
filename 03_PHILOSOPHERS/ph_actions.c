@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/18 21:01:46 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/19 00:31:10 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ph_eat(t_philo *philos)
 {
-	pthread_mutex_lock(&philos->meal_mutex);
 	ph_take_fork(philos);
+	pthread_mutex_lock(&philos->meal_mutex);
 	philos->time_last_meal = ph_elapsedtime(philos);
 	ph_print(philos, philos->id, "is eating");
 	pthread_mutex_lock(&philos->data->print_mutex);
