@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/18 01:14:09 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:55:52 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	*ph_routine(void *arg)
 	{
 		if (!ph_eat(philos))
 			break ;
-		if (!philos->data->simulation_over)
+		if (philos->data->simulation_over)
 			break ;
 		if (!ph_sleep_and_think(philos))
 			break ;
-		if (!philos->data->simulation_over)
+		if (philos->data->simulation_over)
 			break ;
 	}
 	return (NULL);
@@ -88,11 +88,18 @@ void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 	while (x < philos->data->n_philos)
 	{
 		pthread_mutex_lock(&philos->data->death_mutex);
+		pthread_mutex_lock(&philos->data->print_mutex);
+		printf("DBG_MON_READ: idx=%d id=%d last=%ld now=%ld since=%ld meals=%d\n",
+       		x, philos[x].id, philos[x].time_last_meal, ph_elapsedtime(philos),
+			ph_elapsedtime(philos) - philos[x].time_last_meal, philos[x].meals_eaten); // Debugging
+		pthread_mutex_unlock(&philos->data->print_mutex);
+
 		if (ph_elapsedtime(philos) - philos[x].time_last_meal > philos->data->time_die)
 		{
 			philos->data->simulation_over = 1;
 			pthread_mutex_lock(&philos->data->print_mutex);
-			printf("%ld %i has died\n", ph_elapsedtime(philos), philos[x].id);
+			printf("%ld %i has died (last meal at %ld)\n",
+					ph_elapsedtime(philos), philos[x].id, philos[x].time_last_meal); // Debugging
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			pthread_mutex_unlock(&philos->data->death_mutex);
 			return ;
