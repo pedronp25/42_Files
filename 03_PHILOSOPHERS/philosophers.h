@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/17 00:50:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/18 01:15:40 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_data
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	death_mutex;
 
+	pthread_t		monitor;
+	int				simulation_over;
+
 }	t_data;
 
 typedef struct s_philo
@@ -49,6 +52,8 @@ typedef struct s_philo
 	pthread_t		thread; // This philosopher's thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+
+	pthread_mutex_t	meal_mutex;
 
 	t_data			*data;
 
@@ -62,13 +67,16 @@ long	ph_atol(char *str);
 void	ph_init_philos(t_data *data, t_philo *philos);
 long	ph_gettime_ms(void);
 long	ph_elapsedtime(t_philo *philos);
-void	ph_create_thread(t_philo *philos);
+void	ph_create_threads(t_philo *philos);
+void	ph_join_threads(t_philo *philos);
 void	*ph_routine(void *arg);
+void	*ph_monitor(void *arg);
+void	ph_check_meals(t_philo *philos, int	*n_philos_full);
 void	ph_print(t_philo *philos, int id, char *msg);
 int		ph_eat(t_philo *philos);
 void	ph_take_fork(t_philo *philos);
 void	ph_putdown_fork(t_philo *philos);
 int		ph_sleep_and_think(t_philo *philos);
-int		ph_split_usleep(pthread_mutex_t *death_mutex, long time_left);
+int		ph_split_usleep(pthread_mutex_t *death_mutex, long time_left, int *simulation_over);
 
 #endif
