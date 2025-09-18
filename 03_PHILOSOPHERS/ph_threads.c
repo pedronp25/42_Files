@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/18 16:55:52 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/18 21:00:46 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,32 +81,30 @@ void	*ph_monitor(void *arg)
 
 void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 {
-	int	x;
+	int		x;
+	long	time_since_meal;
 
 	*n_philos_full = 0;
 	x = 0;
 	while (x < philos->data->n_philos)
 	{
-		pthread_mutex_lock(&philos->data->death_mutex);
-		pthread_mutex_lock(&philos->data->print_mutex);
-		printf("DBG_MON_READ: idx=%d id=%d last=%ld now=%ld since=%ld meals=%d\n",
-       		x, philos[x].id, philos[x].time_last_meal, ph_elapsedtime(philos),
-			ph_elapsedtime(philos) - philos[x].time_last_meal, philos[x].meals_eaten); // Debugging
-		pthread_mutex_unlock(&philos->data->print_mutex);
-
-		if (ph_elapsedtime(philos) - philos[x].time_last_meal > philos->data->time_die)
+		pthread_mutex_lock(&philos[x].meal_mutex);
+		time_since_meal = ph_elapsedtime(philos) - philos[x].time_last_meal;
+		if (time_since_meal > philos->data->time_die)
 		{
+			pthread_mutex_lock(&philos->data->death_mutex);
 			philos->data->simulation_over = 1;
+			pthread_mutex_unlock(&philos->data->death_mutex);
 			pthread_mutex_lock(&philos->data->print_mutex);
 			printf("%ld %i has died (last meal at %ld)\n",
 					ph_elapsedtime(philos), philos[x].id, philos[x].time_last_meal); // Debugging
 			pthread_mutex_unlock(&philos->data->print_mutex);
-			pthread_mutex_unlock(&philos->data->death_mutex);
+			pthread_mutex_unlock(&philos[x].meal_mutex);
 			return ;
 		}
 		if (philos->data->n_meals != -1 && philos[x].meals_eaten >= philos->data->n_meals)
 			(*n_philos_full)++;
-		pthread_mutex_unlock(&philos->data->death_mutex);
+		pthread_mutex_unlock(&philos[x].meal_mutex);
 		x++;
 	}
 }

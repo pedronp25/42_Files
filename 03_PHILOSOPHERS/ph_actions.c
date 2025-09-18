@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/18 16:56:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/18 21:01:46 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ph_eat(t_philo *philos)
 {
-	ph_take_fork(philos);
 	pthread_mutex_lock(&philos->meal_mutex);
-	ph_print(philos, philos->id, "is eating");
+	ph_take_fork(philos);
 	philos->time_last_meal = ph_elapsedtime(philos);
+	ph_print(philos, philos->id, "is eating");
 	pthread_mutex_lock(&philos->data->print_mutex);
 	printf("DBG_EAT: id=%d time_last_meal=%ld\n", philos->id, philos->time_last_meal); // Debugging
 	pthread_mutex_unlock(&philos->data->print_mutex);
@@ -32,8 +32,8 @@ int	ph_eat(t_philo *philos)
 	pthread_mutex_lock(&philos->data->print_mutex);
 	printf("DBG_EAT2: id=%d meals=%d\n", philos->id, philos->meals_eaten); // Debugging
 	pthread_mutex_unlock(&philos->data->print_mutex);
-	pthread_mutex_unlock(&philos->meal_mutex);
 	ph_putdown_fork(philos);
+	pthread_mutex_unlock(&philos->meal_mutex);
 	return (1);
 }
 
@@ -66,7 +66,7 @@ void	ph_putdown_fork(t_philo *philos)
 	if (philos->data->n_philos == 1)
 	{
 		pthread_mutex_unlock(philos->right_fork);
-		ph_print(philos, philos->id, "has taken a fork");
+		ph_print(philos, philos->id, "has put down a fork");
 	}
 	else if (philos->id % 2 == 0)
 	{
