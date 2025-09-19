@@ -1,0 +1,175 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG: init philo[1].time_last_meal=0
+DBG: start_time=1758318332293
+0 1 has taken a fork
+0 1 is eating
+DBG_EAT: id=1 time_last_meal=0
+DBG_EAT2: id=1 meals=1
+201 1 has put down a fork
+201 1 is sleeping
+261 1 is thinking
+261 1 has taken a fork
+261 1 is eating
+DBG_EAT: id=1 time_last_meal=261
+DBG_EAT2: id=1 meals=2
+463 1 has put down a fork
+463 1 is sleeping
+523 1 is thinking
+523 1 has taken a fork
+523 1 is eating
+DBG_EAT: id=1 time_last_meal=523
+DBG_EAT2: id=1 meals=3
+725 1 has put down a fork
+725 1 is sleeping
+785 1 is thinking
+785 1 has taken a fork
+785 1 is eating
+DBG_EAT: id=1 time_last_meal=785
+DBG_EAT2: id=1 meals=4
+987 1 has put down a fork
+987 1 is sleeping
+1047 1 is thinking
+1047 1 has taken a fork
+1047 1 is eating
+DBG_EAT: id=1 time_last_meal=1047
+DBG_EAT2: id=1 meals=5
+1249 1 has put down a fork
+1249 1 is sleeping
+1309 1 is thinking
+1309 1 has taken a fork
+1309 1 is eating
+DBG_EAT: id=1 time_last_meal=1309
+DBG_EAT2: id=1 meals=6
+1511 1 has put down a fork
+1511 1 is sleeping
+1571 1 is thinking
+1571 1 has taken a fork
+1571 1 is eating
+DBG_EAT: id=1 time_last_meal=1571
+DBG_EAT2: id=1 meals=7
+1773 1 has put down a fork
+1773 1 is sleeping
+1833 1 is thinking
+1833 1 has taken a fork
+1833 1 is eating
+DBG_EAT: id=1 time_last_meal=1833
+DBG_EAT2: id=1 meals=8
+2035 1 has put down a fork
+2035 1 is sleeping
+2095 1 is thinking
+2095 1 has taken a fork
+2095 1 is eating
+DBG_EAT: id=1 time_last_meal=2095
+DBG_EAT2: id=1 meals=9
+2296 1 has put down a fork
+2296 1 is sleeping
+2357 1 is thinking
+2357 1 has taken a fork
+2357 1 is eating
+DBG_EAT: id=1 time_last_meal=2357
+DBG_EAT2: id=1 meals=10
+2558 1 has put down a fork
+2558 1 is sleeping
+2618 1 is thinking
+2618 1 has taken a fork
+2618 1 is eating
+DBG_EAT: id=1 time_last_meal=2618
+DBG_EAT2: id=1 meals=11
+2819 1 has put down a fork
+2820 1 is sleeping
+2880 1 is thinking
+2880 1 has taken a fork
+2880 1 is eating
+DBG_EAT: id=1 time_last_meal=2880
+DBG_EAT2: id=1 meals=12
+3081 1 has put down a fork
+3081 1 is sleeping
+3141 1 is thinking
+3142 1 has taken a fork
+3142 1 is eating
+DBG_EAT: id=1 time_last_meal=3142
+DBG_EAT2: id=1 meals=13
+3343 1 has put down a fork
+3343 1 is sleeping
+3403 1 is thinking
+3404 1 has taken a fork
+3404 1 is eating
+DBG_EAT: id=1 time_last_meal=3404
+DBG_EAT2: id=1 meals=14
+3605 1 has put down a fork
+3605 1 is sleeping
+3666 1 is thinking
+3666 1 has taken a fork
+3666 1 is eating
+DBG_EAT: id=1 time_last_meal=3666
+DBG_EAT2: id=1 meals=15
+3867 1 has put down a fork
+3867 1 is sleeping
+3927 1 is thinking
+3927 1 has taken a fork
+3927 1 is eating
+DBG_EAT: id=1 time_last_meal=3927
+DBG_EAT2: id=1 meals=16
+4129 1 has put down a fork
+4129 1 is sleeping
+4189 1 is thinking
+4189 1 has taken a fork
+4189 1 is eating
+DBG_EAT: id=1 time_last_meal=4189
+DBG_EAT2: id=1 meals=17
+4390 1 has put down a fork
+4390 1 is sleeping
+4451 1 is thinking
+4451 1 has taken a fork
+4451 1 is eating
+DBG_EAT: id=1 time_last_meal=4451
+DBG_EAT2: id=1 meals=18
+4652 1 has put down a fork
+4652 1 is sleeping
+4713 1 is thinking
+4713 1 has taken a fork
+4713 1 is eating
+DBG_EAT: id=1 time_last_meal=4713
+DBG_EAT2: id=1 meals=19
+4914 1 has put down a fork
+4914 1 is sleeping
+4975 1 is thinking
+4975 1 has taken a fork
+4975 1 is eating
+DBG_EAT: id=1 time_last_meal=4975
+DBG_EAT2: id=1 meals=20
+5176 1 has put down a fork
+5176 1 is sleeping
+5237 1 is thinking
+5237 1 has taken a fork
+5237 1 is eating
+DBG_EAT: id=1 time_last_meal=5237
+DBG_EAT2: id=1 meals=21
+5438 1 has put down a fork
+5438 1 is sleeping
+5498 1 is thinking
+5499 1 has taken a fork
+5499 1 is eating
+DBG_EAT: id=1 time_last_meal=5499
+DBG_EAT2: id=1 meals=22
+5700 1 has put down a fork
+5700 1 is sleeping
+5760 1 is thinking
+5760 1 has taken a fork
+5760 1 is eating
+DBG_EAT: id=1 time_last_meal=5760
+DBG_EAT2: id=1 meals=23
+5962 1 has put down a fork
+5962 1 is sleeping
+6022 1 is thinking
+6022 1 has taken a fork
+6022 1 is eating
+DBG_EAT: id=1 time_last_meal=6022
+DBG_EAT2: id=1 meals=24
+6224 1 has put down a fork
+6224 1 is sleeping
+6284 1 is thinking
+6284 1 has taken a fork
+6284 1 is eating
+DBG_EAT: id=1 time_last_meal=6284
+DBG_EAT2: id=1 meal

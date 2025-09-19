@@ -1,0 +1,146 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG_INIT: meal_mutex init for philo 2
+DBG_INIT: meal_mutex init for philo 3
+DBG: init philo[1].time_last_meal=0
+DBG: init philo[2].time_last_meal=0
+DBG: init philo[3].time_last_meal=0
+DBG: start_time=1758318589516
+0 1 has taken the right fork
+0 1 has taken the left fork
+0 1 is eating
+DBG_EAT: id=1 time_last_meal=0
+0 3 has taken the right fork
+DBG_EAT2: id=1 meals=1
+101 1 has put down the left fork
+101 1 has put down the right fork
+101 1 is sleeping
+101 3 has taken the left fork
+101 3 is eating
+DBG_EAT: id=3 time_last_meal=101
+DBG_EAT2: id=3 meals=1
+202 3 has put down the left fork
+202 1 is thinking
+202 3 has put down the right fork
+202 3 is sleeping
+202 2 has taken the left fork
+202 2 has taken the right fork
+202 2 is eating
+DBG_EAT: id=2 time_last_meal=202
+202 1 has taken the right fork
+303 3 is thinking
+DBG_EAT2: id=2 meals=1
+303 2 has put down the right fork
+303 2 has put down the left fork
+303 2 is sleeping
+303 1 has taken the left fork
+303 1 is eating
+DBG_EAT: id=1 time_last_meal=303
+303 3 has taken the right fork
+405 2 is thinking
+DBG_EAT2: id=1 meals=2
+405 1 has put down the left fork
+405 1 has put down the right fork
+405 1 is sleeping
+405 3 has taken the left fork
+405 3 is eating
+DBG_EAT: id=3 time_last_meal=405
+506 1 is thinking
+DBG_EAT2: id=3 meals=2
+506 3 has put down the left fork
+506 3 has put down the right fork
+506 3 is sleeping
+506 2 has taken the left fork
+506 2 has taken the right fork
+506 2 is eating
+DBG_EAT: id=2 time_last_meal=506
+506 1 has taken the right fork
+607 3 is thinking
+DBG_EAT2: id=2 meals=2
+607 2 has put down the right fork
+607 2 has put down the left fork
+607 2 is sleeping
+607 1 has taken the left fork
+607 1 is eating
+DBG_EAT: id=1 time_last_meal=607
+608 3 has taken the right fork
+709 2 is thinking
+DBG_EAT2: id=1 meals=3
+709 1 has put down the left fork
+709 1 has put down the right fork
+709 1 is sleeping
+709 3 has taken the left fork
+709 3 is eating
+DBG_EAT: id=3 time_last_meal=709
+810 1 is thinking
+DBG_EAT2: id=3 meals=3
+810 3 has put down the left fork
+810 3 has put down the right fork
+810 3 is sleeping
+810 2 has taken the left fork
+810 2 has taken the right fork
+810 2 is eating
+DBG_EAT: id=2 time_last_meal=810
+810 1 has taken the right fork
+DBG_EAT2: id=2 meals=3
+912 2 has put down the right fork
+912 2 has put down the left fork
+912 3 is thinking
+912 2 is sleeping
+912 1 has taken the left fork
+912 1 is eating
+DBG_EAT: id=1 time_last_meal=912
+912 3 has taken the right fork
+DBG_EAT2: id=1 meals=4
+1013 1 has put down the left fork
+1013 1 has put down the right fork
+1013 2 is thinking
+1013 1 is sleeping
+1013 3 has taken the left fork
+1013 3 is eating
+DBG_EAT: id=3 time_last_meal=1013
+DBG_EAT2: id=3 meals=4
+1114 3 has put down the left fork
+1114 3 has put down the right fork
+1114 1 is thinking
+1114 3 is sleeping
+1114 2 has taken the left fork
+1114 2 has taken the right fork
+1114 2 is eating
+DBG_EAT: id=2 time_last_meal=1114
+1114 1 has taken the right fork
+DBG_EAT2: id=2 meals=4
+1216 2 has put down the right fork
+1216 3 is thinking
+1216 2 has put down the left fork
+1216 2 is sleeping
+1216 1 has taken the left fork
+1216 1 is eating
+DBG_EAT: id=1 time_last_meal=1216
+1216 3 has taken the right fork
+DBG_EAT2: id=1 meals=5
+1317 1 has put down the left fork
+1317 1 has put down the right fork
+1317 2 is thinking
+1317 1 is sleeping
+1317 3 has taken the left fork
+1317 3 is eating
+DBG_EAT: id=3 time_last_meal=1317
+DBG_EAT2: id=3 meals=5
+1418 3 has put down the left fork
+1418 1 is thinking
+1418 3 has put down the right fork
+1418 3 is sleeping
+1418 2 has taken the left fork
+1418 2 has taken the right fork
+1418 2 is eating
+DBG_EAT: id=2 time_last_meal=1418
+1418 1 has taken the right fork
+1520 3 is thinking
+DBG_EAT2: id=2 meals=5
+1520 2 has put down the right fork
+1520 2 has put down the left fork
+1520 2 is sleeping
+1520 1 has taken the left fork
+1520 1 is eating
+DBG_EAT: id=1 time_last_meal=1520
+1520 All philosophers ate enough

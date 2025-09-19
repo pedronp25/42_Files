@@ -1,0 +1,38 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG: init philo[1].time_last_meal=0
+DBG: start_time=1758317492021
+0 1 has taken a fork
+0 1 is eating
+DBG_EAT: id=1 time_last_meal=0
+DBG_EAT2: id=1 meals=1
+101 1 has put down a fork
+101 1 is sleeping
+201 1 is thinking
+201 1 has taken a fork
+201 1 is eating
+DBG_EAT: id=1 time_last_meal=201
+DBG_EAT2: id=1 meals=2
+303 1 has put down a fork
+303 1 is sleeping
+403 1 is thinking
+403 1 has taken a fork
+403 1 is eating
+DBG_EAT: id=1 time_last_meal=403
+DBG_EAT2: id=1 meals=3
+504 1 has put down a fork
+504 1 is sleeping
+605 1 is thinking
+605 1 has taken a fork
+605 1 is eating
+DBG_EAT: id=1 time_last_meal=605
+DBG_EAT2: id=1 meals=4
+706 1 has put down a fork
+706 1 is sleeping
+807 1 is thinking
+807 1 has taken a fork
+807 1 is eating
+DBG_EAT: id=1 time_last_meal=807
+DBG_EAT2: id=1 meals=5
+908 1 has put down a fork
+908 1 is sleeping
+908 All philosophers ate enough

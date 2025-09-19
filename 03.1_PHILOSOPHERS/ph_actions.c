@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 22:00:32 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/19 19:52:52 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ph_eat(t_philo *philos)
 	pthread_mutex_lock(&philos->data->print_mutex);
 	printf("DBG_EAT: id=%d time_last_meal=%ld\n", philos->id, philos->time_last_meal); // Debugging
 	pthread_mutex_unlock(&philos->data->print_mutex);
-	//usleep(philos->data->time_eat * 1000);
 	if (!ph_split_usleep(&philos->data->death_mutex, philos->data->time_eat,
 				&philos->data->simulation_over))
 	{
@@ -88,7 +87,6 @@ void	ph_putdown_fork(t_philo *philos)
 int	ph_sleep_and_think(t_philo *philos)
 {
 	ph_print(philos, philos->id, "is sleeping");
-	//usleep(philos->data->time_sleep * 1000);
 	if (!ph_split_usleep(&philos->data->death_mutex, philos->data->time_sleep,
 				&philos->data->simulation_over))
 			return (0);
@@ -104,7 +102,7 @@ int	ph_split_usleep(pthread_mutex_t *death_mutex, long time_left, int *simulatio
 	int	time_chunk;
 
 	time_left *= 1000; // Convert to microseconds
-	time_chunk = time_left / 4; // Could make it larger if needed
+	time_chunk = time_left / 10; // Could make it larger if needed
 	if (time_chunk < 1000)
 		time_chunk = 1000;
 	if (time_left < time_chunk)

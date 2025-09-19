@@ -1,0 +1,76 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG_INIT: meal_mutex init for philo 2
+DBG_INIT: meal_mutex init for philo 3
+DBG: init philo[1].time_last_meal=0
+DBG: init philo[2].time_last_meal=0
+DBG: init philo[3].time_last_meal=0
+DBG: start_time=1758318560524
+0 1 has taken the right fork
+0 1 has taken the left fork
+0 1 is eating
+DBG_EAT: id=1 time_last_meal=0
+0 3 has taken the right fork
+DBG_EAT2: id=1 meals=1
+101 1 has put down the left fork
+101 1 has put down the right fork
+101 1 is sleeping
+101 3 has taken the left fork
+101 3 is eating
+DBG_EAT: id=3 time_last_meal=101
+162 1 is thinking
+DBG_EAT2: id=3 meals=1
+202 3 has put down the left fork
+202 3 has put down the right fork
+202 3 is sleeping
+202 2 has taken the left fork
+202 1 has taken the right fork
+202 2 has taken the right fork
+202 2 is eating
+DBG_EAT: id=2 time_last_meal=202
+264 3 is thinking
+DBG_EAT2: id=2 meals=1
+304 2 has put down the right fork
+304 2 has put down the left fork
+304 2 is sleeping
+304 1 has taken the left fork
+304 1 is eating
+DBG_EAT: id=1 time_last_meal=304
+304 3 has taken the right fork
+365 2 is thinking
+DBG_EAT2: id=1 meals=2
+405 1 has put down the left fork
+405 1 has put down the right fork
+405 1 is sleeping
+405 3 has taken the left fork
+405 3 is eating
+DBG_EAT: id=3 time_last_meal=405
+466 1 is thinking
+DBG_EAT2: id=3 meals=2
+506 3 has put down the left fork
+506 3 has put down the right fork
+506 3 is sleeping
+506 1 has taken the right fork
+506 1 has taken the left fork
+506 1 is eating
+DBG_EAT: id=1 time_last_meal=506
+506 2 has taken the left fork
+568 3 is thinking
+DBG_EAT2: id=1 meals=3
+608 1 has put down the left fork
+608 1 has put down the right fork
+608 1 is sleeping
+608 2 has taken the right fork
+608 2 is eating
+DBG_EAT: id=2 time_last_meal=608
+669 1 is thinking
+669 1 has taken the right fork
+DBG_EAT2: id=2 meals=2
+709 2 has put down the right fork
+709 2 has put down the left fork
+709 2 is sleeping
+709 1 has taken the left fork
+709 3 has taken the right fork
+709 1 is eating
+DBG_EAT: id=1 time_last_meal=709
+709 3 has died (last meal at 405)
+DBG_EAT: id=3 time_last_meal=734
