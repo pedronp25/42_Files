@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 00:31:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/19 01:50:21 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 	{
 		pthread_mutex_lock(&philos[x].meal_mutex);
 		time_since_meal = ph_elapsedtime(philos) - philos[x].time_last_meal;
-		if (time_since_meal > philos->data->time_die)
+		if (time_since_meal >= philos->data->time_die)
 		{
 			pthread_mutex_lock(&philos->data->death_mutex);
 			philos->data->simulation_over = 1;

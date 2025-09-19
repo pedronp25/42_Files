@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 00:31:10 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/19 01:51:24 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	ph_take_fork(t_philo *philos)
 	}
 	else if (philos->id % 2 == 0)
 	{
-		usleep(50);
-		pthread_mutex_lock(philos->left_fork); // Pick up left fork
+		//usleep(50);
+		pthread_mutex_lock(philos->right_fork); // Pick up left fork
 		ph_print(philos, philos->id, "has taken the left fork");
-		pthread_mutex_lock(philos->right_fork); // Pick up right fork
+		pthread_mutex_lock(philos->left_fork); // Pick up right fork
 		ph_print(philos, philos->id, "has taken the right fork");
 	}
 	else
 	{
-		pthread_mutex_lock(philos->right_fork);
-		ph_print(philos, philos->id, "has taken the right fork");
 		pthread_mutex_lock(philos->left_fork);
+		ph_print(philos, philos->id, "has taken the right fork");
+		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken the left fork");
 	}
 }
@@ -70,16 +70,16 @@ void	ph_putdown_fork(t_philo *philos)
 	}
 	else if (philos->id % 2 == 0)
 	{
-		pthread_mutex_unlock(philos->right_fork); // Put down right fork
+		pthread_mutex_unlock(philos->left_fork); // Put down right fork
 		ph_print(philos, philos->id, "has put down the right fork");
-		pthread_mutex_unlock(philos->left_fork); // Put down left fork
+		pthread_mutex_unlock(philos->right_fork); // Put down left fork
 		ph_print(philos, philos->id, "has put down the left fork");
 	}
 	else
 	{
-		pthread_mutex_unlock(philos->left_fork);
-		ph_print(philos, philos->id, "has put down the left fork");
 		pthread_mutex_unlock(philos->right_fork);
+		ph_print(philos, philos->id, "has put down the left fork");
+		pthread_mutex_unlock(philos->left_fork);
 		ph_print(philos, philos->id, "has put down the right fork");
 	}
 }
@@ -102,7 +102,11 @@ int	ph_split_usleep(pthread_mutex_t *death_mutex, long time_left, int *simulatio
 	int	time_chunk;
 
 	time_left *= 1000; // Convert to microseconds
-	time_chunk = time_left / 16; // Could make it larger if needed
+	time_chunk = time_left / 10; // Could make it larger if needed
+	if (time_chunk < 1000)
+		time_chunk = 1000;
+	if (time_left < time_chunk)
+		usleep(time_left);
 	while (time_left > 0)
 	{
 		usleep(time_chunk);
