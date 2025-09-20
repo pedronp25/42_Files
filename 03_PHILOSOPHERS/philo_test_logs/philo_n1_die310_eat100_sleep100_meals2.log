@@ -1,17 +1,5 @@
 DBG_INIT: meal_mutex init for philo 1
 DBG: init philo[1].time_last_meal=0
-DBG: start_time=1758318317929
+DBG: start_time=1758384920515
 0 1 has taken a fork
-0 1 is eating
-DBG_EAT: id=1 time_last_meal=0
-DBG_EAT2: id=1 meals=1
-101 1 has put down a fork
-101 1 is sleeping
-202 1 is thinking
-202 1 has taken a fork
-202 1 is eating
-DBG_EAT: id=1 time_last_meal=202
-DBG_EAT2: id=1 meals=2
-303 1 has put down a fork
-303 1 is sleeping
-303 All philosophers ate enough
+310 1 has died (last meal at 0)

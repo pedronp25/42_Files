@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 22:00:32 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/20 23:17:53 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,15 @@ int	ph_eat(t_philo *philos)
 {
 	ph_take_fork(philos);
 	pthread_mutex_lock(&philos->meal_mutex);
-	philos->time_last_meal = ph_elapsedtime(philos);
-	ph_print(philos, philos->id, "is eating");
-	pthread_mutex_lock(&philos->data->print_mutex);
-	printf("DBG_EAT: id=%d time_last_meal=%ld\n", philos->id, philos->time_last_meal); // Debugging
-	pthread_mutex_unlock(&philos->data->print_mutex);
-	//usleep(philos->data->time_eat * 1000);
-	if (!ph_split_usleep(&philos->data->death_mutex, philos->data->time_eat,
-				&philos->data->simulation_over))
+	if (ph_get_sim_over(philos->data))
 	{
 		pthread_mutex_unlock(&philos->meal_mutex);
-		ph_putdown_fork(philos);
 		return (0);
 	}
+	philos->time_last_meal = ph_elapsedtime(philos);
+	ph_print(philos, philos->id, "is eating");
+	usleep(philos->data->time_eat * 1000);
 	philos->meals_eaten++;
-	pthread_mutex_lock(&philos->data->print_mutex);
-	printf("DBG_EAT2: id=%d meals=%d\n", philos->id, philos->meals_eaten); // Debugging
-	pthread_mutex_unlock(&philos->data->print_mutex);
 	ph_putdown_fork(philos);
 	pthread_mutex_unlock(&philos->meal_mutex);
 	return (1);
@@ -44,6 +36,8 @@ void	ph_take_fork(t_philo *philos)
 	{
 		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken a fork");
+		usleep(philos->data->time_die * 1000);
+		ph_set_sim_over(philos->data);
 	}
 	else if (philos->id % 2 == 0)
 	{
@@ -64,12 +58,7 @@ void	ph_take_fork(t_philo *philos)
 
 void	ph_putdown_fork(t_philo *philos)
 {
-	if (philos->data->n_philos == 1)
-	{
-		pthread_mutex_unlock(philos->right_fork);
-		ph_print(philos, philos->id, "has put down a fork");
-	}
-	else if (philos->id % 2 == 0)
+	if (philos->id % 2 == 0)
 	{
 		pthread_mutex_unlock(philos->left_fork); // Put down right fork
 		ph_print(philos, philos->id, "has put down the right fork");
@@ -88,11 +77,8 @@ void	ph_putdown_fork(t_philo *philos)
 int	ph_sleep_and_think(t_philo *philos)
 {
 	ph_print(philos, philos->id, "is sleeping");
-	//usleep(philos->data->time_sleep * 1000);
-	if (!ph_split_usleep(&philos->data->death_mutex, philos->data->time_sleep,
-				&philos->data->simulation_over))
-			return (0);
-	if (philos->data->simulation_over)
+	usleep(philos->data->time_sleep * 1000);
+	if (ph_get_sim_over(philos->data))
 		return (0);
 	ph_print(philos, philos->id, "is thinking");
 	usleep(50);

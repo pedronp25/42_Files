@@ -1,0 +1,757 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG_INIT: meal_mutex init for philo 2
+DBG_INIT: meal_mutex init for philo 3
+DBG: init philo[1].time_last_meal=0
+DBG: init philo[2].time_last_meal=0
+DBG: init philo[3].time_last_meal=0
+0 1 has taken the right fork
+0 1 has taken the left fork
+0 1 is eating
+DBG_EAT: id=1 time_last_meal=0
+0 3 has taken the right fork
+DBG: start_time=1758386381601
+DBG_EAT2: id=1 meals=1
+60 1 has put down the left fork
+60 1 has put down the right fork
+60 1 is sleeping
+60 3 has taken the left fork
+60 3 is eating
+DBG_EAT: id=3 time_last_meal=60
+120 1 is thinking
+DBG_EAT2: id=3 meals=1
+120 3 has put down the left fork
+120 1 has taken the right fork
+120 1 has taken the left fork
+120 1 is eating
+DBG_EAT: id=1 time_last_meal=120
+120 3 has put down the right fork
+120 3 is sleeping
+120 2 has taken the left fork
+DBG_EAT2: id=1 meals=2
+180 3 is thinking
+180 1 has put down the left fork
+180 1 has put down the right fork
+180 2 has taken the right fork
+180 2 is eating
+DBG_EAT: id=2 time_last_meal=180
+180 1 is sleeping
+240 1 is thinking
+240 1 has taken the right fork
+DBG_EAT2: id=2 meals=1
+240 2 has put down the right fork
+240 1 has taken the left fork
+240 1 is eating
+DBG_EAT: id=1 time_last_meal=240
+240 2 has put down the left fork
+240 2 is sleeping
+240 3 has taken the right fork
+DBG_EAT2: id=1 meals=3
+300 1 has put down the left fork
+300 1 has put down the right fork
+300 1 is sleeping
+300 3 has taken the left fork
+300 3 is eating
+DBG_EAT: id=3 time_last_meal=300
+300 2 is thinking
+DBG_EAT2: id=3 meals=2
+360 3 has put down the left fork
+360 1 is thinking
+360 1 has taken the right fork
+360 1 has taken the left fork
+360 1 is eating
+DBG_EAT: id=1 time_last_meal=360
+361 3 has put down the right fork
+361 3 is sleeping
+361 2 has taken the left fork
+DBG_EAT2: id=1 meals=4
+421 1 has put down the left fork
+421 1 has put down the right fork
+421 3 is thinking
+421 1 is sleeping
+421 2 has taken the right fork
+421 2 is eating
+DBG_EAT: id=2 time_last_meal=421
+481 1 is thinking
+481 1 has taken the right fork
+DBG_EAT2: id=2 meals=2
+481 2 has put down the right fork
+481 2 has put down the left fork
+481 1 has taken the left fork
+481 1 is eating
+DBG_EAT: id=1 time_last_meal=481
+481 2 is sleeping
+481 3 has taken the right fork
+DBG_EAT2: id=1 meals=5
+541 2 is thinking
+541 1 has put down the left fork
+541 1 has put down the right fork
+541 1 is sleeping
+541 3 has taken the left fork
+541 3 is eating
+DBG_EAT: id=3 time_last_meal=541
+DBG_EAT2: id=3 meals=3
+601 3 has put down the left fork
+601 1 is thinking
+601 1 has taken the right fork
+601 1 has taken the left fork
+601 1 is eating
+DBG_EAT: id=1 time_last_meal=601
+601 3 has put down the right fork
+601 3 is sleeping
+601 2 has taken the left fork
+DBG_EAT2: id=1 meals=6
+661 3 is thinking
+661 1 has put down the left fork
+661 1 has put down the right fork
+661 1 is sleeping
+661 2 has taken the right fork
+661 2 is eating
+DBG_EAT: id=2 time_last_meal=661
+721 1 is thinking
+721 1 has taken the right fork
+DBG_EAT2: id=2 meals=3
+721 2 has put down the right fork
+721 1 has taken the left fork
+721 1 is eating
+DBG_EAT: id=1 time_last_meal=721
+721 2 has put down the left fork
+721 2 is sleeping
+721 3 has taken the right fork
+DBG_EAT2: id=1 meals=7
+782 1 has put down the left fork
+782 1 has put down the right fork
+782 3 has taken the left fork
+782 3 is eating
+DBG_EAT: id=3 time_last_meal=782
+782 1 is sleeping
+782 2 is thinking
+DBG_EAT2: id=3 meals=4
+842 3 has put down the left fork
+842 1 is thinking
+842 1 has taken the right fork
+842 1 has taken the left fork
+842 1 is eating
+DBG_EAT: id=1 time_last_meal=842
+842 3 has put down the right fork
+842 3 is sleeping
+842 2 has taken the left fork
+DBG_EAT2: id=1 meals=8
+902 1 has put down the left fork
+902 1 has put down the right fork
+902 1 is sleeping
+902 2 has taken the right fork
+902 2 is eating
+DBG_EAT: id=2 time_last_meal=902
+902 3 is thinking
+962 1 is thinking
+962 1 has taken the right fork
+DBG_EAT2: id=2 meals=4
+962 2 has put down the right fork
+962 2 has put down the left fork
+962 1 has taken the left fork
+962 1 is eating
+DBG_EAT: id=1 time_last_meal=962
+962 2 is sleeping
+962 3 has taken the right fork
+DBG_EAT2: id=1 meals=9
+1022 1 has put down the left fork
+1022 1 has put down the right fork
+1022 3 has taken the left fork
+1022 3 is eating
+DBG_EAT: id=3 time_last_meal=1022
+1022 1 is sleeping
+1022 2 is thinking
+DBG_EAT2: id=3 meals=5
+1082 3 has put down the left fork
+1082 1 is thinking
+1082 3 has put down the right fork
+1082 1 has taken the right fork
+1082 1 has taken the left fork
+1082 1 is eating
+DBG_EAT: id=1 time_last_meal=1082
+1082 3 is sleeping
+1082 2 has taken the left fork
+DBG_EAT2: id=1 meals=10
+1142 3 is thinking
+1142 1 has put down the left fork
+1142 1 has put down the right fork
+1142 1 is sleeping
+1143 2 has taken the right fork
+1143 2 is eating
+DBG_EAT: id=2 time_last_meal=1143
+1203 1 is thinking
+1203 1 has taken the right fork
+DBG_EAT2: id=2 meals=5
+1203 2 has put down the right fork
+1203 2 has put down the left fork
+1203 2 is sleeping
+1203 1 has taken the left fork
+1203 1 is eating
+DBG_EAT: id=1 time_last_meal=1203
+1203 3 has taken the right fork
+1263 2 is thinking
+DBG_EAT2: id=1 meals=11
+1263 1 has put down the left fork
+1263 1 has put down the right fork
+1263 3 has taken the left fork
+1263 1 is sleeping
+1263 3 is eating
+DBG_EAT: id=3 time_last_meal=1263
+DBG_EAT2: id=3 meals=6
+1323 3 has put down the left fork
+1323 1 is thinking
+1323 1 has taken the right fork
+1323 1 has taken the left fork
+1323 1 is eating
+DBG_EAT: id=1 time_last_meal=1323
+1323 3 has put down the right fork
+1323 3 is sleeping
+1323 2 has taken the left fork
+DBG_EAT2: id=1 meals=12
+1383 3 is thinking
+1383 1 has put down the left fork
+1383 1 has put down the right fork
+1383 1 is sleeping
+1383 2 has taken the right fork
+1383 2 is eating
+DBG_EAT: id=2 time_last_meal=1383
+1443 1 is thinking
+1443 1 has taken the right fork
+DBG_EAT2: id=2 meals=6
+1443 2 has put down the right fork
+1443 2 has put down the left fork
+1443 1 has taken the left fork
+1443 1 is eating
+DBG_EAT: id=1 time_last_meal=1443
+1443 2 is sleeping
+1443 3 has taken the right fork
+DBG_EAT2: id=1 meals=13
+1503 1 has put down the left fork
+1503 2 is thinking
+1503 1 has put down the right fork
+1503 1 is sleeping
+1503 3 has taken the left fork
+1503 3 is eating
+DBG_EAT: id=3 time_last_meal=1503
+1563 1 is thinking
+DBG_EAT2: id=3 meals=7
+1564 3 has put down the left fork
+1564 3 has put down the right fork
+1564 1 has taken the right fork
+1564 1 has taken the left fork
+1564 1 is eating
+DBG_EAT: id=1 time_last_meal=1564
+1564 3 is sleeping
+1564 2 has taken the left fork
+DBG_EAT2: id=1 meals=14
+1624 3 is thinking
+1624 1 has put down the left fork
+1624 1 has put down the right fork
+1624 1 is sleeping
+1624 2 has taken the right fork
+1624 2 is eating
+DBG_EAT: id=2 time_last_meal=1624
+1684 1 is thinking
+1684 1 has taken the right fork
+DBG_EAT2: id=2 meals=7
+1684 2 has put down the right fork
+1684 2 has put down the left fork
+1684 2 is sleeping
+1684 1 has taken the left fork
+1684 1 is eating
+DBG_EAT: id=1 time_last_meal=1684
+1684 3 has taken the right fork
+DBG_EAT2: id=1 meals=15
+1744 1 has put down the left fork
+1744 2 is thinking
+1744 1 has put down the right fork
+1744 1 is sleeping
+1744 3 has taken the left fork
+1744 3 is eating
+DBG_EAT: id=3 time_last_meal=1744
+1804 1 is thinking
+DBG_EAT2: id=3 meals=8
+1804 3 has put down the left fork
+1804 3 has put down the right fork
+1804 1 has taken the right fork
+1804 1 has taken the left fork
+1804 1 is eating
+DBG_EAT: id=1 time_last_meal=1804
+1804 3 is sleeping
+1804 2 has taken the left fork
+DBG_EAT2: id=1 meals=16
+1864 3 is thinking
+1864 1 has put down the left fork
+1864 1 has put down the right fork
+1864 1 is sleeping
+1864 2 has taken the right fork
+1864 2 is eating
+DBG_EAT: id=2 time_last_meal=1864
+1924 1 is thinking
+1924 1 has taken the right fork
+DBG_EAT2: id=2 meals=8
+1925 2 has put down the right fork
+1925 2 has put down the left fork
+1925 1 has taken the left fork
+1925 1 is eating
+DBG_EAT: id=1 time_last_meal=1925
+1925 2 is sleeping
+1925 3 has taken the right fork
+DBG_EAT2: id=1 meals=17
+1985 1 has put down the left fork
+1985 2 is thinking
+1985 1 has put down the right fork
+1985 1 is sleeping
+1985 3 has taken the left fork
+1985 3 is eating
+DBG_EAT: id=3 time_last_meal=1985
+2045 1 is thinking
+DBG_EAT2: id=3 meals=9
+2045 3 has put down the left fork
+2045 3 has put down the right fork
+2045 3 is sleeping
+2045 2 has taken the left fork
+2045 2 has taken the right fork
+2045 2 is eating
+DBG_EAT: id=2 time_last_meal=2045
+2045 1 has taken the right fork
+2105 3 is thinking
+DBG_EAT2: id=2 meals=9
+2105 2 has put down the right fork
+2105 1 has taken the left fork
+2105 1 is eating
+DBG_EAT: id=1 time_last_meal=2105
+2105 2 has put down the left fork
+2105 2 is sleeping
+2105 3 has taken the right fork
+DBG_EAT2: id=1 meals=18
+2165 1 has put down the left fork
+2165 2 is thinking
+2165 1 has put down the right fork
+2165 1 is sleeping
+2165 3 has taken the left fork
+2165 3 is eating
+DBG_EAT: id=3 time_last_meal=2165
+2225 1 is thinking
+DBG_EAT2: id=3 meals=10
+2225 3 has put down the left fork
+2225 3 has put down the right fork
+2225 3 is sleeping
+2225 1 has taken the right fork
+2225 1 has taken the left fork
+2225 1 is eating
+DBG_EAT: id=1 time_last_meal=2225
+2225 2 has taken the left fork
+DBG_EAT2: id=1 meals=19
+2285 3 is thinking
+2285 1 has put down the left fork
+2285 1 has put down the right fork
+2286 1 is sleeping
+2286 2 has taken the right fork
+2286 2 is eating
+DBG_EAT: id=2 time_last_meal=2286
+DBG_EAT2: id=2 meals=10
+2346 2 has put down the right fork
+2346 1 is thinking
+2346 1 has taken the right fork
+2346 1 has taken the left fork
+2346 1 is eating
+DBG_EAT: id=1 time_last_meal=2346
+2346 2 has put down the left fork
+2346 2 is sleeping
+2346 3 has taken the right fork
+DBG_EAT2: id=1 meals=20
+2406 1 has put down the left fork
+2406 2 is thinking
+2406 1 has put down the right fork
+2406 1 is sleeping
+2406 3 has taken the left fork
+2406 3 is eating
+DBG_EAT: id=3 time_last_meal=2406
+2466 1 is thinking
+DBG_EAT2: id=3 meals=11
+2466 3 has put down the left fork
+2466 3 has put down the right fork
+2466 3 is sleeping
+2466 1 has taken the right fork
+2466 1 has taken the left fork
+2466 1 is eating
+DBG_EAT: id=1 time_last_meal=2466
+2466 2 has taken the left fork
+2526 3 is thinking
+DBG_EAT2: id=1 meals=21
+2526 1 has put down the left fork
+2526 1 has put down the right fork
+2526 2 has taken the right fork
+2526 2 is eating
+DBG_EAT: id=2 time_last_meal=2526
+2526 1 is sleeping
+DBG_EAT2: id=2 meals=11
+2586 2 has put down the right fork
+2586 1 is thinking
+2586 1 has taken the right fork
+2586 1 has taken the left fork
+2586 1 is eating
+DBG_EAT: id=1 time_last_meal=2586
+2586 2 has put down the left fork
+2586 2 is sleeping
+2586 3 has taken the right fork
+DBG_EAT2: id=1 meals=22
+2646 1 has put down the left fork
+2646 2 is thinking
+2646 1 has put down the right fork
+2646 1 is sleeping
+2646 3 has taken the left fork
+2646 3 is eating
+DBG_EAT: id=3 time_last_meal=2646
+2706 1 is thinking
+DBG_EAT2: id=3 meals=12
+2706 3 has put down the left fork
+2707 3 has put down the right fork
+2707 3 is sleeping
+2707 1 has taken the right fork
+2707 1 has taken the left fork
+2707 1 is eating
+DBG_EAT: id=1 time_last_meal=2707
+2707 2 has taken the left fork
+DBG_EAT2: id=1 meals=23
+2767 3 is thinking
+2767 1 has put down the left fork
+2767 1 has put down the right fork
+2767 1 is sleeping
+2767 2 has taken the right fork
+2767 2 is eating
+DBG_EAT: id=2 time_last_meal=2767
+2827 1 is thinking
+2827 1 has taken the right fork
+DBG_EAT2: id=2 meals=12
+2827 2 has put down the right fork
+2827 2 has put down the left fork
+2827 2 is sleeping
+2827 1 has taken the left fork
+2827 1 is eating
+DBG_EAT: id=1 time_last_meal=2827
+2827 3 has taken the right fork
+DBG_EAT2: id=1 meals=24
+2887 1 has put down the left fork
+2887 2 is thinking
+2887 1 has put down the right fork
+2887 1 is sleeping
+2887 3 has taken the left fork
+2887 3 is eating
+DBG_EAT: id=3 time_last_meal=2887
+2947 1 is thinking
+DBG_EAT2: id=3 meals=13
+2947 3 has put down the left fork
+2947 3 has put down the right fork
+2947 1 has taken the right fork
+2947 1 has taken the left fork
+2947 1 is eating
+DBG_EAT: id=1 time_last_meal=2947
+2947 3 is sleeping
+2947 2 has taken the left fork
+3007 3 is thinking
+DBG_EAT2: id=1 meals=25
+3007 1 has put down the left fork
+3007 1 has put down the right fork
+3007 1 is sleeping
+3007 2 has taken the right fork
+3007 2 is eating
+DBG_EAT: id=2 time_last_meal=3007
+3068 1 is thinking
+3068 1 has taken the right fork
+DBG_EAT2: id=2 meals=13
+3068 2 has put down the right fork
+3068 1 has taken the left fork
+3068 1 is eating
+DBG_EAT: id=1 time_last_meal=3068
+3068 2 has put down the left fork
+3068 2 is sleeping
+3068 3 has taken the right fork
+DBG_EAT2: id=1 meals=26
+3128 1 has put down the left fork
+3128 2 is thinking
+3128 1 has put down the right fork
+3128 1 is sleeping
+3128 3 has taken the left fork
+3128 3 is eating
+DBG_EAT: id=3 time_last_meal=3128
+3188 1 is thinking
+DBG_EAT2: id=3 meals=14
+3188 3 has put down the left fork
+3188 3 has put down the right fork
+3188 1 has taken the right fork
+3188 1 has taken the left fork
+3188 1 is eating
+DBG_EAT: id=1 time_last_meal=3188
+3188 3 is sleeping
+3188 2 has taken the left fork
+3248 3 is thinking
+DBG_EAT2: id=1 meals=27
+3248 1 has put down the left fork
+3248 1 has put down the right fork
+3248 2 has taken the right fork
+3248 2 is eating
+DBG_EAT: id=2 time_last_meal=3248
+3248 1 is sleeping
+DBG_EAT2: id=2 meals=14
+3308 2 has put down the right fork
+3308 1 is thinking
+3308 1 has taken the right fork
+3308 1 has taken the left fork
+3308 1 is eating
+DBG_EAT: id=1 time_last_meal=3308
+3308 2 has put down the left fork
+3308 2 is sleeping
+3308 3 has taken the right fork
+DBG_EAT2: id=1 meals=28
+3368 1 has put down the left fork
+3368 2 is thinking
+3368 1 has put down the right fork
+3368 1 is sleeping
+3368 3 has taken the left fork
+3368 3 is eating
+DBG_EAT: id=3 time_last_meal=3368
+3428 1 is thinking
+DBG_EAT2: id=3 meals=15
+3428 3 has put down the left fork
+3429 3 has put down the right fork
+3429 1 has taken the right fork
+3429 1 has taken the left fork
+3429 1 is eating
+DBG_EAT: id=1 time_last_meal=3429
+3429 3 is sleeping
+3429 2 has taken the left fork
+DBG_EAT2: id=1 meals=29
+3489 3 is thinking
+3489 1 has put down the left fork
+3489 1 has put down the right fork
+3489 1 is sleeping
+3489 2 has taken the right fork
+3489 2 is eating
+DBG_EAT: id=2 time_last_meal=3489
+DBG_EAT2: id=2 meals=15
+3549 2 has put down the right fork
+3549 1 is thinking
+3549 1 has taken the right fork
+3549 1 has taken the left fork
+3549 1 is eating
+DBG_EAT: id=1 time_last_meal=3549
+3549 2 has put down the left fork
+3549 2 is sleeping
+3549 3 has taken the right fork
+DBG_EAT2: id=1 meals=30
+3609 1 has put down the left fork
+3609 1 has put down the right fork
+3609 1 is sleeping
+3609 3 has taken the left fork
+3609 3 is eating
+DBG_EAT: id=3 time_last_meal=3609
+3609 2 is thinking
+DBG_EAT2: id=3 meals=16
+3669 3 has put down the left fork
+3669 1 is thinking
+3669 1 has taken the right fork
+3669 1 has taken the left fork
+3669 1 is eating
+DBG_EAT: id=1 time_last_meal=3669
+3669 3 has put down the right fork
+3669 2 has taken the left fork
+3669 3 is sleeping
+DBG_EAT2: id=1 meals=31
+3729 1 has put down the left fork
+3729 1 has put down the right fork
+3729 1 is sleeping
+3729 2 has taken the right fork
+3729 2 is eating
+DBG_EAT: id=2 time_last_meal=3729
+3729 3 is thinking
+3789 1 is thinking
+DBG_EAT2: id=2 meals=16
+3789 2 has put down the right fork
+3789 1 has taken the right fork
+3789 1 has taken the left fork
+3789 1 is eating
+DBG_EAT: id=1 time_last_meal=3789
+3789 2 has put down the left fork
+3789 2 is sleeping
+3789 3 has taken the right fork
+DBG_EAT2: id=1 meals=32
+3849 1 has put down the left fork
+3849 2 is thinking
+3849 1 has put down the right fork
+3849 1 is sleeping
+3849 3 has taken the left fork
+3849 3 is eating
+DBG_EAT: id=3 time_last_meal=3849
+3910 1 is thinking
+DBG_EAT2: id=3 meals=17
+3910 3 has put down the left fork
+3910 3 has put down the right fork
+3910 3 is sleeping
+3910 1 has taken the right fork
+3910 1 has taken the left fork
+3910 1 is eating
+DBG_EAT: id=1 time_last_meal=3910
+3910 2 has taken the left fork
+3970 3 is thinking
+DBG_EAT2: id=1 meals=33
+3970 1 has put down the left fork
+3970 1 has put down the right fork
+3970 1 is sleeping
+3970 2 has taken the right fork
+3970 2 is eating
+DBG_EAT: id=2 time_last_meal=3970
+4030 1 is thinking
+4030 1 has taken the right fork
+DBG_EAT2: id=2 meals=17
+4030 2 has put down the right fork
+4030 1 has taken the left fork
+4030 1 is eating
+DBG_EAT: id=1 time_last_meal=4030
+4030 2 has put down the left fork
+4030 2 is sleeping
+4030 3 has taken the right fork
+DBG_EAT2: id=1 meals=34
+4090 1 has put down the left fork
+4090 1 has put down the right fork
+4090 2 is thinking
+4090 3 has taken the left fork
+4090 1 is sleeping
+4090 3 is eating
+DBG_EAT: id=3 time_last_meal=4090
+DBG_EAT2: id=3 meals=18
+4150 3 has put down the left fork
+4150 1 is thinking
+4150 1 has taken the right fork
+4150 1 has taken the left fork
+4150 1 is eating
+DBG_EAT: id=1 time_last_meal=4150
+4150 3 has put down the right fork
+4150 3 is sleeping
+4150 2 has taken the left fork
+4210 3 is thinking
+DBG_EAT2: id=1 meals=35
+4210 1 has put down the left fork
+4210 1 has put down the right fork
+4210 1 is sleeping
+4210 2 has taken the right fork
+4210 2 is eating
+DBG_EAT: id=2 time_last_meal=4210
+4271 1 is thinking
+4271 1 has taken the right fork
+DBG_EAT2: id=2 meals=18
+4271 2 has put down the right fork
+4271 2 has put down the left fork
+4271 2 is sleeping
+4271 1 has taken the left fork
+4271 1 is eating
+DBG_EAT: id=1 time_last_meal=4271
+4271 3 has taken the right fork
+4331 2 is thinking
+DBG_EAT2: id=1 meals=36
+4331 1 has put down the left fork
+4331 1 has put down the right fork
+4331 3 has taken the left fork
+4331 3 is eating
+DBG_EAT: id=3 time_last_meal=4331
+4331 1 is sleeping
+DBG_EAT2: id=3 meals=19
+4391 3 has put down the left fork
+4391 3 has put down the right fork
+4391 1 is thinking
+4391 3 is sleeping
+4391 1 has taken the right fork
+4391 1 has taken the left fork
+4391 1 is eating
+DBG_EAT: id=1 time_last_meal=4391
+4391 2 has taken the left fork
+DBG_EAT2: id=1 meals=37
+4451 3 is thinking
+4451 1 has put down the left fork
+4451 1 has put down the right fork
+4451 1 is sleeping
+4451 2 has taken the right fork
+4451 2 is eating
+DBG_EAT: id=2 time_last_meal=4451
+4511 1 is thinking
+4511 1 has taken the right fork
+DBG_EAT2: id=2 meals=19
+4511 2 has put down the right fork
+4511 1 has taken the left fork
+4511 1 is eating
+DBG_EAT: id=1 time_last_meal=4511
+4511 2 has put down the left fork
+4511 2 is sleeping
+4511 3 has taken the right fork
+DBG_EAT2: id=1 meals=38
+4571 1 has put down the left fork
+4571 1 has put down the right fork
+4571 1 is sleeping
+4571 2 is thinking
+4571 3 has taken the left fork
+4571 3 is eating
+DBG_EAT: id=3 time_last_meal=4571
+4631 1 is thinking
+DBG_EAT2: id=3 meals=20
+4632 3 has put down the left fork
+4632 3 has put down the right fork
+4632 3 is sleeping
+4632 2 has taken the left fork
+4632 2 has taken the right fork
+4632 2 is eating
+DBG_EAT: id=2 time_last_meal=4632
+4632 1 has taken the right fork
+DBG_EAT2: id=2 meals=20
+4692 3 is thinking
+4692 2 has put down the right fork
+4692 2 has put down the left fork
+4692 2 is sleeping
+4692 1 has taken the left fork
+4692 1 is eating
+DBG_EAT: id=1 time_last_meal=4692
+4692 3 has taken the right fork
+4752 2 is thinking
+DBG_EAT2: id=1 meals=39
+4752 1 has put down the left fork
+4752 1 has put down the right fork
+4752 3 has taken the left fork
+4752 3 is eating
+DBG_EAT: id=3 time_last_meal=4752
+4752 1 is sleeping
+DBG_EAT2: id=3 meals=21
+4812 3 has put down the left fork
+4812 1 is thinking
+4812 1 has taken the right fork
+4812 1 has taken the left fork
+4812 1 is eating
+DBG_EAT: id=1 time_last_meal=4812
+4812 3 has put down the right fork
+4812 3 is sleeping
+4812 2 has taken the left fork
+DBG_EAT2: id=1 meals=40
+4872 3 is thinking
+4872 1 has put down the left fork
+4872 1 has put down the right fork
+4872 1 is sleeping
+4872 2 has taken the right fork
+4872 2 is eating
+DBG_EAT: id=2 time_last_meal=4872
+4932 1 is thinking
+4932 1 has taken the right fork
+DBG_EAT2: id=2 meals=21
+4932 2 has put down the right fork
+4932 1 has taken the left fork
+4932 1 is eating
+DBG_EAT: id=1 time_last_meal=4932
+4932 2 has put down the left fork
+4932 2 is sleeping
+4932 3 has taken the right fork
+DBG_EAT2: id=1 meals=41
+4992 1 has put down the left fork
+4992 2 is thinking
+4992 1 has put down the right fork
+4992 1 is sleeping
+4992 3 has taken the left fork
+4992 3 is eating
+DBG_EAT

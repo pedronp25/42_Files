@@ -1,0 +1,52 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG_INIT: meal_mutex init for philo 2
+DBG_INIT: meal_mutex init for philo 3
+DBG_INIT: meal_mutex init for philo 4
+DBG_INIT: meal_mutex init for philo 5
+DBG: init philo[1].time_last_meal=0
+DBG: init philo[2].time_last_meal=0
+DBG: init philo[3].time_last_meal=0
+DBG: init philo[4].time_last_meal=0
+DBG: init philo[5].time_last_meal=0
+1 1 has taken the right fork
+1 1 has taken the left fork
+1 1 is eating
+DBG_EAT: id=1 time_last_meal=1
+1 2 has taken the left fork
+1 4 has taken the left fork
+1 4 has taken the right fork
+1 4 is eating
+DBG_EAT: id=4 time_last_meal=1
+DBG: start_time=1758387452527
+DBG_EAT2: id=1 meals=1
+61 1 has put down the left fork
+61 1 has put down the right fork
+61 1 is sleeping
+61 2 has taken the right fork
+61 2 is eating
+DBG_EAT: id=2 time_last_meal=61
+DBG_EAT2: id=4 meals=1
+61 4 has put down the right fork
+61 4 has put down the left fork
+61 4 is sleeping
+62 5 has taken the right fork
+62 5 has taken the left fork
+62 5 is eating
+DBG_EAT: id=5 time_last_meal=62
+DBG_EAT2: id=2 meals=1
+122 2 has put down the right fork
+122 2 has put down the left fork
+122 2 is sleeping
+122 3 has taken the right fork
+122 3 has taken the left fork
+122 3 is eating
+DBG_EAT: id=3 time_last_meal=122
+DBG_EAT2: id=5 meals=1
+122 5 has put down the left fork
+122 5 has put down the right fork
+122 5 is sleeping
+DBG_EAT2: id=3 meals=1
+182 3 has put down the left fork
+182 3 has put down the right fork
+182 3 is sleeping
+191 1 has died (last meal at 1)

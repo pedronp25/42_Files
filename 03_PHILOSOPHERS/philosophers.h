@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 00:30:55 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/20 16:56:16 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ void	ph_take_fork(t_philo *philos);
 void	ph_putdown_fork(t_philo *philos);
 int		ph_sleep_and_think(t_philo *philos);
 int		ph_split_usleep(pthread_mutex_t *death_mutex, long time_left, int *simulation_over);
+int		ph_get_sim_over(t_data *data);
+void	ph_set_sim_over(t_data *data);
+void	ph_cleanup(t_philo *philos);
 
 #endif

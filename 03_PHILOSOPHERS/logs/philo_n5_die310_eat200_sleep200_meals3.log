@@ -1,0 +1,74 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG_INIT: meal_mutex init for philo 2
+DBG_INIT: meal_mutex init for philo 3
+DBG_INIT: meal_mutex init for philo 4
+DBG_INIT: meal_mutex init for philo 5
+DBG: init philo[1].time_last_meal=0
+DBG: init philo[2].time_last_meal=0
+DBG: init philo[3].time_last_meal=0
+DBG: init philo[4].time_last_meal=0
+DBG: init philo[5].time_last_meal=0
+1 1 has taken the right fork
+1 1 has taken the left fork
+1 1 is eating
+DBG_EAT: id=1 time_last_meal=1
+1 3 has taken the right fork
+1 3 has taken the left fork
+1 3 is eating
+DBG_EAT: id=3 time_last_meal=1
+1 5 has taken the right fork
+DBG: start_time=1758387757750
+DBG_EAT2: id=1 meals=1
+201 1 has put down the left fork
+201 1 has put down the right fork
+201 1 is sleeping
+201 5 has taken the left fork
+201 5 is eating
+DBG_EAT: id=5 time_last_meal=201
+DBG_EAT2: id=3 meals=1
+201 3 has put down the left fork
+201 3 has put down the right fork
+201 3 is sleeping
+201 2 has taken the left fork
+201 2 has taken the right fork
+201 2 is eating
+DBG_EAT: id=2 time_last_meal=201
+401 1 is thinking
+DBG_EAT2: id=5 meals=1
+401 5 has put down the left fork
+401 5 has put down the right fork
+401 1 has taken the right fork
+401 5 is sleeping
+401 3 is thinking
+401 4 has taken the left fork
+401 4 has taken the right fork
+401 4 is eating
+DBG_EAT: id=4 time_last_meal=401
+DBG_EAT2: id=2 meals=1
+401 2 has put down the right fork
+401 2 has put down the left fork
+401 2 is sleeping
+401 1 has taken the left fork
+401 1 is eating
+DBG_EAT: id=1 time_last_meal=401
+401 3 has taken the right fork
+601 5 is thinking
+DBG_EAT2: id=4 meals=1
+601 4 has put down the right fork
+601 4 has put down the left fork
+601 4 is sleeping
+601 3 has taken the left fork
+601 3 is eating
+DBG_EAT: id=3 time_last_meal=601
+DBG_EAT2: id=1 meals=2
+602 1 has put down the left fork
+602 1 has put down the right fork
+602 1 is sleeping
+602 5 has taken the right fork
+602 5 has taken the left fork
+602 5 is eating
+DBG_EAT: id=5 time_last_meal=602
+602 2 is thinking
+602 2 has died (last meal at 201)
+DBG_EAT2: id=3 meals=2
+DBG_EAT2: id=5 meals=2

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 01:50:21 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/20 23:11:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ void	*ph_routine(void *arg)
 	t_philo	*philos;
 
 	philos = (t_philo *)arg;
-	while (!philos->data->simulation_over)
+	while (!ph_get_sim_over(philos->data))
 	{
 		if (!ph_eat(philos))
-			break ;
-		if (philos->data->simulation_over)
-			break ;
+			return (NULL);
+		if (ph_get_sim_over(philos->data))
+			return (NULL);
 		if (!ph_sleep_and_think(philos))
-			break ;
-		if (philos->data->simulation_over)
-			break ;
+			return (NULL);
+		if (ph_get_sim_over(philos->data))
+			return (NULL);
 	}
 	return (NULL);
 }
@@ -63,18 +63,18 @@ void	*ph_monitor(void *arg)
 	int		n_philos_full;
 
 	philos = (t_philo *)arg;
-	while (!philos->data->simulation_over)
+	while (!ph_get_sim_over(philos->data))
 	{
 		ph_check_meals(philos, &n_philos_full);
 		if (philos->data->n_meals != -1 && n_philos_full == philos->data->n_philos)
 		{
-			philos->data->simulation_over = 1;
+			ph_set_sim_over(philos->data);
 			pthread_mutex_lock(&philos->data->print_mutex);
 			printf("%ld All philosophers ate enough\n", ph_elapsedtime(philos));
 			pthread_mutex_unlock(&philos->data->print_mutex);
-			break ;
+			return (NULL); ;
 		}
-		usleep(100); // Small usleep to not overload CPU
+		usleep(50); // Small usleep to not overload CPU
 	}
 	return (NULL);
 }
@@ -83,21 +83,21 @@ void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 {
 	int		x;
 	long	time_since_meal;
+	long	current_time;
 
 	*n_philos_full = 0;
+	current_time = ph_elapsedtime(philos);
 	x = 0;
 	while (x < philos->data->n_philos)
 	{
 		pthread_mutex_lock(&philos[x].meal_mutex);
-		time_since_meal = ph_elapsedtime(philos) - philos[x].time_last_meal;
-		if (time_since_meal >= philos->data->time_die)
+		time_since_meal = current_time - philos[x].time_last_meal;
+		if (time_since_meal > philos->data->time_die)
 		{
-			pthread_mutex_lock(&philos->data->death_mutex);
-			philos->data->simulation_over = 1;
-			pthread_mutex_unlock(&philos->data->death_mutex);
+			ph_set_sim_over(philos->data);
 			pthread_mutex_lock(&philos->data->print_mutex);
 			printf("%ld %i has died (last meal at %ld)\n",
-					ph_elapsedtime(philos), philos[x].id, philos[x].time_last_meal); // Debugging
+					current_time, philos[x].id, philos[x].time_last_meal); // Debugging
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			pthread_mutex_unlock(&philos[x].meal_mutex);
 			return ;

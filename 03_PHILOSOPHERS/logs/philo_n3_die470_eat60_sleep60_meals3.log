@@ -1,0 +1,21 @@
+DBG_INIT: meal_mutex init for philo 1
+DBG_INIT: meal_mutex init for philo 2
+DBG_INIT: meal_mutex init for philo 3
+DBG: init philo[1].time_last_meal=0
+DBG: init philo[2].time_last_meal=0
+DBG: init philo[3].time_last_meal=0
+0 1 has taken the right fork
+0 1 has taken the left fork
+0 1 is eating
+DBG_EAT: id=1 time_last_meal=0
+1 2 has taken the left fork
+DBG: start_time=1758386468245
+DBG_EAT2: id=1 meals=1
+1905 1 has put down the left fork
+1905 1 has put down the right fork
+1905 1 is sleeping
+1905 2 has taken the right fork
+1905 2 is eating
+DBG_EAT: id=2 time_last_meal=1905
+1905 1 has died (last meal at 0)
+DBG_EAT2: id=2 meals=1

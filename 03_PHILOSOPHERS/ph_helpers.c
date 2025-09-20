@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:52:30 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 00:45:39 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/20 16:56:34 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,21 @@ void	ph_print(t_philo *philos, int id, char *msg)
 	if (!philos->data->simulation_over)
 		printf("%ld %i %s\n", ph_elapsedtime(philos), id, msg);
 	pthread_mutex_unlock(&philos->data->print_mutex);
+}
+
+int	ph_get_sim_over(t_data *data)
+{
+	int	ret;
+
+	pthread_mutex_lock(&data->death_mutex);
+	ret = data->simulation_over;
+	pthread_mutex_unlock(&data->death_mutex);
+	return (ret);
+}
+
+void	ph_set_sim_over(t_data *data)
+{
+	pthread_mutex_lock(&data->death_mutex);
+	data->simulation_over = 1;
+	pthread_mutex_unlock(&data->death_mutex);
 }
