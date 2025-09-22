@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 04:19:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 14:13:36 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,14 @@ void	ph_take_fork(t_philo *philos);
 void	ph_putdown_fork(t_philo *philos);
 int		ph_sleep_and_think(t_philo *philos);
 void    ph_split_usleep(t_philo *philos, long ms);
-int		ph_is_dead(t_philo *philos, pthread_mutex_t *meal_mutex);
+int		ph_is_dead(t_philo *philos);
 int		ph_get_sim_over(t_data *data);
 void	ph_set_sim_over(t_data *data);
+long	ph_get_time_last_meal(t_philo *philos);
+void	ph_set_time_last_meal(t_philo *philos, long new_time);
+int		ph_get_meals_eaten(t_philo *philos);
+void	ph_inc_meals_eaten(t_philo *philos);
+void	ph_set_meals_eaten(t_philo *philos, int value);
 void	ph_cleanup(t_philo *philos);
 
 #endif

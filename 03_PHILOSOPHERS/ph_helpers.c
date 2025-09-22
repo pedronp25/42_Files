@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:52:30 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 04:55:39 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:36:11 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,43 +55,41 @@ void	ph_set_sim_over(t_data *data)
 	pthread_mutex_unlock(&data->death_mutex);
 }
 
-long ph_get_time_last_meal(t_philo *philos)
+long	ph_get_time_last_meal(t_philo *philos)
 {
-    long time;
+	long time;
 
-    pthread_mutex_lock(&philos->meal_mutex);
-    time = philos->time_last_meal;
-    pthread_mutex_unlock(&philos->meal_mutex);
-
-    return time;
+	pthread_mutex_lock(&philos->meal_mutex);
+	time = philos->time_last_meal;
+	pthread_mutex_unlock(&philos->meal_mutex);
+	return time;
 }
 
-void ph_set_time_last_meal(t_philo *philos, long new_time)
+void	ph_set_time_last_meal(t_philo *philos, long new_time)
 {
-    pthread_mutex_lock(&philos->meal_mutex);
-    philos->time_last_meal = new_time;
-    pthread_mutex_unlock(&philos->meal_mutex);
+	pthread_mutex_lock(&philos->meal_mutex);
+	philos->time_last_meal = new_time;
+	pthread_mutex_unlock(&philos->meal_mutex);
 }
 
-int ph_get_meals_eaten(t_philo *philos)
+int	ph_get_meals_eaten(t_philo *philos)
 {
-    int meals;
+	int meals;
 
-    pthread_mutex_lock(&philos->meal_mutex);
-    meals = philos->meals_eaten;
-    pthread_mutex_unlock(&philos->meal_mutex);
-
-    return meals;
+	pthread_mutex_lock(&philos->meal_mutex);
+	meals = philos->meals_eaten;
+	pthread_mutex_unlock(&philos->meal_mutex);
+	return meals;
 }
 
-void ph_inc_meals_eaten(t_philo *philos)
+void	ph_inc_meals_eaten(t_philo *philos)
 {
-    pthread_mutex_lock(&philos->meal_mutex);
-    philos->meals_eaten++;
-    pthread_mutex_unlock(&philos->meal_mutex);
+	pthread_mutex_lock(&philos->meal_mutex);
+	philos->meals_eaten++;
+	pthread_mutex_unlock(&philos->meal_mutex);
 }
 
-void ph_set_meals_eaten(t_philo *philos, int value)
+void	ph_set_meals_eaten(t_philo *philos, int value)
 {
     pthread_mutex_lock(&philos->meal_mutex);
     philos->meals_eaten = value;

@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 00:03:08 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:42:28 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,12 @@ void	ph_init_philos(t_data *data, t_philo *philos)
 	{
 		philos[x].id = x + 1;
 		philos[x].meals_eaten = 0;
-		philos[x].time_last_meal = data->start_time;
 		philos[x].left_fork = &data->forks[x];
-		philos[x].right_fork = &data->forks[(x + 1) % data->n_philos];
+		if (data->n_philos != 1)
+			philos[x].right_fork = &data->forks[(x + 1) % data->n_philos];
 		pthread_mutex_init(&philos[x].meal_mutex, NULL);
 		philos[x].data = data;
+		philos[x].time_last_meal = 0;
 		x++;
 	}
 }

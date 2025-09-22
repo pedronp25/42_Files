@@ -6,12 +6,11 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 04:37:53 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:33:38 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-#include <pthread.h>
 
 void	ph_create_threads(t_philo *philos)
 {
@@ -46,13 +45,9 @@ void	*ph_routine(void *arg)
 	philos = (t_philo *)arg;
 	while (!ph_get_sim_over(philos->data))
 	{
-		if (!ph_eat(philos))
+		if (!ph_eat(philos) || ph_get_sim_over(philos->data))
 			return (NULL);
-		if (ph_get_sim_over(philos->data))
-			return (NULL);
-		if (!ph_sleep_and_think(philos))
-			return (NULL);
-		if (ph_get_sim_over(philos->data))
+		if (!ph_sleep_and_think(philos) || ph_get_sim_over(philos->data))
 			return (NULL);
 	}
 	return (NULL);
@@ -64,6 +59,7 @@ void	*ph_monitor(void *arg)
 	int		n_philos_full;
 
 	philos = (t_philo *)arg;
+	usleep(1000); // wait 1ms to ensure all threads start and update time_last_meal
 	while (!ph_get_sim_over(philos->data))
 	{
 		ph_check_meals(philos, &n_philos_full);
@@ -92,14 +88,13 @@ void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 		{
 			ph_set_sim_over(philos->data);
 			pthread_mutex_lock(&philos->data->print_mutex);
-			pthread_mutex_lock(&philos[x].meal_mutex);
 			printf("%ld %i has died (last meal at %ld)\n",
-					ph_elapsedtime(philos), philos[x].id, philos[x].time_last_meal); // Debugging
-			pthread_mutex_unlock(&philos[x].meal_mutex);
+					ph_elapsedtime(philos), philos[x].id, ph_get_time_last_meal(&philos[x])); // Debugging
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			return ;
 		}
-		if (philos->data->n_meals != -1 && philos[x].meals_eaten >= philos->data->n_meals)
+		if (philos->data->n_meals != -1 &&
+				ph_get_meals_eaten(&philos[x]) >= philos->data->n_meals)
 			(*n_philos_full)++;
 		x++;
 	}
