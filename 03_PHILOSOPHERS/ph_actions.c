@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 16:31:53 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 22:24:38 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,22 @@ void	ph_take_fork(t_philo *philos)
 		ph_print(philos, philos->id, "has taken a fork");
 		usleep(philos->data->time_die * 1000);
 		pthread_mutex_unlock(philos->left_fork);
-		//ph_set_sim_over(philos->data);
+		ph_set_sim_over(philos->data);
 	}
 	else if (philos->id % 2 == 0)
 	{
-		usleep(50);
-		pthread_mutex_lock(philos->right_fork); // Pick up left fork
-		ph_print(philos, philos->id, "has taken the left fork");
-		pthread_mutex_lock(philos->left_fork); // Pick up right fork
+		usleep(100);
+		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken the right fork");
+		pthread_mutex_lock(philos->left_fork);
+		ph_print(philos, philos->id, "has taken the left fork");
 	}
 	else
 	{
 		pthread_mutex_lock(philos->left_fork);
-		ph_print(philos, philos->id, "has taken the right fork");
-		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken the left fork");
+		pthread_mutex_lock(philos->right_fork);
+		ph_print(philos, philos->id, "has taken the right fork");
 	}
 }
 
@@ -56,9 +56,9 @@ void	ph_putdown_fork(t_philo *philos)
 {
 	if (philos->id % 2 == 0)
 	{
-		pthread_mutex_unlock(philos->left_fork); // Put down right fork
+		pthread_mutex_unlock(philos->left_fork);
 		//ph_print(philos, philos->id, "has put down the left fork");
-		pthread_mutex_unlock(philos->right_fork); // Put down left fork
+		pthread_mutex_unlock(philos->right_fork);
 		//ph_print(philos, philos->id, "has put down the right fork");
 	}
 	else
@@ -87,5 +87,7 @@ int	ph_is_dead(t_philo *philos)
 	pthread_mutex_lock(&philos->meal_mutex);
 	time_since_meal = ph_elapsedtime(philos) - philos->time_last_meal;
 	pthread_mutex_unlock(&philos->meal_mutex);
-	return (time_since_meal >= philos->data->time_die);
+	if (philos->is_eating == 0 && time_since_meal >= philos->data->time_die)
+		return (1);
+	return (0);
 }

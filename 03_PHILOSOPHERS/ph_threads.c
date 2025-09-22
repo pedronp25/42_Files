@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 16:33:38 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 22:31:56 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*ph_monitor(void *arg)
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			return (NULL); ;
 		}
-		usleep(50); // Small usleep to not overload CPU
+		usleep(500); // Small usleep to not overload CPU
 	}
 	return (NULL);
 }
@@ -84,6 +84,16 @@ void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 	x = 0;
 	while (x < philos->data->n_philos)
 	{
+		// Add debug output:
+    	pthread_mutex_lock(&philos[x].meal_mutex);
+    	long current_time = ph_elapsedtime(philos);
+    	long time_since_meal = current_time - philos[x].time_last_meal;
+   		int is_eating = philos[x].is_eating;  // if you added this flag
+    
+    	printf("DBG_DEATH_CHECK: id=%d current=%ld last_meal=%ld gap=%ld is_eating=%d\n", 
+           philos[x].id, current_time, philos[x].time_last_meal, time_since_meal, is_eating);
+
+    	pthread_mutex_unlock(&philos[x].meal_mutex);
 		if (ph_is_dead(&philos[x]))
 		{
 			ph_set_sim_over(philos->data);

@@ -1,5 +1,0 @@
-DBG_INIT: meal_mutex init for philo 1
-DBG: init philo[1].time_last_meal=0
-1 1 has taken a fork
-DBG: start_time=1758402711491
-610 1 has died (last meal at 0)

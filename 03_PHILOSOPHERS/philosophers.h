@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:59:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 14:13:36 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 22:20:59 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_data
 	long			time_sleep; // Time to sleep (milisseconds)
 	long			n_meals; // Number of meals a philosopher must have (Optional)
 	
-	int				is_dead; // Value to stop simulation when someone dies
 	long			start_time; // Start time in milisseconds
 	
 	pthread_mutex_t	forks[MAX_PHILOS];
@@ -54,6 +53,8 @@ typedef struct s_philo
 	pthread_mutex_t	*right_fork;
 
 	pthread_mutex_t	meal_mutex;
+
+	int				is_eating;
 
 	t_data			*data;
 
@@ -82,6 +83,7 @@ int		ph_is_dead(t_philo *philos);
 int		ph_get_sim_over(t_data *data);
 void	ph_set_sim_over(t_data *data);
 long	ph_get_time_last_meal(t_philo *philos);
+int		ph_get_is_eating(t_philo *philos);
 void	ph_set_time_last_meal(t_philo *philos, long new_time);
 int		ph_get_meals_eaten(t_philo *philos);
 void	ph_inc_meals_eaten(t_philo *philos);

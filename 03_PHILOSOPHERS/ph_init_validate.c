@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 16:42:28 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 22:24:19 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ph_init_data(int argc, char **argv, t_data *data)
 	if (ph_validate_arguments(argc, argv, data))
 		return (-1);
 	data->start_time = 0;
-	data->is_dead = 0;
 	pthread_mutex_init(&data->print_mutex, NULL);
 	pthread_mutex_init(&data->death_mutex, NULL);
 	x = 0;
@@ -100,11 +99,11 @@ void	ph_init_philos(t_data *data, t_philo *philos)
 		philos[x].id = x + 1;
 		philos[x].meals_eaten = 0;
 		philos[x].left_fork = &data->forks[x];
-		if (data->n_philos != 1)
-			philos[x].right_fork = &data->forks[(x + 1) % data->n_philos];
+		philos[x].right_fork = &data->forks[(x + 1) % data->n_philos];
 		pthread_mutex_init(&philos[x].meal_mutex, NULL);
 		philos[x].data = data;
 		philos[x].time_last_meal = 0;
+		philos[x].is_eating = 0;
 		x++;
 	}
 }
