@@ -6,21 +6,19 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/20 23:17:53 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 04:38:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+#include <pthread.h>
 
 int	ph_eat(t_philo *philos)
 {
 	ph_take_fork(philos);
-	pthread_mutex_lock(&philos->meal_mutex);
 	if (ph_get_sim_over(philos->data))
-	{
-		pthread_mutex_unlock(&philos->meal_mutex);
 		return (0);
-	}
+	pthread_mutex_lock(&philos->meal_mutex);
 	philos->time_last_meal = ph_elapsedtime(philos);
 	ph_print(philos, philos->id, "is eating");
 	usleep(philos->data->time_eat * 1000);
@@ -32,14 +30,7 @@ int	ph_eat(t_philo *philos)
 
 void	ph_take_fork(t_philo *philos)
 {
-	if (philos->data->n_philos == 1)
-	{
-		pthread_mutex_lock(philos->right_fork);
-		ph_print(philos, philos->id, "has taken a fork");
-		usleep(philos->data->time_die * 1000);
-		ph_set_sim_over(philos->data);
-	}
-	else if (philos->id % 2 == 0)
+	if (philos->id % 2 == 0)
 	{
 		usleep(50);
 		pthread_mutex_lock(philos->right_fork); // Pick up left fork
@@ -47,12 +38,19 @@ void	ph_take_fork(t_philo *philos)
 		pthread_mutex_lock(philos->left_fork); // Pick up right fork
 		ph_print(philos, philos->id, "has taken the right fork");
 	}
-	else
+	else if (philos->id % 2 == 1)
 	{
 		pthread_mutex_lock(philos->left_fork);
 		ph_print(philos, philos->id, "has taken the right fork");
 		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken the left fork");
+	}
+	else if (philos->data->n_philos == 1)
+	{
+		pthread_mutex_lock(philos->right_fork);
+		ph_print(philos, philos->id, "has taken a fork");
+		usleep(philos->data->time_die * 1000);
+		ph_set_sim_over(philos->data);
 	}
 }
 
@@ -85,27 +83,15 @@ int	ph_sleep_and_think(t_philo *philos)
 	return (1);
 }
 
-int	ph_split_usleep(pthread_mutex_t *death_mutex, long time_left, int *simulation_over)
+int	ph_is_dead(t_philo *philos)
 {
-	int	time_chunk;
+	long	current_time;
+	long	time_since_meal;
+	
+	current_time = ph_elapsedtime(philos);
 
-	time_left *= 1000; // Convert to microseconds
-	time_chunk = time_left / 4; // Could make it larger if needed
-	if (time_chunk < 1000)
-		time_chunk = 1000;
-	if (time_left < time_chunk)
-		usleep(time_left);
-	while (time_left > 0)
-	{
-		usleep(time_chunk);
-		pthread_mutex_lock(death_mutex);
-		if (*simulation_over)
-		{
-			pthread_mutex_unlock(death_mutex);
-			return (0);
-		}
-		pthread_mutex_unlock(death_mutex);
-		time_left -= time_chunk;
-	}
-	return (1);
+	pthread_mutex_lock(&philos->meal_mutex);
+	time_since_meal = current_time - philos->time_last_meal;
+	pthread_mutex_unlock(&philos->meal_mutex);
+	return (time_since_meal >= philos->data->time_die);
 }

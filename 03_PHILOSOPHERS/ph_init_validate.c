@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/19 00:32:23 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 00:03:08 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	ph_init_philos(t_data *data, t_philo *philos)
 		philos[x].left_fork = &data->forks[x];
 		philos[x].right_fork = &data->forks[(x + 1) % data->n_philos];
 		pthread_mutex_init(&philos[x].meal_mutex, NULL);
-		printf("DBG_INIT: meal_mutex init for philo %d\n", x+1);
 		philos[x].data = data;
 		x++;
 	}

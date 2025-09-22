@@ -6,11 +6,12 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/20 23:11:30 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/22 04:37:53 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+#include <pthread.h>
 
 void	ph_create_threads(t_philo *philos)
 {
@@ -82,29 +83,24 @@ void	*ph_monitor(void *arg)
 void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 {
 	int		x;
-	long	time_since_meal;
-	long	current_time;
 
 	*n_philos_full = 0;
-	current_time = ph_elapsedtime(philos);
 	x = 0;
 	while (x < philos->data->n_philos)
 	{
-		pthread_mutex_lock(&philos[x].meal_mutex);
-		time_since_meal = current_time - philos[x].time_last_meal;
-		if (time_since_meal > philos->data->time_die)
+		if (ph_is_dead(&philos[x]))
 		{
 			ph_set_sim_over(philos->data);
 			pthread_mutex_lock(&philos->data->print_mutex);
+			pthread_mutex_lock(&philos[x].meal_mutex);
 			printf("%ld %i has died (last meal at %ld)\n",
-					current_time, philos[x].id, philos[x].time_last_meal); // Debugging
-			pthread_mutex_unlock(&philos->data->print_mutex);
+					ph_elapsedtime(philos), philos[x].id, philos[x].time_last_meal); // Debugging
 			pthread_mutex_unlock(&philos[x].meal_mutex);
+			pthread_mutex_unlock(&philos->data->print_mutex);
 			return ;
 		}
 		if (philos->data->n_meals != -1 && philos[x].meals_eaten >= philos->data->n_meals)
 			(*n_philos_full)++;
-		pthread_mutex_unlock(&philos[x].meal_mutex);
 		x++;
 	}
 }
