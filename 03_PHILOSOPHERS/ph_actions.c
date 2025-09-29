@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/29 19:23:03 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:38:20 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int	ph_is_dead(t_philo *philos)
 	pthread_mutex_lock(&philos->meal_mutex);
 	time_since_meal = ph_elapsedtime(philos) - philos->time_last_meal;
 	pthread_mutex_unlock(&philos->meal_mutex);
-	if (philos->is_eating == 0 && time_since_meal >= philos->data->time_die)
+	if (time_since_meal >= philos->data->time_die)
 		return (1);
 	return (0);
 }
+
