@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:52:30 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 22:19:00 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:09:07 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ long	ph_get_time_last_meal(t_philo *philos)
 	return time;
 }
 
+/*
 int	ph_get_is_eating(t_philo *philos)
 {
 	int	ret;
@@ -74,11 +75,12 @@ int	ph_get_is_eating(t_philo *philos)
 	pthread_mutex_unlock(&philos->meal_mutex);
 	return (ret);
 }
+*/
 
 void	ph_set_time_last_meal(t_philo *philos, long new_time)
 {
 	pthread_mutex_lock(&philos->meal_mutex);
-	philos->is_eating = 1;
+	//philos->is_eating = 1;
 	philos->time_last_meal = new_time;
 	pthread_mutex_unlock(&philos->meal_mutex);
 }
@@ -106,4 +108,3 @@ void	ph_set_meals_eaten(t_philo *philos, int value)
     philos->meals_eaten = value;
     pthread_mutex_unlock(&philos->meal_mutex);
 }
-

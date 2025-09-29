@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 22:24:19 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:07:46 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	ph_init_philos(t_data *data, t_philo *philos)
 		pthread_mutex_init(&philos[x].meal_mutex, NULL);
 		philos[x].data = data;
 		philos[x].time_last_meal = 0;
-		philos[x].is_eating = 0;
+		//philos[x].is_eating = 0;
 		x++;
 	}
 }

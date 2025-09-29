@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/22 22:24:38 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:23:03 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ph_eat(t_philo *philos)
 {
+//	if (ph_get_meals_eaten(philos) < n_rounds /*not set yet*/)
+//		ph_wait(); // Only and idea of what could be a function
 	ph_take_fork(philos);
-	//if (ph_get_sim_over(philos->data))
-	//	return (0);
 	ph_set_time_last_meal(philos, ph_elapsedtime(philos));
 	ph_print(philos, philos->id, "is eating");
 	usleep(philos->data->time_eat * 1000);
@@ -37,7 +37,6 @@ void	ph_take_fork(t_philo *philos)
 	}
 	else if (philos->id % 2 == 0)
 	{
-		usleep(100);
 		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken the right fork");
 		pthread_mutex_lock(philos->left_fork);
@@ -56,16 +55,16 @@ void	ph_putdown_fork(t_philo *philos)
 {
 	if (philos->id % 2 == 0)
 	{
-		pthread_mutex_unlock(philos->left_fork);
-		//ph_print(philos, philos->id, "has put down the left fork");
 		pthread_mutex_unlock(philos->right_fork);
+		//ph_print(philos, philos->id, "has put down the left fork");
+		pthread_mutex_unlock(philos->left_fork);
 		//ph_print(philos, philos->id, "has put down the right fork");
 	}
 	else
 	{
-		pthread_mutex_unlock(philos->right_fork);
-		//ph_print(philos, philos->id, "has put down the right fork");
 		pthread_mutex_unlock(philos->left_fork);
+		//ph_print(philos, philos->id, "has put down the right fork");
+		pthread_mutex_unlock(philos->right_fork);
 		//ph_print(philos, philos->id, "has put down the left fork");
 	}
 }
