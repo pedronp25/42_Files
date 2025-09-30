@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/29 19:38:20 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/30 00:03:30 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	ph_sleep_and_think(t_philo *philos)
 	//if (ph_get_sim_over(philos->data))
 	//	return (0);
 	ph_print(philos, philos->id, "is thinking");
+	usleep(500);
 	return (1);
 }
 

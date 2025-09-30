@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/29 19:36:58 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/09/30 00:08:24 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	*ph_routine(void *arg)
 	philos = (t_philo *)arg;
 	ph_set_time_last_meal(philos, ph_elapsedtime(philos));
 	if (philos->id % 2 == 0)
-		usleep(50);
+		usleep(500);
 	while (!ph_get_sim_over(philos->data))
 	{
 		if (!ph_eat(philos) || ph_get_sim_over(philos->data))
@@ -74,7 +74,7 @@ void	*ph_monitor(void *arg)
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			return (NULL); ;
 		}
-		usleep(500); // Small usleep to not overload CPU
+		usleep(50); // Small usleep to not overload CPU
 	}
 	return (NULL);
 }
