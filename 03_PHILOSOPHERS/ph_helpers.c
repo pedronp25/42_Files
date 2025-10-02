@@ -6,11 +6,12 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:52:30 by pedromig          #+#    #+#             */
-/*   Updated: 2025/09/29 19:09:07 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/02 03:41:52 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
 
 long	ph_gettime_ms(void)
 {
