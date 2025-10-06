@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:52:30 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/02 03:41:52 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/06 01:31:28 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,9 @@ long	ph_get_time_last_meal(t_philo *philos)
 	return time;
 }
 
-/*
-int	ph_get_is_eating(t_philo *philos)
-{
-	int	ret;
-
-	pthread_mutex_lock(&philos->meal_mutex);
-	ret = philos->is_eating;
-	pthread_mutex_unlock(&philos->meal_mutex);
-	return (ret);
-}
-*/
-
 void	ph_set_time_last_meal(t_philo *philos, long new_time)
 {
 	pthread_mutex_lock(&philos->meal_mutex);
-	//philos->is_eating = 1;
 	philos->time_last_meal = new_time;
 	pthread_mutex_unlock(&philos->meal_mutex);
 }
@@ -108,4 +95,19 @@ void	ph_set_meals_eaten(t_philo *philos, int value)
     pthread_mutex_lock(&philos->meal_mutex);
     philos->meals_eaten = value;
     pthread_mutex_unlock(&philos->meal_mutex);
+}
+
+int	ph_is_dead(t_philo *philos)
+{
+	long	time_since_meal;
+	int		ret;
+
+	pthread_mutex_lock(&philos->meal_mutex);
+	time_since_meal = ph_elapsedtime(philos) - philos->time_last_meal;
+	if (time_since_meal >= philos->data->time_die)
+		ret = 1;
+	else
+		ret = 0;
+	pthread_mutex_unlock(&philos->meal_mutex);
+	return (ret);
 }
