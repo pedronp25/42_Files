@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/06 01:31:37 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/10 00:24:59 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	ph_eat(t_philo *philos)
 {
-//	if (ph_get_meals_eaten(philos) < n_rounds /*not set yet*/)
-//		ph_wait(); // Only and idea of what could be a function
-	ph_take_fork(philos);
+	if (!ph_take_fork(philos))
+		return (0);
 	ph_set_time_last_meal(philos, ph_elapsedtime(philos));
 	ph_print(philos, philos->id, "is eating");
 	usleep(philos->data->time_eat * 1000);
@@ -25,7 +24,7 @@ int	ph_eat(t_philo *philos)
 	return (1);
 }
 
-void	ph_take_fork(t_philo *philos)
+int	ph_take_fork(t_philo *philos)
 {
 	if (philos->data->n_philos == 1)
 	{
@@ -34,6 +33,7 @@ void	ph_take_fork(t_philo *philos)
 		usleep(philos->data->time_die * 1000);
 		pthread_mutex_unlock(philos->left_fork);
 		ph_set_sim_over(philos->data);
+		return (0);
 	}
 	else if (philos->id % 2 == 0)
 	{
@@ -49,6 +49,7 @@ void	ph_take_fork(t_philo *philos)
 		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken the right fork");
 	}
+	return (1);
 }
 
 void	ph_putdown_fork(t_philo *philos)
@@ -76,6 +77,6 @@ int	ph_sleep_and_think(t_philo *philos)
 	//if (ph_get_sim_over(philos->data))
 	//	return (0);
 	ph_print(philos, philos->id, "is thinking");
-	usleep(500);
+	usleep(1000);
 	return (1);
 }
