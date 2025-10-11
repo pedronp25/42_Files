@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/11 18:06:03 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/11 22:51:38 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	*ph_monitor(void *arg)
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			return (NULL);
 		}
+		usleep(50);
 	}
 	return (NULL);
 }
