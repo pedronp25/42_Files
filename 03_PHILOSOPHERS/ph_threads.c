@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/01 23:10:47 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/11 02:08:57 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ void	*ph_routine(void *arg)
 	philos = (t_philo *)arg;
 	ph_set_time_last_meal(philos, ph_elapsedtime(philos));
 	if (philos->id % 2 == 0)
-		usleep(500);
+		usleep((philos->data->time_eat / 2) * 1000);
 	while (!ph_get_sim_over(philos->data))
 	{
-		if (!ph_eat(philos) || ph_get_sim_over(philos->data))
+		/*if (!ph_eat(philos) || ph_get_sim_over(philos->data))
 			return (NULL);
 		if (!ph_sleep_and_think(philos) || ph_get_sim_over(philos->data))
-			return (NULL);
+			return (NULL);*/
+		ph_eat(philos);
+		ph_sleep_and_think(philos);
 	}
 	return (NULL);
 }

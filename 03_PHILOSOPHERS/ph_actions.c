@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/11 01:38:22 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/11 02:32:41 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ int	ph_take_fork(t_philo *philos)
 		ph_set_sim_over(philos->data);
 		return (0);
 	}
-	else if (philos->id % 2 == 0)
+/*	else if (philos->id % 2 == 0)
 	{
 		pthread_mutex_lock(philos->right_fork);
 		ph_print(philos, philos->id, "has taken a fork");
 		pthread_mutex_lock(philos->left_fork);
 		ph_print(philos, philos->id, "has taken a fork");
 	}
-	else
+*/	else
 	{
 		pthread_mutex_lock(philos->left_fork);
 		ph_print(philos, philos->id, "has taken a fork");
@@ -79,10 +79,11 @@ int	ph_sleep_and_think(t_philo *philos)
 	time_eat = philos->data->time_eat;
 	time_sleep = philos->data->time_sleep;
 	ph_print(philos, philos->id, "is sleeping");
-	//usleep(philos->data->time_sleep * 1000);
-	ph_usleep(philos->data->time_sleep);
+	//usleep(time_sleep * 1000);
+	ph_usleep(time_sleep);
 	ph_print(philos, philos->id, "is thinking");
 	//if (philos->data->n_philos % 2 != 0 && time_eat > time_sleep)
-	//	usleep((time_eat - time_sleep) * 1000); // Artificial time_think to keep philos from racing in front of others
+		//usleep((time_eat - time_sleep) * 1000); // Artificial time_think to keep philos from racing in front of others
+		//ph_usleep(time_eat - time_sleep);
 	return (1);
 }
