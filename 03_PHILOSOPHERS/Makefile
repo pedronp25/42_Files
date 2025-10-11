@@ -7,7 +7,9 @@ SRCS = philosophers.c \
 	   ph_init_validate.c \
 	   ph_threads.c \
 	   ph_actions.c \
-	   ph_helpers.c
+	   ph_helpers/ph_helpers1.c \
+	   ph_helpers/ph_helpers2.c \
+	   ph_helpers/ph_helpers3.c \
 
 OBJS = $(SRCS:.c=.o)
 

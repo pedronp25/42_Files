@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 22:39:46 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/02 03:42:31 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/11 18:14:13 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	t_data 	data;
+	t_data	data;
 	t_philo	philos[200];
 
-	if (ph_init_data(argc, argv, &data) == -1)
-		return (1); // Couldn't initiate data; Cleanup left;
+	if (!ph_init_data(argc, argv, &data))
+		return (1);
 	ph_init_philos(&data, philos);
 	data.start_time = ph_gettime_ms();
 	ph_create_threads(philos);
