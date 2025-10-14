@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:06:26 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/11 22:51:38 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/13 17:28:45 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void	ph_check_meals(t_philo *philos, int	*n_philos_full)
 		{
 			ph_set_sim_over(philos->data);
 			pthread_mutex_lock(&philos->data->print_mutex);
-			printf("%ld %i has died\n",
-				ph_elapsedtime(philos), philos[x].id);
+			printf("%ld %i has died\n", ph_elapsedtime(philos), philos[x].id);
 			pthread_mutex_unlock(&philos->data->print_mutex);
 			return ;
 		}

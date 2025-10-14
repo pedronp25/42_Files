@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 03:26:05 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 18:19:24 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:58:31 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 # include "libft/libft.h"
 # include <fcntl.h>
 
-# define KEY_W 113
-# define KEY_A 115
-# define KEY_S 122
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
 # define KEY_D 100
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
 # define ESC 65307
 
 # define TILE_SIZE 96

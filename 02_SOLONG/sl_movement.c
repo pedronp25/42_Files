@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 22:49:15 by pedromig          #+#    #+#             */
-/*   Updated: 2025/07/04 18:18:55 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:21:10 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	sl_key_press(int keycode, t_game *sl)
 
 	new_y = sl->player_y;
 	new_x = sl->player_x;
-	if (keycode == KEY_W)
+	if (keycode == KEY_W || keycode == KEY_UP)
 		new_y--;
-	else if (keycode == KEY_A)
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
 		new_x--;
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
 		new_y++;
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		new_x++;
 	else if (keycode == ESC)
 		sl_exit_success(sl, 1);

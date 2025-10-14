@@ -36,6 +36,7 @@ $(MLX_LIB):
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LIB) -o $(NAME) -lXext -lX11 -lm
+	clear
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	@mkdir -p $(OBJ_DIR)
