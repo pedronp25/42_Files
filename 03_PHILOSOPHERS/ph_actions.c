@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 21:41:39 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/13 19:05:15 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/15 01:55:22 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,24 @@ int	ph_eat(t_philo *philos)
 
 int	ph_take_fork(t_philo *philos)
 {
-	pthread_mutex_t	*first_fork;
-	pthread_mutex_t	*second_fork;
-
-	if (philos->left_fork < philos->right_fork)
-	{
-		first_fork = philos->left_fork;
-		second_fork = philos->right_fork;
-	}
-	else
-	{
-		first_fork = philos->right_fork;
-		second_fork = philos->left_fork;
-	}
-	pthread_mutex_lock(first_fork);
+	pthread_mutex_lock(philos->left_fork);
 	ph_print(philos, philos->id, "has taken a fork");
 	if (philos->data->n_philos == 1)
 	{
 		usleep(philos->data->time_die * 1000);
-		pthread_mutex_unlock(first_fork);
+		pthread_mutex_unlock(philos->left_fork);
 		ph_set_sim_over(philos->data);
 		return (0);
 	}
-	pthread_mutex_lock(second_fork);
+	pthread_mutex_lock(philos->right_fork);
 	ph_print(philos, philos->id, "has taken a fork");
 	return (1);
 }
 
 void	ph_putdown_fork(t_philo *philos)
 {
-	pthread_mutex_unlock(philos->right_fork);
 	pthread_mutex_unlock(philos->left_fork);
+	pthread_mutex_unlock(philos->right_fork);
 }
 
 int	ph_sleep_and_think(t_philo *philos)
