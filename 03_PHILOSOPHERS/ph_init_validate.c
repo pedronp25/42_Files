@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:03:12 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/15 01:48:28 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/15 22:26:43 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ph_validate_arguments(int argc, char **argv, t_data *data)
 {
 	if (argc != 5 && argc != 6)
 		return (0);
-	if (!ph_is_digit(argv[1]) || !ph_is_digit(argv[2])
+	if (ph_atol(argv[1]) > 200 || !ph_is_digit(argv[1]) || !ph_is_digit(argv[2])
 		|| !ph_is_digit(argv[3]) || !ph_is_digit(argv[4]))
 		return (0);
 	data->n_philos = ph_atol(argv[1]);

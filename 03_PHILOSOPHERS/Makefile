@@ -1,4 +1,4 @@
-CC = cc -g
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = philo
