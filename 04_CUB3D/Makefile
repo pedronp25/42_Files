@@ -15,7 +15,8 @@ MLX_LIB = $(MLX_DIR)/libmlx.a
 SRC_DIR = .
 OBJ_DIR = objs
 
-SRCS = cub3d.c
+SRCS = cub3d.c \
+	   cbd_validate_initialize.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
