@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 23:28:20 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/16 01:29:29 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/17 01:12:51 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <string.h>
 # include <math.h>
 # include "mlx/mlx.h"
+
+typedef struct s_data
+{
+	t_map	*map;
+
+}	t_data;
 
 typedef struct s_map
 {
