@@ -6,7 +6,7 @@
 /*   By: pedromig <pedromig@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 23:28:20 by pedromig          #+#    #+#             */
-/*   Updated: 2025/10/17 22:01:49 by pedromig         ###   ########.fr       */
+/*   Updated: 2025/10/18 01:11:39 by pedromig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ typedef struct s_data
 }	t_data;
 
 void	cbd_check_arg(int argc, char **argv, int *fd);
-void	cbd_check_file(int fd);
-void	cbd_check_tex_id(char *line, int *tex_id);
-void	cbd_check_dup_id(int *tex_id, int id);
+int		cbd_check_file(int fd);
+int		cbd_check_elements(char **line, int *tex_id, int fd);
+void	cbd_check_line(char *line, int *tex_id);
+void	cbd_mark_id(int *tex_id, int id);
+int		cbd_is_map(char *line);
+int		cbd_iswhitespace(char c);
 
 void	cbd_error(char *error_msg);
 
